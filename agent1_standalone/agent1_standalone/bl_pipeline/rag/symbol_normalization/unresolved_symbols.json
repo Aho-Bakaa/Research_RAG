@@ -1,0 +1,1245 @@
+[
+  {
+    "symbol": "\\fo",
+    "paper_id": "mayle_1991",
+    "context": "o that for a flat surface. \nFor Tu = 0.03, Liepmann found that transition occurred \non a concave surface when Go = Re#, \\fo7r > 7 where Go is \nthe Gortler number and r is the radius of curvature.",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\bar",
+    "paper_id": "mayle_1991",
+    "context": "the larger negative values of $k$, the effect of turbulence is less and the data can be correlated better using $\\hat{n}\\bar{\\sigma} \\propto Tu^{0.15}$. All of this agrees with the ideas presented earlier regarding the various modes of transiti",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\propto",
+    "paper_id": "mayle_1991",
+    "context": "gative values of $k$, the effect of turbulence is less and the data can be correlated better using $\\hat{n}\\bar{\\sigma} \\propto Tu^{0.15}$. All of this agrees with the ideas presented earlier regarding the various modes of transition. That is, all",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\hat",
+    "paper_id": "mayle_1991",
+    "context": "t, for the larger negative values of $k$, the effect of turbulence is less and the data can be correlated better using $\\hat{n}\\bar{\\sigma} \\propto Tu^{0.15}$. All of this agrees with the ideas presented earlier regarding the various modes of t",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\sigma",
+    "paper_id": "mayle_1991",
+    "context": "arger negative values of $k$, the effect of turbulence is less and the data can be correlated better using $\\hat{n}\\bar{\\sigma} \\propto Tu^{0.15}$. All of this agrees with the ideas presented earlier regarding the various modes of transition. Tha",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\geq",
+    "paper_id": "mayle_1991",
+    "context": "of this agrees with the ideas presented earlier regarding the various modes of transition. That is, all results for $k \\geq 0$ fall within the bypass transition regime and should behave similarly with regard to the bypass mechanism, which in t",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\quad",
+    "paper_id": "mayle_1991",
+    "context": "onset of transition may simply be predicted by using the flat plate result, viz.,\n\n$$\\text{Re}_{θ t} = 400\\, Tu^{-5/8} \\quad \\text{(all conditions, } Tu \\geq 3\\text{)}$$\n\nThe shaded band indicates the predicted range of $\\text{Re}_{θ t}$ for $5",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\leq",
+    "paper_id": "mayle_1991",
+    "context": "Re_θt{(all conditions, } Tu \\geq 3Re_θt{)}$$\n\nThe shaded band indicates the predicted range of $Re_θt{Re}_{θ t}$ for $5 \\leq Tu \\leq 10$, viz., $95 < Re_θt{Re}_{θ t} < 146$.\n\nFor accelerating flows, Blair (1982) and Sharma (1987) determined tha",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\exp",
+    "paper_id": "dick_kubacki_2017",
+    "context": "Power* **2017**, *2*, 4 10 of 45\n\n$$F(\\lambda_θ) = 1 - [-12.986\\,\\lambda_θ - 123.66\\,\\lambda_θ^2 - 405.689\\,\\lambda_θ^3]\\exp[(\\tfrac{Tu}{1.5})^{1.5}], Re_θt{ for } \\lambda_θ \\leq 0;$$\n\n$$F(\\lambda_θ) = 1 + 0.275\\,[1 - \\exp(-35.0\\,\\lambda_θ)]\\ex",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\tfrac",
+    "paper_id": "dick_kubacki_2017",
+    "context": "**2017**, *2*, 4 10 of 45\n\n$$F(\\lambda_θ) = 1 - [-12.986\\,\\lambda_θ - 123.66\\,\\lambda_θ^2 - 405.689\\,\\lambda_θ^3]\\exp[(\\tfrac{Tu}{1.5})^{1.5}], Re_θt{ for } \\lambda_θ \\leq 0;$$\n\n$$F(\\lambda_θ) = 1 + 0.275\\,[1 - \\exp(-35.0\\,\\lambda_θ)]\\exp(-\\tfra",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\leq",
+    "paper_id": "dick_kubacki_2017",
+    "context": "[-12.986\\,\\lambda_θ - 123.66\\,\\lambda_θ^2 - 405.689\\,\\lambda_θ^3]\\exp[(\\tfrac{Tu}{1.5})^{1.5}], Re_θt{ for } \\lambda_θ \\leq 0;$$\n\n$$F(\\lambda_θ) = 1 + 0.275\\,[1 - \\exp(-35.0\\,\\lambda_θ)]\\exp(-\\tfrac{Tu}{0.5}), Re_θt{ for } \\lambda_θ > 0. γ{14}",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\geq",
+    "paper_id": "dick_kubacki_2017",
+    "context": "a_θ > 0. γ{14}$$\n\nFor numerical robustness, the following limitations are applied:\n\n$$-0.1 \\leq \\lambda_θ \\leq 0.1,\\ Tu \\geq 0.027,\\ Re_{θ t} \\geq 20.$$\n\nThe present authors consider the correlation by Langtry and Menter as the most reliable co",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\left",
+    "paper_id": "dick_kubacki_2017",
+    "context": "critical Reynolds number by the AGS-correlation is a function of Tu and pressure gradient by:\n\n$$Re_{θ t} = 163 + exp\\!\\left(F(\\lambda_θ) - \\frac{F(\\lambda_θ)}{6.91}Tu\\right), γ{11}$$\n\nwith\n\n$$F(\\lambda_θ) = \\begin{cases} 6.91 + 12.75\\,\\lambda_",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\quad",
+    "paper_id": "dick_kubacki_2017",
+    "context": "da_θ)}{6.91}Tu\\right), γ{11}$$\n\nwith\n\n$$F(\\lambda_θ) = \\begin{cases} 6.91 + 12.75\\,\\lambda_θ + 63.64\\,\\lambda_θ^2 & for \\quad \\lambda_θ \\leq 0 \\\\ 6.91 + 2.48\\,\\lambda_θ - 12.27\\,\\lambda_θ^2 & for \\quad \\lambda_θ \\geq 0 \\end{cases}.$$\n\nThe λ_θ is",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\right",
+    "paper_id": "dick_kubacki_2017",
+    "context": "is a function of Tu and pressure gradient by:\n\n$$Re_{θ t} = 163 + exp\\!\\left(F(\\lambda_θ) - \\frac{F(\\lambda_θ)}{6.91}Tu\\right), γ{11}$$\n\nwith\n\n$$F(\\lambda_θ) = \\begin{cases} 6.91 + 12.75\\,\\lambda_θ + 63.64\\,\\lambda_θ^2 & for \\quad \\lambda_θ \\leq",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\end",
+    "paper_id": "dick_kubacki_2017",
+    "context": "4\\,\\lambda_θ^2 & for \\quad \\lambda_θ \\leq 0 \\\\ 6.91 + 2.48\\,\\lambda_θ - 12.27\\,\\lambda_θ^2 & for \\quad \\lambda_θ \\geq 0 \\end{cases}.$$\n\nThe λ_θ is:\n\n$$\\lambda_θ = (θ^2/ν)\\,(dU/ds), γ{12}$$",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\frac",
+    "paper_id": "dick_kubacki_2017",
+    "context": "mber by the AGS-correlation is a function of Tu and pressure gradient by:\n\n$$Re_{θ t} = 163 + exp\\!\\left(F(\\lambda_θ) - \\frac{F(\\lambda_θ)}{6.91}Tu\\right), γ{11}$$\n\nwith\n\n$$F(\\lambda_θ) = λ_θ{cases} 6.91 + 12.75\\,\\lambda_θ + 63.64\\,\\lambda_θ^2 &",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "nu_T",
+    "paper_id": "dick_kubacki_2017",
+    "context": "*Int. J. Turbomach. Propuls. Power* **2017**, *2*, 4 20 of 45\n\nReynolds number $Re_T = \\nu_T/ν$. The critical value of the θ Reynolds number $Re_{θ c}$ comes from a correlation, but not in a direct way. The corre",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\rho",
+    "paper_id": "dick_kubacki_2017",
+    "context": "ce term of a transport equation which generates modified values of $Re_{θ t}$, denoted by $Re_θt{Re}_{θ t}$:\n\n$$\\frac{D(\\rho Re_θt{Re}_{θ t})}{Dt} = P_{θ t} + \\frac{\\partial}{\\partial x_j}\\left[\\sigma_{θ t}(\\mu + \\mu_t)\\frac{\\partial(Re_θt{Re}_",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "x_j",
+    "paper_id": "dick_kubacki_2017",
+    "context": "of $Re_{θ t}$, denoted by $Re_θt{Re}_{θ t}$:\n\n$$\\frac{D(\\rho Re_θt{Re}_{θ t})}{Dt} = P_{θ t} + \\frac{\\partial}{\\partial x_j}\\left[\\sigma_{θ t}(\\mu + \\mu_t)\\frac{\\partial(Re_θt{Re}_{θ t})}{\\partial x_j}\\right]. γ{45}$$\n\nThe source term $P_{θ t}",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "mu_t",
+    "paper_id": "dick_kubacki_2017",
+    "context": "θt{Re}_{θ t}$:\n\n$$\\frac{D(\\rho Re_θt{Re}_{θ t})}{Dt} = P_{θ t} + \\frac{\\partial}{\\partial x_j}\\left[\\sigma_{θ t}(\\mu + \\mu_t)\\frac{\\partial(Re_θt{Re}_{θ t})}{\\partial x_j}\\right]. γ{45}$$\n\nThe source term $P_{θ t}$ enforces the free-stream valu",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "Re_T",
+    "paper_id": "dick_kubacki_2017",
+    "context": "*Int. J. Turbomach. Propuls. Power* **2017**, *2*, 4 20 of 45\n\nReynolds number $Re_T = \\nu_T/ν$. The critical value of the θ Reynolds number $Re_{θ c}$ comes from a correlation, but not in a direct way. T",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\partial",
+    "paper_id": "dick_kubacki_2017",
+    "context": "es modified values of $Re_{θ t}$, denoted by $Re_θt{Re}_{θ t}$:\n\n$$\\frac{D(\\rho Re_θt{Re}_{θ t})}{Dt} = P_{θ t} + \\frac{\\partial}{\\partial x_j}\\left[\\sigma_{θ t}(\\mu + \\mu_t)\\frac{\\partial(Re_θt{Re}_{θ t})}{\\partial x_j}\\right]. γ{45}$$\n\nThe source",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\sigma_{θ t}",
+    "paper_id": "dick_kubacki_2017",
+    "context": "t}$, denoted by $Re_θt{Re}_{θ t}$:\n\n$$\\frac{D(\\rho Re_θt{Re}_{θ t})}{Dt} = P_{θ t} + \\frac{\\partial}{\\partial x_j}\\left[\\sigma_{θ t}(\\mu + \\mu_t)\\frac{\\partial(Re_θt{Re}_{θ t})}{\\partial x_j}\\right]. γ{45}$$\n\nThe source term $P_{θ t}$ enforces the free",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\mu",
+    "paper_id": "dick_kubacki_2017",
+    "context": "by $Re_θt{Re}_{θ t}$:\n\n$$\\frac{D(\\rho Re_θt{Re}_{θ t})}{Dt} = P_{θ t} + \\frac{\\partial}{\\partial x_j}\\left[\\sigma_{θ t}(\\mu + \\mu_t)\\frac{\\partial(Re_θt{Re}_{θ t})}{\\partial x_j}\\right]. γ{45}$$\n\nThe source term $P_{θ t}$ enforces the free-str",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\mu_{T,std}",
+    "paper_id": "coupland_1990",
+    "context": "*Fürst J.* 313\n\n**Tab. 1.** Inlet conditions for flat plate calculations at $x = -0.05$ m, here $\\mu_{T,std} := C_{\\mu,std} \\rho k / ω$.\n\n| case | $U$ [m s$^{-1}$] | $k$ [m$^2$ s$^{-2}$] | $ω$ [s$^{-1}$] | $Tu$ [%] | $\\mu_{T,std",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "A_S",
+    "paper_id": "coupland_1990",
+    "context": "| 0.055 58 | 35.0 | 3.50 | 10 |\n\nThe other constants are\n\n$$A_0 = 4.04 \\qquad C_{INT} = 0.75 \\qquad C_{ω 1} = 0.44$$\n\n$$A_S = 2.12 \\qquad C_{TS,crit} = 1000 \\qquad C_{ω 3} = 0.3$$\n\n$$A_ν = 6.75 \\qquad C_{R,NAT} = 0.02 \\qquad C_{ω R} = 1.5$$\n\n$",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\qquad",
+    "paper_id": "coupland_1990",
+    "context": "9.8 | 0.048 57 | 23.8 | 0.91 | 12 |\n| T3C2 | 5.5 | 0.055 58 | 35.0 | 3.50 | 10 |\n\nThe other constants are\n\n$$A_0 = 4.04 \\qquad C_{INT} = 0.75 \\qquad C_{ω 1} = 0.44$$\n\n$$A_S = 2.12 \\qquad C_{TS,crit} = 1000 \\qquad C_{ω 3} = 0.3$$\n\n$$A_ν = 6.75 \\qq",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\cdot",
+    "paper_id": "coupland_1990",
+    "context": "\\qquad C_{ω 3} = 0.3$$\n\n$$A_ν = 6.75 \\qquad C_{R,NAT} = 0.02 \\qquad C_{ω R} = 1.5$$\n\n$$A_{BP} = 0.6 \\qquad C_{l1} = 3.4 \\cdot 10^{-6} \\qquad C_Λ = 2.495$$\n\n$$A_{NAT} = 200 \\qquad C_{l2} = 10^{-10} \\qquad C_{\\mu,std} = 0.09$$\n\n$$A_{TS} = 200 \\qqu",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\rho",
+    "paper_id": "coupland_1990",
+    "context": "st J.* 313\n\n**Tab. 1.** Inlet conditions for flat plate calculations at $x = -0.05$ m, here $\\mu_{T,std} := C_{\\mu,std} \\rho k / ω$.\n\n| case | $U$ [m s$^{-1}$] | $k$ [m$^2$ s$^{-2}$] | $ω$ [s$^{-1}$] | $Tu$ [%] | $\\mu_{T,std}/\\mu$ [−] |\n|------",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\alpha",
+    "paper_id": "coupland_1990",
+    "context": "0^{-10} \\qquad C_{\\mu,std} = 0.09$$\n\n$$A_{TS} = 200 \\qquad C_R = 0.12 \\qquad Pr = 0.85$$\n\n$$C_{BP,crit} = 1.2 \\qquad C_{\\alpha,θ} = 0.035 \\qquad \\sigma_k = 1$$\n\n$$C_{NC} = 0.1 \\qquad C_{SS} = 1.5 \\qquad \\sigma_ω = 1.17$$",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "C_R",
+    "paper_id": "coupland_1990",
+    "context": "^{-6} \\qquad C_Λ = 2.495$$\n\n$$A_{NAT} = 200 \\qquad C_{l2} = 10^{-10} \\qquad C_{\\mu,std} = 0.09$$\n\n$$A_{TS} = 200 \\qquad C_R = 0.12 \\qquad Pr = 0.85$$\n\n$$C_{BP,crit} = 1.2 \\qquad C_{\\alpha,θ} = 0.035 \\qquad \\sigma_k = 1$$\n\n$$C_{NC} = 0.1 \\qquad",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\mu",
+    "paper_id": "coupland_1990",
+    "context": "*Fürst J.* 313\n\n**Tab. 1.** Inlet conditions for flat plate calculations at $x = -0.05$ m, here $\\mu_{T,std} := C_{\\mu,std} \\rho k / ω$.\n\n| case | $U$ [m s$^{-1}$] | $k$ [m$^2$ s$^{-2}$] | $ω$ [s$^{-1}$] | $Tu$ [%] | $\\m",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "A_0",
+    "paper_id": "coupland_1990",
+    "context": "| T3A- | 19.8 | 0.048 57 | 23.8 | 0.91 | 12 |\n| T3C2 | 5.5 | 0.055 58 | 35.0 | 3.50 | 10 |\n\nThe other constants are\n\n$$A_0 = 4.04 \\qquad C_{INT} = 0.75 \\qquad C_{ω 1} = 0.44$$\n\n$$A_S = 2.12 \\qquad C_{TS,crit} = 1000 \\qquad C_{ω 3} = 0.3$$\n\n$$",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\times",
+    "paper_id": "schubauer_skramstad_1947_data",
+    "context": "utral curve specified as follows:\n\n**Table.** Conditions required by theory\n\n| Branch | $R$ | $\\frac{\\beta_{2r}}{U_∞^2} \\times 10^6$ |\n|--------|-----|----------------------------------------|\n| I | 894 | 62.3 |\n| II | 2,070 | 42.4 |\n\n**Table.**",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\frac",
+    "paper_id": "schubauer_skramstad_1947_data",
+    "context": "to oscillations on the neutral curve specified as follows:\n\n**Table.** Conditions required by theory\n\n| Branch | $R$ | $\\frac{ω}{U_∞^2} \\times 10^6$ |\n|--------|-----|----------------------------------------|\n| I | 894 | 62.3 |\n| II | 2,070 | 42",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\times",
+    "paper_id": "schubauer_skramstad_1947",
+    "context": "ry\n\n| Branch | $R$ | $\\frac{\\beta \\cdot r}{U_∞^2}$ |\n|--------|-----|-------------------------------|\n| I | 894 | $62.3 \\times 10^{-6}$ |\n| II | 2070 | 42.4 |\n\n**Table.** Experimental conditions",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\cdot",
+    "paper_id": "schubauer_skramstad_1947",
+    "context": "lations on the neutral curve specified as follows:\n\n**Table.** Conditions required by theory\n\n| Branch | $R$ | $\\frac{ω \\cdot r}{U_∞^2}$ |\n|--------|-----|-------------------------------|\n| I | 894 | $62.3 \\times 10^{-6}$ |\n| II | 2070 | 42.4 |",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\frac",
+    "paper_id": "schubauer_skramstad_1947",
+    "context": "to oscillations on the neutral curve specified as follows:\n\n**Table.** Conditions required by theory\n\n| Branch | $R$ | $\\frac{ω \\cdot r}{U_∞^2}$ |\n|--------|-----|-------------------------------|\n| I | 894 | $62.3 \\times 10^{-6}$ |\n| II | 2070 |",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\approx",
+    "paper_id": "roach_brierley_1992",
+    "context": "eta = 0$ |\n| — · — | PREDICTION, $\\zeta = 1$ |\n\n**Data observations:**\n- The skin Cf rises sharply to a peak near $Re_θ \\approx 1 \\times 10^3$, then decreases monotonically toward higher $Re_θ$.\n- Both prediction curves ($\\zeta = 0$ and $\\zeta = 1",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\rho",
+    "paper_id": "roach_brierley_1992",
+    "context": "#### b) SKIN Cf DISTRIBUTION ALONG THE TEST WALL\n\n- **Y-axis:** $Cf = \\frac{2τ_w}{\\rho_e U_∞^2} \\times 10^3$, range approximately 2.0 to 6.0\n- **X-axis:** $Re_θ = \\frac{U_∞ θ}{\\nu_e} \\times 10^{-3}$, range",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\zeta",
+    "paper_id": "roach_brierley_1992",
+    "context": "ly 0 to 8\n- **Legend entries:**\n\n| SYM | REMARKS |\n|-----|---------|\n| O | EXP. DATA FIG. 57 |\n| - - - - | PREDICTION, $\\zeta = 0$ |\n| — · — | PREDICTION, $\\zeta = 1$ |\n\n**Data observations:**\n- The skin Cf rises sharply to a peak near $Re_θ \\ap",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\times",
+    "paper_id": "roach_brierley_1992",
+    "context": "#### b) SKIN Cf DISTRIBUTION ALONG THE TEST WALL\n\n- **Y-axis:** $Cf = \\frac{2τ_w}{\\rho_e U_∞^2} \\times 10^3$, range approximately 2.0 to 6.0\n- **X-axis:** $Re_θ = \\frac{U_∞ θ}{\\ν} \\times 10^{-3}$, range approximately 0 to",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "rho_e",
+    "paper_id": "roach_brierley_1992",
+    "context": "#### b) SKIN Cf DISTRIBUTION ALONG THE TEST WALL\n\n- **Y-axis:** $Cf = \\frac{2τ_w}{\\rho_e U_∞^2} \\times 10^3$, range approximately 2.0 to 6.0\n- **X-axis:** $Re_θ = \\frac{U_∞ θ}{\\ν} \\times 10^{-3}$, range appro",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\frac",
+    "paper_id": "roach_brierley_1992",
+    "context": "#### b) SKIN Cf DISTRIBUTION ALONG THE TEST WALL\n\n- **Y-axis:** $Cf = \\frac{2τ_w}{\\rho_e U_∞^2} \\times 10^3$, range approximately 2.0 to 6.0\n- **X-axis:** $Re_θ = \\frac{U_∞ θ}{\\ν} \\times 10^{-3}$",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\dfrac",
+    "paper_id": "roach_brierley_1992",
+    "context": "#### b) SKIN Cf DISTRIBUTION ALONG THE TEST WALL\n\n- **Y-axis:** $Cf = \\dfrac{2τ_w}{\\rho_e U_∞^2} \\times 10^3$, range approximately 2.0 to 6.0\n- **X-axis:** $Re_θ = \\dfrac{U_∞ θ}{\\ν} \\times 10^{-3}",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "tau_x",
+    "paper_id": "fransson_matsubara_alfredsson_2005",
+    "context": "measured at the leading edge of the plate at $U_\\infty = 8\\,Re_θt{m s}^{-1}$.\n\n| Grid | $x/M$ | $Tu$ (%) | $Tv$ (%) | $\\tau_x(u)$ (mm) | $\\tau_x(v)$ (mm) | $\\tau_z(u)$ (mm) |\n|------|--------|----------|----------|------------------|------------",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\infty",
+    "paper_id": "fransson_matsubara_alfredsson_2005",
+    "context": "ulence* 7\n\n**Table 2.** Turbulence characteristics of grids A, B, and E measured at the leading edge of the plate at $U_\\infty = 8\\,Re_θt{m s}^{-1}$.\n\n| Grid | $x/M$ | $Tu$ (%) | $Tv$ (%) | $\\tau_x(u)$ (mm) | $\\tau_x(v)$ (mm) | $\\tau_z(u)$ (mm) |",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "tau_z",
+    "paper_id": "fransson_matsubara_alfredsson_2005",
+    "context": "ate at $U_\\infty = 8\\,Re_θt{m s}^{-1}$.\n\n| Grid | $x/M$ | $Tu$ (%) | $Tv$ (%) | $\\tau_x(u)$ (mm) | $\\tau_x(v)$ (mm) | $\\tau_z(u)$ (mm) |\n|------|--------|----------|----------|------------------|------------------|------------------|\n| A | 44 |",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\pi",
+    "paper_id": "schubauer_skramstad_1947",
+    "context": "$u',\\, v',\\, w'$ | root-mean-square values of $u$, $v$, and $w$, respectively |\n| $c_r$ | wave velocity |\n| $\\beta_r = 2\\pi f$ | |\n| $f$ | oscillation frequency |\n| $\\alpha = 2\\pi/Λ$ | |\n| $Λ$ | wave length |\n| $\\beta_i$ | amplification coeffi",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\rho",
+    "paper_id": "schubauer_skramstad_1947",
+    "context": "f$ | oscillation frequency |\n| $\\alpha = 2\\pi/Λ$ | |\n| $Λ$ | wave length |\n| $\\beta_i$ | amplification coefficient |\n| $\\rho$ | density |\n| $ν$ | viscosity |\n| $ν$ | ν $(ν/\\rho)$ |\n| $q$ | dynamic pressure |\n| $δ$ | boundary-layer thickness |\n|",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\sqrt",
+    "paper_id": "schubauer_skramstad_1947",
+    "context": "| ν $(ν/\\rho)$ |\n| $q$ | dynamic pressure |\n| $δ$ | boundary-layer thickness |\n| $δ*$ | boundary-layer δ* |\n\n$$δ* = 1.72\\sqrt{\\frac{ν x}{U_∞}} Re_θt{ for Blasius velocity distribution}$$",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\alpha",
+    "paper_id": "schubauer_skramstad_1947",
+    "context": "$u$, $v$, and $w$, respectively |\n| $c_r$ | wave velocity |\n| $\\beta_r = 2\\pi f$ | |\n| $f$ | oscillation frequency |\n| $\\alpha = 2\\pi/Λ$ | |\n| $Λ$ | wave length |\n| $\\beta_i$ | amplification coefficient |\n| $\\rho$ | density |\n| $ν$ | viscosity |",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "c_r",
+    "paper_id": "schubauer_skramstad_1947",
+    "context": "arallel to surface of flat plate |\n| $u',\\, v',\\, w'$ | root-mean-square values of $u$, $v$, and $w$, respectively |\n| $c_r$ | wave velocity |\n| $\\beta_r = 2\\pi f$ | |\n| $f$ | oscillation frequency |\n| $\\alpha = 2\\pi/Λ$ | |\n| $Λ$ | wave length",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\triangle",
+    "paper_id": "roach_brierley_1992",
+    "context": "oximately 10 to 1000\n- **Legend entries:**\n\n**Table 2.** Symbol Code (Part b)\n\n| SYM | GRID NO. |\n|-----|----------|\n| $\\triangledown$ | 1 |\n| $\\square$ | 2 |\n| $\\triangle$ | 3 |\n| $\\bullet$ | 4 |\n\n- **Annotations within figure:**\n  - Fitted line la",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\bullet",
+    "paper_id": "roach_brierley_1992",
+    "context": "l Code (Part b)\n\n| SYM | GRID NO. |\n|-----|----------|\n| $\\triangledown$ | 1 |\n| $\\square$ | 2 |\n| $\\triangle$ | 3 |\n| $\\bullet$ | 4 |\n\n- **Annotations within figure:**\n  - Fitted line label: $T = 1.12\\left(\\dfrac{X'_G}{b}\\right)^{-5/7}$ (REF. 6)",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\right",
+    "paper_id": "roach_brierley_1992",
+    "context": "riangle$ | 3 |\n| $\\bullet$ | 4 |\n\n- **Annotations within figure:**\n  - Fitted line label: $T = 1.12\\left(\\dfrac{X'_G}{b}\\right)^{-5/7}$ (REF. 6)",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\square",
+    "paper_id": "roach_brierley_1992",
+    "context": "*Legend entries:**\n\n**Table 2.** Symbol Code (Part b)\n\n| SYM | GRID NO. |\n|-----|----------|\n| $\\triangledown$ | 1 |\n| $\\square$ | 2 |\n| $\\triangle$ | 3 |\n| $\\bullet$ | 4 |\n\n- **Annotations within figure:**\n  - Fitted line label: $T = 1.12\\left(\\d",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\left",
+    "paper_id": "roach_brierley_1992",
+    "context": "$\\square$ | 2 |\n| $\\triangle$ | 3 |\n| $\\bullet$ | 4 |\n\n- **Annotations within figure:**\n  - Fitted line label: $T = 1.12\\left(\\dfrac{X'_G}{b}\\right)^{-5/7}$ (REF. 6)",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\triangledown",
+    "paper_id": "roach_brierley_1992",
+    "context": "oximately 10 to 1000\n- **Legend entries:**\n\n**Table 2.** Symbol Code (Part b)\n\n| SYM | GRID NO. |\n|-----|----------|\n| $\\triangledown$ | 1 |\n| $\\square$ | 2 |\n| $\\triangle$ | 3 |\n| $\\bullet$ | 4 |\n\n- **Annotations within figure:**\n  - Fitted line label:",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\sqrt",
+    "paper_id": "roach_brierley_1992",
+    "context": ") TEST SECTION TURBULENCE DISTRIBUTION AS A FUNCTION OF DISTANCE FROM THE \"EFFECTIVE\" GRID LOCATION\n\n- **Y-axis:** $T = \\sqrt{1/3\\,(u'^2 + v'^2 + w'^2)}/U_∞$, dimensionless, range approximately 0.002 to 0.10\n- **X-axis:** Dimensionless distance",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\Pi",
+    "paper_id": "roach_brierley_1992",
+    "context": "0.00271 in. |\n| $Re_θ$ | 3369 |\n| $Re_{δ*}$ | 4901 |\n| $δ*/δ$ | 1.446 |\n| $δ^{**}/δ*$ | 1.760 |\n| $Cf$ | 0.003080 |\n| $\\Pi$ | 0.559 |\n\n34",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "Re_x",
+    "paper_id": "roach_brierley_1992",
+    "context": "undary layer trip location - 1.5 in.\n\nMeasured and Calculated Boundary Layer Values\n\n| Parameter | Value |\n|---|---|\n| $Re_x$ | $1.791 \\times 10^6$ |\n| $θ$ | 0.0689 in. |\n| $δ*$ | 0.0997 in. |\n| $δ^{**}$ | 0.1213 in. |\n| $\\delta_h$ | 0.00271 in",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "L_y",
+    "paper_id": "abu_ghannam_shaw_1980",
+    "context": "ition on compressor blades and found a good correlation of the transition data when plotted against the parameter $Tu(C/L_y)^{0\\cdot2}$, where $C$ is the chord of the compressor blade and $L_y$ is the macroscale of turbulence in the transverse",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "L_x",
+    "paper_id": "abu_ghannam_shaw_1980",
+    "context": "rection. This method was applied to the present results where the macroscale of turbulence in the streamwise direction $L_x$ was used instead of $L_y$ and the length of the flat plate instead of the blade chord. $L_x$ varied from 3·78 mm for",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "q_1",
+    "paper_id": "schubauer_skramstad_1947_data",
+    "context": "the origin of turbulence involves an investigation of this transition process.\n\n**Table 5.** — *Pressure gradients* $(1/q_1)$ $(\\triangle P/\\triangle x)^1$\n\n$q_1$ = dynamic pressure outside boundary layer at 3.33 ft from leading edge of plate.",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "K_x",
+    "paper_id": "mayle_1991",
+    "context": "**Data observations:**\n- $Re_θt{Re}_{θ t}$ spans approximately 0 to 1000; $K_x$ spans $-2.5$ to $1$.\n- For favorable pressure gradients ($K_x > 0$), $Re_θt{Re}_{θ t}$ increases markedly, especially",
+    "role": "local acceleration parameter evaluated at a specific streamwise location x, defined as (ν/U²)(dU/dx); a paper-local variant of the acceleration parameter K",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "a_2",
+    "paper_id": "roach_brierley_1992",
+    "context": "| Symbol | | Definition |\n|--------|---|------------|\n| $a_1, a_2, a_3$ | - | turbulence model structural coefficients |\n| $Cf$ | - | skin Cf, $\\dfrac{2τ_w}{ρ U_∞^2}$ |\n| $c_p$ | - | sp",
+    "role": "turbulence model structural coefficient",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "rho_w",
+    "paper_id": "roach_brierley_1992",
+    "context": "| $St$ | - | Stanton number, $\\dfrac{h}{ρ U c_p}$ |\n| $t$ | - | T |\n| $t^+$ | - | dimensionless T, $\\dfrac{(t_w - t)\\,\\rho_w c_p \\sqrt{τ_w/ρ}}{q_w}$ |\n| $U$ | - | velocity |\n| $U^+$ | - | dimensionless velocity, $\\dfrac{U}{U_Tu}$ |",
+    "role": "fluid density at the wall",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\epsilon_{h_e}",
+    "paper_id": "roach_brierley_1992",
+    "context": "|\n| $Pr_t$ | - | turbulent Pr, $\\dfrac{\\epsilon_m}{\\epsilon_h}$ |\n| $Pr_e$ | - | effective Pr, $\\dfrac{\\epsilon_{m_e}}{\\epsilon_{h_e}} = \\dfrac{1 + \\frac{ν}{\\epsilon_m}}{\\frac{1}{Pr} + \\frac{ν}{ν Pr_t}}$ |\n| $q$ | - | heat flux |\n| $qe$ | - | free-strea",
+    "role": "effective eddy diffusivity for heat transfer",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "m_e",
+    "paper_id": "roach_brierley_1992",
+    "context": "lar Pr |\n| $Pr_t$ | - | turbulent Pr, $\\dfrac{\\epsilon_m}{\\epsilon_h}$ |\n| $Pr_e$ | - | effective Pr, $\\dfrac{\\epsilon_{m_e}}{\\epsilon_{h_e}} = \\dfrac{1 + \\frac{ν}{\\epsilon_m}}{\\frac{1}{Pr} + \\frac{ν}{ν Pr_t}}$ |\n| $q$ | - | heat flux |\n| $qe$",
+    "role": "subscript/index denoting effective momentum diffusivity quantity; not a standalone symbol",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "h_e",
+    "paper_id": "roach_brierley_1992",
+    "context": "$ | - | turbulent Pr, $\\dfrac{\\epsilon_m}{\\epsilon_h}$ |\n| $Pr_e$ | - | effective Pr, $\\dfrac{\\epsilon_{m_e}}{\\epsilon_{h_e}} = \\dfrac{1 + \\frac{ν}{\\epsilon_m}}{\\frac{1}{Pr} + \\frac{ν}{ν Pr_t}}$ |\n| $q$ | - | heat flux |\n| $qe$ | - | free-stre",
+    "role": "subscript/index denoting effective heat diffusivity quantity; not a standalone symbol",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "a_1",
+    "paper_id": "roach_brierley_1992",
+    "context": "| Symbol | | Definition |\n|--------|---|------------|\n| $a_1, a_2, a_3$ | - | turbulence model structural coefficients |\n| $Cf$ | - | skin Cf, $\\dfrac{2τ_w}{ρ U_∞^2}$ |\n| $c_p$ | -",
+    "role": "turbulence model structural coefficient",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "q_w",
+    "paper_id": "roach_brierley_1992",
+    "context": "mber, $\\dfrac{h}{ρ U c_p}$ |\n| $t$ | - | T |\n| $t^+$ | - | dimensionless T, $\\dfrac{(t_w - t)\\,\\rho_w c_p \\sqrt{τ_w/ρ}}{q_w}$ |\n| $U$ | - | velocity |\n| $U^+$ | - | dimensionless velocity, $\\dfrac{U}{U_Tu}$ |",
+    "role": "wall heat flux",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "a_3",
+    "paper_id": "roach_brierley_1992",
+    "context": "| Symbol | | Definition |\n|--------|---|------------|\n| $a_1, a_2, a_3$ | - | turbulence model structural coefficients |\n| $Cf$ | - | skin Cf, $\\dfrac{2τ_w}{ρ U_∞^2}$ |\n| $c_p$ | - | specifi",
+    "role": "turbulence model structural coefficient",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\epsilon_{m_e}",
+    "paper_id": "roach_brierley_1992",
+    "context": "- | molecular Pr |\n| $Pr_t$ | - | turbulent Pr, $\\dfrac{\\epsilon_m}{\\epsilon_h}$ |\n| $Pr_e$ | - | effective Pr, $\\dfrac{\\epsilon_{m_e}}{\\epsilon_{h_e}} = \\dfrac{1 + \\frac{ν}{\\epsilon_m}}{\\frac{1}{Pr} + \\frac{ν}{ν Pr_t}}$ |\n| $q$ | - | heat flux |\n| $qe$",
+    "role": "effective eddy diffusivity for momentum transfer",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "t_w",
+    "paper_id": "roach_brierley_1992",
+    "context": "y layer θ |\n| $St$ | - | Stanton number, $\\dfrac{h}{ρ U c_p}$ |\n| $t$ | - | T |\n| $t^+$ | - | dimensionless T, $\\dfrac{(t_w - t)\\,\\rho_w c_p \\sqrt{τ_w/ρ}}{q_w}$ |\n| $U$ | - | velocity |\n| $U^+$ | - | dimensionless velocity, $\\dfrac{U}{U_Tu}$ |",
+    "role": null,
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "Pr_e",
+    "paper_id": "roach_brierley_1992",
+    "context": "del dissipation length |\n| $Pr$ | - | molecular Pr |\n| $Pr_t$ | - | turbulent Pr, $\\dfrac{\\epsilon_m}{\\epsilon_h}$ |\n| $Pr_e$ | - | effective Pr, $\\dfrac{\\epsilon_{m_e}}{\\epsilon_{h_e}} = \\dfrac{1 + \\frac{ν}{\\epsilon_m}}{\\frac{1}{Pr} + \\frac{ν}",
+    "role": "effective Prandtl number, ratio of effective eddy diffusivity for momentum to that for heat, (1 + ε_m/ν) / (1/Pr + ε_m/(ν·Pr_t))",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "U_Tu",
+    "paper_id": "roach_brierley_1992",
+    "context": "rac{(t_w - t)\\,\\rho_w c_p \\sqrt{τ_w/ρ}}{q_w}$ |\n| $U$ | - | velocity |\n| $U^+$ | - | dimensionless velocity, $\\dfrac{U}{U_Tu}$ |",
+    "role": "friction velocity (paper-local notation for u_τ, wall friction velocity)",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\ell",
+    "paper_id": "roach_brierley_1992",
+    "context": "|\n| $I$ | - | strip current |\n| $k$ | - | thermal conductivity |\n| $\\widetilde{k}$ | - | turbulence model constant |\n| $\\ell$ | - | mixing length |\n| $L$ | - | turbulence model dissipation length |\n| $Pr$ | - | molecular Pr |\n| $Pr_t$ | - | tur",
+    "role": "mixing length in turbulence model",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "c_p",
+    "paper_id": "roach_brierley_1992",
+    "context": "|\n| $a_1, a_2, a_3$ | - | turbulence model structural coefficients |\n| $Cf$ | - | skin Cf, $\\dfrac{2τ_w}{ρ U_∞^2}$ |\n| $c_p$ | - | specific heat at constant pressure |\n| $\\mathcal{D}$ | - | turbulence model wall damping function |\n| $E$ | - |",
+    "role": "specific heat at constant pressure",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\epsilon",
+    "paper_id": "roach_brierley_1992",
+    "context": "th |\n| $L$ | - | turbulence model dissipation length |\n| $Pr$ | - | molecular Pr |\n| $Pr_t$ | - | turbulent Pr, $\\dfrac{\\epsilon_m}{\\epsilon_h}$ |\n| $Pr_e$ | - | effective Pr, $\\dfrac{\\epsilon_{m_e}}{\\epsilon_{h_e}} = \\dfrac{1 + \\frac{ν}{\\epsilon_m",
+    "role": "surface emissivity (thermal radiation property of the surface)",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\widetilde",
+    "paper_id": "roach_brierley_1992",
+    "context": "- | turbulence kinetic energy equation source term |\n| $I$ | - | strip current |\n| $k$ | - | thermal conductivity |\n| $\\widetilde{k}$ | - | turbulence model constant |\n| $\\ell$ | - | mixing length |\n| $L$ | - | turbulence model dissipation length |",
+    "role": "turbulence model constant (k-tilde), appears as modifier symbol without resolved base quantity",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "R_c",
+    "paper_id": "abu_ghannam_shaw_1980",
+    "context": "from a time correlation. Its effect upon transition was assessed using the functional relationship for the critical Re $R_c$ for spheres given by Taylor (10) as\n\n$$R_c = f\\left[Tu\\left(\\frac{D}{M}\\right)^{0\\cdot2}\\right] γ{1}$$\n\nwhere $D$ is t",
+    "role": null,
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\lambda_{θ t}",
+    "paper_id": "mayle_1991",
+    "context": "ition, a curved line has been drawn that represents the Δx_tr for attached flows at various turbulence levels but with $\\lambda_{θ t} \\approx -0.082$. This line has been obtained by using only the data to the far left in Fig. 14. The line is different f",
+    "role": null,
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "N_2",
+    "paper_id": "van_ingen_2008",
+    "context": "(Fig. 9). [16] We concluded that beginning and end of transition for Tu >.1% could be predicted by N-factors $N_1$ and $N_2$ respectively according to:\n\n$$N_1 = 2.13 - 6.18\\ ^{10}\\!\\log\\ Tu γ{28}$$\n\n$$N_2 = 5 - 6.18\\ ^{10}\\!\\log\\ Tu γ{29}$$",
+    "role": null,
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "N_1",
+    "paper_id": "van_ingen_2008",
+    "context": "database (Fig. 9). [16] We concluded that beginning and end of transition for Tu >.1% could be predicted by N-factors $N_1$ and $N_2$ respectively according to:\n\n$$N_1 = 2.13 - 6.18\\ ^{10}\\!\\log\\ Tu γ{28}$$\n\n$$N_2 = 5 - 6.18\\ ^{10}\\!\\log\\ Tu",
+    "role": null,
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\leqslant",
+    "paper_id": "abu_ghannam_shaw_1980",
+    "context": "ared with the dominating effect of the free-stream turbulence, which is also the case athe start of transition. At $R_L \\leqslant 1{\\cdot}5 \\times 10^5$ the pressure gradient has no effect on transition, which is also found to be the limito which $R",
+    "role": "mathematical operator symbol (less than or equal to), not a physical quantity",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "X_E",
+    "paper_id": "abu_ghannam_shaw_1980",
+    "context": "Plotting $R_{θ E}$ versus $R_{XE}$ gives no simple correlation, where $R_{XE}$ is based on the distance $X_E$ measured from the plate leading edge, but it is possible to find some correlation by plotting $R_{θ E}$ versus $R_L$,",
+    "role": "streamwise location of end of transition, paper-local coordinate",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "R_L",
+    "paper_id": "abu_ghannam_shaw_1980",
+    "context": "e $X_E$ measured from the plate leading edge, but it is possible to find some correlation by plotting $R_{θ E}$ versus $R_L$, the length of transition Re. The points with zero pressure gradients fall on a straight line, whilsthe points for adv",
+    "role": "transition length Reynolds number = L*U_j/ν, paper-local definition for length of transition",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "log_e",
+    "paper_id": "abu_ghannam_shaw_1980",
+    "context": "$$\\log_e(R_{θ S} - 163) = F(\\lambda_θ) - \\frac{F(\\lambda_θ)}{6{\\cdot}91}\\ Tu γ{10}$$\n\nWhere $F(\\lambda_θ)$ is the value of $\\log",
+    "role": "natural logarithm operator (ln), not a physical quantity",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\xi",
+    "paper_id": "abu_ghannam_shaw_1980",
+    "context": "$$= +\\frac{θ^2}{ν} \\cdot \\frac{dU_\\infty}{dx}$$\n\n$μ$ μ of air\n$ν$ ν of air $= μ/ρ$\n$\\xi$ Non-dimensional distance in the transition region\n$ρ$ ρ of air\n$Tu$ Turbulence level $= \\dfrac{\\sqrt{\\{\\frac{1}{3}(Re_",
+    "role": "paper-local transformed or intermediate coordinate/variable used in transition correlations",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\gamma_{\\max}",
+    "paper_id": "dick_kubacki_2017",
+    "context": "\\ell} + \\frac{μ_t}{\\sigma_γ}\\right)\\frac{\\partialγ}{\\partial x}\\right],γ{47}$$\n\nwith the production term\n\n$$P_γ = \\rhoω(\\gamma_{\\max} - γ)\\sqrt{γ}F_γ.γ{48}$$\n\nThe model is a further developed version of a model by Durbin [93]. The $F_γ$ function trigger",
+    "role": "maximum allowable value of intermittency factor (model limiter constant, set to values such as 4 in separated flow treatment)",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\ell",
+    "paper_id": "dick_kubacki_2017",
+    "context": "g transport equation for γ:\n\n$$\\frac{D(\\rhoγ)}{Dt} = P_γ - E_γ + \\frac{\\partial}{\\partial x}\\left[\\left(\\frac{μ}{\\sigma_\\ell} + \\frac{μ_t}{\\sigma_γ}\\right)\\frac{\\partialγ}{\\partial x}\\right],γ{47}$$\n\nwith the production term\n\n$$P_γ = \\rhoω(\\gam",
+    "role": "model length scale or calibration constant (context insufficient to determine canonical mapping)",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\int_{(\\infty)}",
+    "paper_id": "narasimha_1985",
+    "context": "_θt{ if } D(t) \\geq D^*.$$\n\nAn estimate of the γ is obtained by computing the long-time average of $I(t)$,\n\n$$\\bar{I} = \\int_{(\\infty)} I(t) \\, dt.$$\n\nSome of the signal processing techniques adopted by different workers are shown in Table A.1; many other",
+    "role": "integral evaluated at infinity (upper limit notation), used as a mathematical operator/limit notation rather than a physical quantity",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "U_s",
+    "paper_id": "mayle_1991",
+    "context": "s are plotted in Fig. 20. Here the ordinate is now $Re_θt{Re}_{LT}$, the Re based on the Δx_tr, i.e., $Re_θt{Re}_{LT} = U_s(x_T - x_t)/ν$. Although a considerable scatter exists, it is apparenthathe transition-length Re is independent of wheth",
+    "role": "spot propagation velocity or local velocity scale associated with turbulent spot spreading, paper-local quantity",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "F_L",
+    "paper_id": "dhawan_narasimha_1958",
+    "context": "t x_t',$$\n\nand\n\n$$Cf = \\frac{R'C_{F_T} - k}{R_l}, \\qquad Re_θt{for } l > x_t', \\Bigg\\} γ{16a}$$\n\nwhere\n\n$$a = Re_xt\\{C_{F_L}|_{y=0}\\}, \\qquad b = 0{\\cdot}003 + C_{F_L}|_{y=0},$$\n\n$$C = 0{\\cdot}00376\\alpha Re_xt^ω = 0{\\cdot}0188 Re_xt^{0.8}, \\q",
+    "role": "integral of laminar velocity profile used in transition boundary layer momentum thickness calculation",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\leqslant",
+    "paper_id": "dhawan_narasimha_1958",
+    "context": ". The total skin Cf $Cf$ is then given by\n\n$$Cf = \\frac{a + bR - C\\,Re_θt{erf}(dR'/Re_xt^ω)}{R_l}, \\qquad Re_θt{for } l \\leqslant x_t',$$\n\nand\n\n$$Cf = \\frac{R'C_{F_T} - k}{R_l}, \\qquad Re_θt{for } l > x_t', \\Bigg\\} γ{16a}$$\n\nwhere\n\n$$a = Re_xt\\{C_{F",
+    "role": "mathematical less-than-or-equal-to relational operator, not a physical quantity",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "F_T",
+    "paper_id": "dhawan_narasimha_1958",
+    "context": "$$Cf = \\frac{a + bR - C\\,Re_θt{erf}(dR'/Re_xt^ω)}{R_l}, \\qquad Re_θt{for } l \\leqslant x_t',$$\n\nand\n\n$$Cf = \\frac{R'C_{F_T} - k}{R_l}, \\qquad Re_θt{for } l > x_t', \\Bigg\\} γ{16a}$$\n\nwhere\n\n$$a = Re_xt\\{C_{F_L}|_{y=0}\\}, \\qquad b = 0{\\cdot}003",
+    "role": "integral of turbulent velocity profile used in transition boundary layer momentum thickness calculation",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\xi",
+    "paper_id": "dhawan_narasimha_1958",
+    "context": "Here the upper limit of the second integral for $l > x_t'$ has been taken to be $\\xi = 4{\\cdot}0$ in accordance with figure 3.\n\nThese expressions may be put in a more convenient form by utilizing the appr",
+    "role": "non-dimensional streamwise transition coordinate defined from transition onset location, used to collapse transition region data",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\alpha",
+    "paper_id": "dhawan_narasimha_1958",
+    "context": "\\Bigg\\} γ{16a}$$\n\nwhere\n\n$$a = Re_xt\\{C_{F_L}|_{y=0}\\}, \\qquad b = 0{\\cdot}003 + C_{F_L}|_{y=0},$$\n\n$$C = 0{\\cdot}00376\\alpha Re_xt^ω = 0{\\cdot}0188 Re_xt^{0.8}, \\qquad d = 0{\\cdot}707/\\alpha = 0{\\cdot}141,$$",
+    "role": "paper-local parameter or exponent in transition correlation; insufficient context to resolve uniquely",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "R_l",
+    "paper_id": "dhawan_narasimha_1958",
+    "context": "figure 3.\n\nThese expressions may be put in a more convenient form by utilizing the approximate relation (15a) and the $R_l$ vs $R_Λ$ relation of (2). The total skin Cf $Cf$ is then given by\n\n$$Cf = \\frac{a + bR - C\\,Re_θt{erf}(dR'/Re_xt^ω)}{R",
+    "role": null,
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\Psi",
+    "paper_id": "dhawan_narasimha_1958",
+    "context": "γ{14a}$$\n\nThe correlation observed in figure 14 shows this function to have the form\n\n$$F\\{Re_xt, \\xi\\} = \\Phi(Re_xt) + \\Psi(\\xi) γ{14b}$$\n\nwith $\\Phi(Re_xt) = c_{f_t}|_{γ=0}$, the value of laminar Cf athe beginning of transition.\n\nWe thus get",
+    "role": "paper-local function of xi representing the change in Cf through transition region",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "f_T",
+    "paper_id": "dhawan_narasimha_1958",
+    "context": "$$c_{f_T} \\doteq K_2/Re_x^{1/5}, γ{13}$$\n\nwhere $K_1$, $K_2$ are constants. Using the definition of $\\xi$ and equations (1), (12",
+    "role": null,
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\doteq",
+    "paper_id": "dhawan_narasimha_1958",
+    "context": "$$c_{f_T} \\doteq K_2/Re_x^{1/5}, γ{13}$$\n\nwhere $K_1$, $K_2$ are constants. Using the definition of $\\xi$ and equations (1), (12) and (1",
+    "role": "notation symbol meaning 'defined as' or 'approximately equal to', not a physical quantity",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\Phi",
+    "paper_id": "dhawan_narasimha_1958",
+    "context": "Re_xt, \\xi\\}. γ{14a}$$\n\nThe correlation observed in figure 14 shows this function to have the form\n\n$$F\\{Re_xt, \\xi\\} = \\Phi(Re_xt) + \\Psi(\\xi) γ{14b}$$\n\nwith $\\Phi(Re_xt) = c_{f_t}|_{γ=0}$, the value of laminar Cf athe beginning of transition.",
+    "role": "paper-local function of R_t representing laminar Cf contribution at start of transition",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "K_1",
+    "paper_id": "dhawan_narasimha_1958",
+    "context": "$$c_{f_T} \\doteq K_2/Re_x^{1/5}, γ{13}$$\n\nwhere $K_1$, $K_2$ are constants. Using the definition of $\\xi$ and equations (1), (12) and (13), we can write (11) as\n\n$$c_{f_t}",
+    "role": "model calibration constant for laminar skin friction correlation",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "K_2",
+    "paper_id": "dhawan_narasimha_1958",
+    "context": "$$c_{f_T} \\doteq K_2/Re_x^{1/5}, γ{13}$$\n\nwhere $K_1$, $K_2$ are constants. Using the definition of $\\xi$ and equations (1), (12) and (13),",
+    "role": "model calibration constant for turbulent skin friction correlation",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "f_t",
+    "paper_id": "dhawan_narasimha_1958",
+    "context": "$K_1$, $K_2$ are constants. Using the definition of $\\xi$ and equations (1), (12) and (13), we can write (11) as\n\n$$c_{f_t} = F\\{Re_xt, R_Λ, \\xi\\}. γ{14}$$\n\nNow if $Re_xt$ and $R_Λ$ are related as suggested by the experimental data of figure",
+    "role": null,
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "int_0",
+    "paper_id": "dhawan_narasimha_1958",
+    "context": "a,$$\n\n$$\\alpha = 5{\\cdot}0, \\qquad ω = 0{\\cdot}8, \\qquad R' = Re_x - Re_xt,$$\n\n$$Re_θt{erf}\\, z = \\frac{2}{\\sqrt{\\pi}}\\int_0^z e^{-s^2}\\, ds.$$\n\nEquation (16a) is plotted for a range of $Re_xt$ values in figure 15. For one case a comparison is",
+    "role": "paper-local notation likely representing an integral evaluated from 0, or a lower limit of integration",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "C_1",
+    "paper_id": "abu_ghannam_shaw_1980",
+    "context": "the θ $θ$, and the H $H$, respectively,\n\n$$θ(Re_θ)^{0.2} = \\frac{0.0106}{(U_\\infty)^4} \\int_0^x U_\\infty^4\\ Re_θt{d}x + C_1 γ{36}$$\n\nand\n\n$$U_\\infty^2 \\left(\\frac{1}{H-1} - 4.762\\right) = 0.00307 \\int_0^x \\frac{U_\\infty^2}{θ Re_θ^{0.2}}\\ Re_θt",
+    "role": "model calibration constant",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "C_2",
+    "paper_id": "abu_ghannam_shaw_1980",
+    "context": "$\n\nand\n\n$$U_\\infty^2 \\left(\\frac{1}{H-1} - 4.762\\right) = 0.00307 \\int_0^x \\frac{U_\\infty^2}{θ Re_θ^{0.2}}\\ Re_θt{d}x + C_2 γ{37}$$\n\n$C_1$ and $C_2$ are integration constants given by\n\n$$C_1 = (θ Re_θ^{0.2})_E$$\n\n$$C_2 = \\left\\{U_\\infty^2 \\lef",
+    "role": "model calibration constant",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "int_0",
+    "paper_id": "abu_ghannam_shaw_1980",
+    "context": "quations for the calculation of the θ $θ$, and the H $H$, respectively,\n\n$$θ(Re_θ)^{0.2} = \\frac{0.0106}{(U_\\infty)^4} \\int_0^x U_\\infty^4\\ Re_θt{d}x + C_1 γ{36}$$\n\nand\n\n$$U_\\infty^2 \\left(\\frac{1}{H-1} - 4.762\\right) = 0.00307 \\int_0^x \\frac{U_",
+    "role": "lower limit of integration (zero) in an integral expression, not a standalone physical quantity",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "f_L",
+    "paper_id": "dhawan_narasimha_1958",
+    "context": "ing at $x = x_t$ and ending at $x = x_t'$ gives\n\n$$Cf = \\frac{1}{l}\\int_0^l Cf\\, dx$$\n\n$$= \\frac{x_t}{l}\\int_0^{x_t} c_{f_L}\\, dx + \\frac{Λ}{l}\\int_0^{\\xi} c_{f_t}\\, d\\xi, \\qquad Re_θt{for } l \\leqslant x_t', \\Bigg\\} γ{16}$$\n\n$$= \\frac{x_t}{l}",
+    "role": "laminar skin friction coefficient, subscript L denotes laminar",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\int_{x_t'}",
+    "paper_id": "dhawan_narasimha_1958",
+    "context": ", \\Bigg\\} γ{16}$$\n\n$$= \\frac{x_t}{l}\\int_0^{x_t} c_{f_L}\\, dx + \\frac{Λ}{l}\\int_0^{4\\cdot0} c_{f_t}\\, d\\xi + \\frac{1}{l}\\int_{x_t'}^{l} c_{f_T}\\, dx, \\quad Re_θt{for } l > x_t'.$$",
+    "role": "integration lower limit notation indicating start of transition location x_t prime",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\doteq",
+    "paper_id": "narasimha_1985",
+    "context": "driven (regime IB). In this regime, Dey and Narasimha (1984b) propose\n\n$$Re_{xt} = 0.4 \\times 10^6 q^{-1.2}, \\quad Re_Λ \\doteq 10\\, Re_{xt}^{3/4}. γ{5.11}$$\n\nThe values of $N$ may be determined from data on $Re_Λ$ and $Re_{θ t}$ using the relatio",
+    "role": "mathematical notation symbol meaning 'approximately equal to' or 'defined as equal to', used as a relational operator in equations",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\sigma",
+    "paper_id": "dhawan_narasimha_1958",
+    "context": "0.642}{\\sqrt{\\tilde{n}}} = 5\\, Re_xt^{0.8}$$\n\nwith the nondimensional spot source rate defined as:\n\n$$\\tilde{n} = \\frac{\\sigma v}{U^3} \\cdot n$$",
+    "role": null,
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\tau",
+    "paper_id": "abu_ghannam_shaw_1980",
+    "context": "o transition on compressor blades and found a good correlation of the transition data when plotted againsthe parameter $\\tau(C/Δx_tr)^{0.2}$, where $C$ is the chord of the compressor blade and $Δx_tr$ is the macroscale of turbulence in the tran",
+    "role": null,
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "U_t",
+    "paper_id": "mayle_1991",
+    "context": "ppropriate parameter for other routes to transition. In fact, Blair's data indicate thathe K atransition, i.e., $k = (ν/U_t^2)(dU/dx)_t$, is more appropriate for flows with a favorable pressure gradient where transition is via the bypass mode.",
+    "role": "free-stream velocity at the onset of transition location x_t",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "x_0",
+    "paper_id": "mayle_1991",
+    "context": "sian distribution with various standard deviations, they determined that $g(P_0)$ is best represented by\n\n$$g(P_0) = nδ(x_0 - x_t) \\tag{4}$$",
+    "role": null,
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "c_p",
+    "paper_id": "mayle_1991",
+    "context": "gh it is only exact for the δ*. An expression similar to Eq. (3) may be written for the Stanton number $\\text{St} = h/ρ c_p U$ from which the local distribution of surface heat flux may be obtained. However, Sharma (1987) has shown thathe ther",
+    "role": "specific heat at constant pressure (appears in Stanton number and heat flux expressions)",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "P_0",
+    "paper_id": "mayle_1991",
+    "context": "_t$. In particular, after considering a Gaussian distribution with various standard deviations, they determined that $g(P_0)$ is best represented by\n\n$$g(P_0) = nδ(x_0 - x_t) \\tag{4}$$",
+    "role": "stagnation or reference pressure (paper-local quantity)",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\kappa",
+    "paper_id": "sreenivasan_1989",
+    "context": "54) pipe flow and Klebanoff's (1955) boundary layer.\n\n### Plot Description\n\n**Y-axis:** $(\\langle p \\rangle δ / U^{*3}) \\kappa$, ranging from $10^0$ to $10^3$ (log scale)\n\n**X-axis:** $y/δ$, ranging from $10^{-3}$ to $10^0$ (log scale)\n\nTwo datas",
+    "role": "von Kármán constant (model calibration constant in turbulence/boundary-layer context)",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\rangle",
+    "paper_id": "sreenivasan_1989",
+    "context": "ta from Laufer's (1954) pipe flow and Klebanoff's (1955) boundary layer.\n\n### Plot Description\n\n**Y-axis:** $(\\langle p \\rangle δ / U^{*3}) \\kappa$, ranging from $10^0$ to $10^3$ (log scale)\n\n**X-axis:** $y/δ$, ranging from $10^{-3}$ to $10^0$ (lo",
+    "role": "closing bracket for ensemble/time averaging operator notation",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\langle",
+    "paper_id": "sreenivasan_1989",
+    "context": "region. Data from Laufer's (1954) pipe flow and Klebanoff's (1955) boundary layer.\n\n### Plot Description\n\n**Y-axis:** $(\\langle p \\rangle δ / U^{*3}) \\kappa$, ranging from $10^0$ to $10^3$ (log scale)\n\n**X-axis:** $y/δ$, ranging from $10^{-3}$ to",
+    "role": "opening bracket for ensemble/time averaging operator notation",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "f_3",
+    "paper_id": "sreenivasan_1989",
+    "context": "180\n\n$$w'/u_τ = f_3(y+)$$\n\n$$(\\langle p \\rangle/U^{*3})\\kappa y = f_4(y+)$$\n\n$$(\\langle \\varepsilon \\rangle/U^{*3})\\kappa y = f_5(y+)$$\n\n$$",
+    "role": "model calibration constant or damping function (index 3)",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "f_5",
+    "paper_id": "sreenivasan_1989",
+    "context": "$w'/u_τ = f_3(y+)$$\n\n$$(\\langle p \\rangle/U^{*3})\\kappa y = f_4(y+)$$\n\n$$(\\langle \\varepsilon \\rangle/U^{*3})\\kappa y = f_5(y+)$$\n\n$$\\phi(k^+) = \\phi(k^+, y+).$$\n\nNot enough work has gone into determining these empirical functions.",
+    "role": "model calibration constant or damping function (index 5)",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\varepsilon",
+    "paper_id": "sreenivasan_1989",
+    "context": "180\n\n$$w'/u_τ = f_3(y+)$$\n\n$$(\\langle p \\rangle/U^{*3})\\kappa y = f_4(y+)$$\n\n$$(\\langle \\varepsilon \\rangle/U^{*3})\\kappa y = f_5(y+)$$\n\n$$\\phi(k^+) = \\phi(k^+, y+).$$\n\nNot enough work has gone into determining these em",
+    "role": "turbulent kinetic energy dissipation rate or small perturbation parameter",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "f_4",
+    "paper_id": "sreenivasan_1989",
+    "context": "180\n\n$$w'/u_τ = f_3(y+)$$\n\n$$(\\langle p \\rangle/U^{*3})\\kappa y = f_4(y+)$$\n\n$$(\\langle \\varepsilon \\rangle/U^{*3})\\kappa y = f_5(y+)$$\n\n$$\\phi(k^+) = \\phi(k^+, y+).$$\n\nNot enough work has",
+    "role": "model calibration constant or damping function (index 4)",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\phi",
+    "paper_id": "sreenivasan_1989",
+    "context": "(y+)$$\n\n$$(\\langle p \\rangle/U^{*3})\\kappa y = f_4(y+)$$\n\n$$(\\langle \\varepsilon \\rangle/U^{*3})\\kappa y = f_5(y+)$$\n\n$$\\phi(k^+) = \\phi(k^+, y+).$$\n\nNot enough work has gone into determining these empirical functions.",
+    "role": "generic flow variable or phase angle used in averaging notation",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\zeta",
+    "paper_id": "sreenivasan_1989",
+    "context": "mitted across different fluid layers, one can write the energy spectral ρ $\\phi(ky)$ in the form\n\n$$\\phi(k) = DU^{*2}y\\ \\zeta(ky). \\tag{14}$$\n\nHere, k is the wave number magnitude, $\\int\\phi(k)\\ d(k) = \\langle u^2\\rangle$, and $\\zeta(ky)$ and D",
+    "role": "paper-local variable, possibly a normalized or transformed coordinate",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "u_k",
+    "paper_id": "braslow_1960",
+    "context": "| $R$ | Re based on free-stream conditions |\n| $Re_kk$ | Re based on k and local flow conditions atop of roughness $(= u_k / \\ν)$ |\n| $u$ | local streamwise component of velocity in boundary layer |\n| $ν$ | coefficient of ν |\n\n*Subscripts*\n\n|",
+    "role": "flow velocity evaluated at roughness height k (local velocity at top of roughness element, used in Re_kk = u_k * k / ν)",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\alpha",
+    "paper_id": "fransson_matsubara_alfredsson_2005",
+    "context": "nce Dhawan & Narasimha (1957) and later Narasimha (1984) suggested a power-law relation such that\n\n$$δ Re_{\\text{tr}} = \\alpha Re_{\\text{tr}}^{\\beta}. \\tag{5.4}$$\n\nThe values of $\\alpha$ and $\\beta$ given in Narasimha (1984) were 9.0 and 0.75, re",
+    "role": null,
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\beta",
+    "paper_id": "fransson_matsubara_alfredsson_2005",
+    "context": "(1957) and later Narasimha (1984) suggested a power-law relation such that\n\n$$δ Re_{\\text{tr}} = \\alpha Re_{\\text{tr}}^{\\beta}. \\tag{5.4}$$\n\nThe values of $\\alpha$ and $\\beta$ given in Narasimha (1984) were 9.0 and 0.75, respectively, where they",
+    "role": null,
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\tau_{xy}",
+    "paper_id": "mayle_1991",
+    "context": "n for the lateral velocities.\n\nThe τ_w and heat flux that appear in the ensemble-averaged equations are now given by\n\n$$\\tau_{xy} = μ \\frac{\\partial \\overline{U}}{\\partial y} - (1-γ)ρ\\overline{(u'v')}_{nt} - γρ\\overline{(u'v')}_{t}$$\n\n$$- γ(1-γ)ρ(\\o",
+    "role": "Reynolds stress or viscous shear stress tensor component (xy-component of stress tensor)",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\beta",
+    "paper_id": "dhawan_narasimha_1958",
+    "context": "$R_l$ vs $R_Λ$ relation of (2). The total skin Cf $Cf$ is then given by\n\n$$Cf = \\frac{a + bR - C\\,\\text{erf}(dR'/Re_xt^\\beta)}{R_l}, \\qquad \\text{for } l \\leqslant x_t',$$\n\nand\n\n$$Cf = \\frac{R'C_{Cf} - k}{R_l}, \\qquad \\text{for } l > x_t', \\tag",
+    "role": "model calibration exponent in Reynolds number scaling (beta=0.8)",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\alpha",
+    "paper_id": "stripf_2005",
+    "context": "\\text{absolute velocity}$$\n\n$$x = \\text{axial distance}$$\n\n$$y = \\text{perpendicular distance}$$\n\n### Greek Symbols\n\n$$\\alpha = \\text{absolute flow angle}$$\n\n$$\\beta = \\text{blade (metal) angle}$$\n\n$$δ = \\text{boundary layer thickness}$$\n\n$$δ =",
+    "role": "flow angle or blade angle (context insufficient to resolve to a canonical quantity)",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\beta",
+    "paper_id": "stripf_2005",
+    "context": "axial distance}$$\n\n$$y = \\text{perpendicular distance}$$\n\n### Greek Symbols\n\n$$\\alpha = \\text{absolute flow angle}$$\n\n$$\\beta = \\text{blade (metal) angle}$$\n\n$$δ = \\text{boundary layer thickness}$$\n\n$$δ = \\text{change across the stage}$$\n\n$$\\phi",
+    "role": "flow angle or blade angle in turbomachinery context (context insufficient to resolve to a canonical quantity)",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "C_p",
+    "paper_id": "stripf_2005",
+    "context": "dwalls. This perhaps can be considered as a future work.\n\n---\n\n[omitted]\n\n---\n\n## Nomenclature\n\n$$c = \\text{chord}$$\n\n$$C_p = \\text{pressure coefficient } (P - \\bar{P}_{02})/(1/2ρ V_2^2)$$\n\n$$h = \\text{blade height (span), height from surface}",
+    "role": "pressure coefficient defined as (P - P_02_bar) / (0.5 * rho * V_2^2), a local aerodynamic performance metric",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "V_2",
+    "paper_id": "stripf_2005",
+    "context": "-\n\n[omitted]\n\n---\n\n## Nomenclature\n\n$$c = \\text{chord}$$\n\n$$C_p = \\text{pressure coefficient } (P - \\bar{P}_{02})/(1/2ρ V_2^2)$$\n\n$$h = \\text{blade height (span), height from surface}$$\n\n$$k = \\text{k}$$\n\n$$i = \\text{incidence}$$\n\n$$\\text{LE}",
+    "role": "reference velocity at compressor exit (station 2), used in pressure coefficient normalization",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\phi",
+    "paper_id": "stripf_2005",
+    "context": "beta = \\text{blade (metal) angle}$$\n\n$$δ = \\text{boundary layer thickness}$$\n\n$$δ = \\text{change across the stage}$$\n\n$$\\phi = \\text{flow coefficient } (Vx/U)$$\n\n$$ν = \\text{ν}$$\n\n$$ρ = \\text{ρ}$$\n\n$$τ_w = \\text{τ_w}$$\n\n### Subscripts\n\n$$0 = \\t",
+    "role": "flow coefficient or angle in turbomachinery context (context insufficient to resolve to a canonical quantity)",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "Re_c",
+    "paper_id": "mayle_1991",
+    "context": "Since it is possible to draw curves of constant $Re_c$ in this figure, the position where $K = K_\\text{crit}$ for different operating Reynolds numbers, i.e., the location wh",
+    "role": null,
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\int_{z=-\\frac{1}",
+    "paper_id": "ergin_white_2006",
+    "context": "50$ and 1300 Hz (the frequencies that will be of interest later) are computed using\n\n$$e_{f_0}(x) = \\int_{y=0}^{\\infty} \\int_{z=-\\frac{1}{2}}^{\\frac{1}{2}} \\int_{f=f_0-δ f}^{f_0+δ f} \\text{PSD}(x,y,z,f)\\,\\mathrm{d}y\\,\\mathrm{d}z\\,\\mathrm{d}f$$",
+    "role": "integration limit notation for spanwise integration from z=-1/2 to z=1/2, where z is made dimensionless using roughness wavelength λ_k",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\int_{f=f_0-δ f}",
+    "paper_id": "ergin_white_2006",
+    "context": "t will be of interest later) are computed using\n\n$$e_{f_0}(x) = \\int_{y=0}^{\\infty} \\int_{z=-\\frac{1}{2}}^{\\frac{1}{2}} \\int_{f=f_0-δ f}^{f_0+δ f} \\text{PSD}(x,y,z,f)\\,\\mathrm{d}y\\,\\mathrm{d}z\\,\\mathrm{d}f$$",
+    "role": "integration limit notation for frequency band integration from f0-δf to f0+δf, defining the frequency band width for unsteady disturbance energy computation",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "f_0",
+    "paper_id": "ergin_white_2006",
+    "context": "where $z$ is made dimensionless using $\\lambda_k$. The unsteady disturbance energy of 100-Hz bands centered at $f_0 = 650$ and 1300 Hz (the frequencies that will be of interest later) are computed using\n\n$$e_{f_0}(x) = \\int_{y=0}^{\\inf",
+    "role": "center frequency of a spectral band for unsteady disturbance energy computation (paper-specific parameter, e.g. 650 or 1300 Hz)",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\int_{\\eta=0}",
+    "paper_id": "ergin_white_2006",
+    "context": "",
+    "role": "integration limit notation indicating wall-normal integration starting from the wall (η=0), where η is the wall-normal coordinate made dimensionless by roughness height λ_k",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\int_{y=0}",
+    "paper_id": "ergin_white_2006",
+    "context": "centered at $f_0 = 650$ and 1300 Hz (the frequencies that will be of interest later) are computed using\n\n$$e_{f_0}(x) = \\int_{y=0}^{\\infty} \\int_{z=-\\frac{1}{2}}^{\\frac{1}{2}} \\int_{f=f_0-δ f}^{f_0+δ f} \\text{PSD}(x,y,z,f)\\,\\mathrm{d}y\\,\\mathrm{d}z\\,",
+    "role": "lower limit of wall-normal integration (wall surface) in disturbance energy integral, where y is the wall-normal coordinate",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "max_y",
+    "paper_id": "durbin_2012",
+    "context": "The definition of $R_ν$ is such that in the Blasius boundary layer $\\max_y R_ν = Re_θ$. In Falkner–Skan boundary layers $\\max_y R_ν$ is less than $Re_θ$ for accelerating pressure gradients and g",
+    "role": "maximum wall-normal distance",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "X_S",
+    "paper_id": "abu_ghannam_shaw_1980",
+    "context": "if transition was taken to start and end athe same chordwise station, but at different reference velocities, then $X = X_S = X_E$ and (22) becomes\n\n$$y = \\frac{U_∞ - U_{RS}}{U_{Re} - U_{RS}}$$",
+    "role": null,
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "Re_e",
+    "paper_id": "narasimha_1985",
+    "context": "ng their data with some points from Coles (1954) and Potter and Whitfield (1962), suggesthathe variation of $Re_b$ and $Re_e$ is not monotonic with Mach number, and thathere is a dip around $M = 3$ to 4. The evidence for this dip depends chiefl",
+    "role": null,
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "Re_b",
+    "paper_id": "narasimha_1985",
+    "context": "l.* comparing their data with some points from Coles (1954) and Potter and Whitfield (1962), suggesthathe variation of $Re_b$ and $Re_e$ is not monotonic with Mach number, and thathere is a dip around $M = 3$ to 4. The evidence for this dip dep",
+    "role": null,
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "R_e",
+    "paper_id": "zhang_chen_zhao_liu_yan_2022",
+    "context": "alculated by reference diameter which is unit meter. The flat plate has a tiny leading edge with a curvature radius of $R_e = 0.005 \\, \\text{mm}$ and the length of it is 10 m to avoid the influence of outlet disturbance. The simulation results",
+    "role": null,
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\varepsilon",
+    "paper_id": "saru_ersan_pulat_2025",
+    "context": "oundary conditions were also used to representhe ERCOFTAC T3A test case. In all compared turbulence models, GT, std. k-$\\varepsilon$, RNG k-$\\varepsilon$, std. k-$Ω$, inlet-Tu (Tu), and length scale (LS) have been taken as 3.3% and 0.026 m. Inlet-turb",
+    "role": null,
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\beta",
+    "paper_id": "van_ingen_2008",
+    "context": "the opposite wall could be curved to induce a pressure distribution on the flat plate to represent a constant Hartree $\\beta$-flow of $-0.14$. The boundary layer was sucked away athe leading edge of the plate, thus creating a stagnation point i",
+    "role": null,
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "x_s",
+    "paper_id": "narasimha_1985",
+    "context": "ndependently of pressure gradient, but propose thathis law is\n\n$$γ(x) = 1 - \\exp(-5y^3), \\tag{7.1}$$\n\nwhere\n\n$$y = (x - x_s)/(x_e - x_s) \\text{ or } (U - U_s)/(U_∞ - U_s)$$",
+    "role": "specific location in the transition zone",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "x_e",
+    "paper_id": "narasimha_1985",
+    "context": "dently of pressure gradient, but propose thathis law is\n\n$$γ(x) = 1 - \\exp(-5y^3), \\tag{7.1}$$\n\nwhere\n\n$$y = (x - x_s)/(x_e - x_s) \\text{ or } (U - U_s)/(U_∞ - U_s)$$",
+    "role": null,
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "U_s",
+    "paper_id": "narasimha_1985",
+    "context": "but propose thathis law is\n\n$$γ(x) = 1 - \\exp(-5y^3), \\tag{7.1}$$\n\nwhere\n\n$$y = (x - x_s)/(x_e - x_s) \\text{ or } (U - U_s)/(U_∞ - U_s)$$",
+    "role": "local flow speed at a specific location",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "C_p",
+    "paper_id": "abu_ghannam_shaw_1980",
+    "context": "pressure gradients, introduced by tilting the false tunnel ceiling were expressed in terms of the pressure coefficient $C_p = p - p / \\frac{1}{2}ρ U_∞^2$, where $p$ is the reference p measured at $X = 46$ in. Figure 5 shows the different press",
+    "role": "Pressure coefficient",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "int_0",
+    "paper_id": "fransson_matsubara_alfredsson_2005",
+    "context": "me scale ($Λ$) are defined as\n\n$$R_{uu}(t^*) \\equiv \\frac{\\overline{u(t)u(t')}}{u_{\\rm rms}^2} \\tag{3.2}$$\n\nand\n\n$$Λ = \\int_0^\\infty R_{uu}(t^*)\\, \\mathrm{d}t^* \\tag{3.3}$$",
+    "role": "integral lower limit",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\rm",
+    "paper_id": "fransson_matsubara_alfredsson_2005",
+    "context": "stream of the grid the turbulence decays and the typical power-law decay can be described according to\n\n$$Tu = \\frac{u_{\\rm rms}}{U_\\infty} = C(x - x_0)^{-b}, \\tag{3.1}$$\n\nwhere $x_0$ is a virtual origin of the grid, the exponent $b$ gives the",
+    "role": "text formatting command",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "x_0",
+    "paper_id": "fransson_matsubara_alfredsson_2005",
+    "context": "lence decays and the typical power-law decay can be described according to\n\n$$Tu = \\frac{u_{\\rm rms}}{U_\\infty} = C(x - x_0)^{-b}, \\tag{3.1}$$\n\nwhere $x_0$ is a virtual origin of the grid, the exponent $b$ gives the decay rate and the constant",
+    "role": "local variable representing a specific position",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\leqslant",
+    "paper_id": "fransson_matsubara_alfredsson_2005",
+    "context": "g turbulence level. Figure 12(*b*), on the other hand, shows that all the γ curves of the grid G cases that satisfy $Tu \\leqslant 2.6\\%$ collapse on a universal function.",
+    "role": null,
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\hspace",
+    "paper_id": "narasimha_1985",
+    "context": "tance at $x_t$.\n\nThe corresponding γ distribution is\n\n$$γ = 1 - \\exp[-(x - x_t)^2 nσ̂n/U] \\qquad (x \\geq x_t),$$\n\n$$= 0 \\hspace{4.5cm} (x \\leq x_t). \\tag{4.6}$$\n\nIf we use the distance\n\n$$Λ = x(γ = 0.75) - x(γ = 0.25) \\tag{4.7}$$",
+    "role": "LaTeX spacing command, not a physical quantity",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\xi_{\\text{eff}",
+    "paper_id": "liu_lu_wang_wang_yan_2022",
+    "context": "where $U_k$ and $\\xi_{\\text{eff}}$ representhe velocity and length scales of Klebanoff modes. Here, the velocity scale is defined as $U_k = \\sqrt{\\bar{v",
+    "role": null,
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "C_1",
+    "paper_id": "liu_lu_wang_wang_yan_2022",
+    "context": "_t \\frac{\\bar{v}_L^2}{\\xi_{\\text{eff}}^2 S^2}\\right) \\tag{12}$$\n\nThe destruction term $D_{k}$ is defined as\n\n$$D_{kL} = C_1 ρ \\frac{μ_t}{μ} k S \\tag{13}$$\n\n$C_1$ is a function of the Tu $Tu_\\infty$: $C_1 = 0.069(Tu_\\infty - 0.0138)^2 + 0.00819",
+    "role": "model calibration constant",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "d_w",
+    "paper_id": "menter_2015",
+    "context": "where $d_w$ is the wall distance and the combination $Ω\\,d_w$ provides a velocity scale inside the boundary layer, replacing the U",
+    "role": "wall distance",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "Sd_w",
+    "paper_id": "menter_2015",
+    "context": "d_w$ provides a velocity scale inside the boundary layer, replacing the U_∞ $U$ used in the $γ$-Re$_θ$ model:\n\n$$U \\sim Sd_w \\sim Ω d_w \\tag{8}$$\n\nThis formulation of $Tu$ ensures that in the middle of the boundary layer, $Tu$ defined by Eq. 7",
+    "role": "derived velocity scale inside the boundary layer",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "f_d",
+    "paper_id": "ghimire_ni_wang_2025",
+    "context": "DES length scale is formulated as hybrid RANS and LES length scales, incorporating a flow-dependent blending function ($f_d$) which effectively prevents the LES mode from switching early in locally refined boundary-layer meshes [24].\n\n$$l_{DDE",
+    "role": "blending function for RANS to LES transition",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "r_d",
+    "paper_id": "ghimire_ni_wang_2025",
+    "context": "nding function ($f_d$) is smooth in the transition area from the RANS to LES mode and given by\n\n$$f_d = 1 - \\tanh\\Big[(8r_d)^3\\Big] \\tag{20}$$\n\nwhere\n\n$$r_d = \\frac{v + ν_t}{k^2 d_w^2 \\cdot max\\left\\{\\left[\\sum_{ij}(\\partial u/\\partial x)^2\\ri",
+    "role": "dimensionless parameter for blending function",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "d_w",
+    "paper_id": "ghimire_ni_wang_2025",
+    "context": "s is introduced into turbulence models. The LES-type grid scale is given by\n\n$$l_{LES} = C_{DES}δ$$\n\n$$δ = min\\{max[C_w d_w,\\ C_w h_{max},\\ h_{wn}], h_{max}\\} \\tag{18}$$\n\nwhere $C_w$ is taken as 0.15; $d_w$ is the wall distance; $h_{max}$ is t",
+    "role": "wall distance",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "f_e",
+    "paper_id": "ghimire_ni_wang_2025",
+    "context": "/\\partial x)^2\\right]^{1/2},\\ 10^{-10}\\right\\}} \\tag{21}$$\n\nThe WMLES length scale is defined as\n\n$$l_{WMLES} = f_B(1 + f_e)l_{RANS} + (1 - f_B)l_{LES} \\tag{22}$$",
+    "role": "enhancement factor in IDDES model",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "f_B",
+    "paper_id": "ghimire_ni_wang_2025",
+    "context": "artial u/\\partial x)^2\\right]^{1/2},\\ 10^{-10}\\right\\}} \\tag{21}$$\n\nThe WMLES length scale is defined as\n\n$$l_{WMLES} = f_B(1 + f_e)l_{RANS} + (1 - f_B)l_{LES} \\tag{22}$$",
+    "role": "blending function for transition between models",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\sum_{ij}",
+    "paper_id": "ghimire_ni_wang_2025",
+    "context": "given by\n\n$$f_d = 1 - \\tanh\\Big[(8r_d)^3\\Big] \\tag{20}$$\n\nwhere\n\n$$r_d = \\frac{v + ν_t}{k^2 d_w^2 \\cdot max\\left\\{\\left[\\sum_{ij}(\\partial u/\\partial x)^2\\right]^{1/2},\\ 10^{-10}\\right\\}} \\tag{21}$$\n\nThe WMLES length scale is defined as\n\n$$l_{WMLES}",
+    "role": "summation over indices i and j, likely related to velocity gradient tensor",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "C_w",
+    "paper_id": "ghimire_ni_wang_2025",
+    "context": "thods is introduced into turbulence models. The LES-type grid scale is given by\n\n$$l_{LES} = C_{DES}δ$$\n\n$$δ = min\\{max[C_w d_w,\\ C_w h_{max},\\ h_{wn}], h_{max}\\} \\tag{18}$$\n\nwhere $C_w$ is taken as 0.15; $d_w$ is the wall distance; $h_{max}$",
+    "role": "model calibration constant",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\sum_{1}",
+    "paper_id": "mayle_1991",
+    "context": "For a given position in space, the ensemble average of the γ function yields the γ factor,\n\n$$γ(x, y, z) = \\frac{1}{N} \\sum_{1}^{N} I(x, y, z, t).$$\n\nFor two-dimensional flows in the $x$-$y$ plane, $γ$ is independent of $z$. Since the velocities i",
+    "role": "summation index or term in an equation",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "IU_t",
+    "paper_id": "mayle_1991",
+    "context": "rent, the u component at any time may be expressed as (for two-dimensional flow)\n\n$$U(x, y, t) = (1-I)U_{nt}(x, y, t) + IU_t(x, y, t);$$\n\n$$I(x, y, t) = \\begin{cases} 1; & \\text{turbulent} \\\\ 0; & \\text{nonturbulent} \\end{cases}$$",
+    "role": "intermittency-weighted turbulent velocity component",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\widetilde",
+    "paper_id": "ghimire_ni_wang_2025",
+    "context": "ght]f_{e2}$$\n\nThe IDDES length scale is a combination of DDES and WMLES length scales, which is given as\n\n$$l_{IDDES} = \\widetilde{f}_d \\cdot (1+f_e) \\cdot l_{k-Ω} + \\left(1 - \\widetilde{f}_d\\right) \\cdot l_{LES}$$\n\n$$\\widetilde{f}_d = max\\left\\{(1-f",
+    "role": "denotes a modified or filtered variable",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\alpha",
+    "paper_id": "ghimire_ni_wang_2025",
+    "context": "S} + (1 - f_B)l_{LES} \\tag{22}$$\n\n\n\nwhere $f_B$ is another blending function defined as\n\n$$f_B = \\min\\left\\{2exp\\left(-9\\alpha^2\\right), 1.0\\right\\}$$\n\n$$\\alpha = 0.25 - \\frac{d_w}{h_{max}},\\tag{23}$$\n\n$$f_e = max\\left[(f_{e1}-1),\\ 0\\right]f_{e2}",
+    "role": "model parameter in turbulence equations",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "H_s",
+    "paper_id": "abu_ghannam_shaw_1980",
+    "context": "onstant in Law of the Wall\n- $Cf$ Skin-Cf\n- $p$ Pressure coefficient\n- $D$ Diameter of sphere\n- $H$ H\n- $H'$ H ratio $=(H_s-H)/(H_s-H_E)$\n- $K$ Constant in Law of the Wall\n- $L$ Length of transition\n- $Δx_tr$ Streamwise macro-scale of turbulen",
+    "role": "reference value for H in the H ratio calculation",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "H_E",
+    "paper_id": "abu_ghannam_shaw_1980",
+    "context": "aw of the Wall\n- $Cf$ Skin-Cf\n- $p$ Pressure coefficient\n- $D$ Diameter of sphere\n- $H$ H\n- $H'$ H ratio $=(H_s-H)/(H_s-H_E)$\n- $K$ Constant in Law of the Wall\n- $L$ Length of transition\n- $Δx_tr$ Streamwise macro-scale of turbulence\n- $L_w$ T",
+    "role": "reference value for H in the H ratio calculation",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "XU_R",
+    "paper_id": "abu_ghannam_shaw_1980",
+    "context": "Re\n- $Re_θ$ Length of transition Re $= LU_j/ν$\n- $Re_xt$ Correlation coefficient\n- $Re_x$ Length Re $= XU_\\infty/ν$ or $XU_R/ν$\n- $Re_θ$ θ Re $= \\frac{θ U_\\infty}{ν}$\n- $U$ Velocity in the stream direction\n- $U_∞$ Tunnel reference velocity",
+    "role": "product of distance and velocity used in Reynolds number calculation",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "LU_j",
+    "paper_id": "abu_ghannam_shaw_1980",
+    "context": "spacing of turbulence grid\n- $p$ p\n- $p(u)$ Probability ρ function of $u$\n- $R$ Re\n- $Re_θ$ Length of transition Re $= LU_j/ν$\n- $Re_xt$ Correlation coefficient\n- $Re_x$ Length Re $= XU_\\infty/ν$ or $XU_R/ν$\n- $Re_θ$ θ Re $= \\frac{θ U_\\infty}{",
+    "role": "product of length and velocity used in Reynolds number calculation",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "H_S",
+    "paper_id": "abu_ghannam_shaw_1980",
+    "context": "## 4.2 The H\n\nThe H ratio $H'$ is defined as\n\n$$H' = \\frac{H_S - H}{H_S - H_E} \\tag{25}$$\n\nFigure 13 shows $H'$ plotted against $y$ and the best curve fit is\n\n$$H' = \\sin\\left(\\frac{",
+    "role": "stagnation enthalpy or energy level for H ratio calculation",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "int_0",
+    "paper_id": "narasimha_1985",
+    "context": "th model with van Driest damping. In the outer layer he took\n\n$$μ_t = 0.0168\\ Uδ*\\ \\gamma_e, \\tag{10.5}$$\n\nwhere $δ* = \\int_0^\\infty dz(1 - u/U)$ is the δ*, and $\\gamma_e$ is the edge γ, taken to be given by the empirical expression\n\n$$\\gamma_e",
+    "role": "integral lower limit notation",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "N_t",
+    "paper_id": "mayle_1991",
+    "context": "emble-averaged mean velocities are obtained by averaging only during the time spent in the particular regime. Thus, if $N_t$ is the number of occurrences of turbulent flow in $N$ data samples, the mean velocities in each portion are\n\n$$\\overli",
+    "role": "likely a derived quantity related to turbulence",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "\\int_{X_0}",
+    "paper_id": "abu_ghannam_shaw_1980",
+    "context": "pressure gradient during the flow history was considered with the average defined by\n\n$$\\bar{Λ}_θ = \\frac{1}{X_S - X_0} \\int_{X_0}^{X_S} \\lambda_θ \\, \\mathrm{d}x \\tag{21}$$",
+    "role": "integral starting from X_0",
+    "status": "pending_user_review"
+  },
+  {
+    "symbol": "X_0",
+    "paper_id": "abu_ghannam_shaw_1980",
+    "context": "the pressure gradient during the flow history was considered with the average defined by\n\n$$\\bar{Λ}_θ = \\frac{1}{X_S - X_0} \\int_{X_0}^{X_S} \\lambda_θ \\, \\mathrm{d}x \\tag{21}$$",
+    "role": "initial streamwise position for integration",
+    "status": "pending_user_review"
+  }
+]

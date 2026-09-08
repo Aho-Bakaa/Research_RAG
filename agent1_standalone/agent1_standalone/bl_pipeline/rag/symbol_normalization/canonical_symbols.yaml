@@ -1,0 +1,3727 @@
+momentum_thickness:
+  canonical: θ
+  display: θ
+  unit: m
+  description: Momentum thickness
+  aliases:
+  - theta
+  - θ₁₁
+  - θ_11
+  - momentum thickness
+  - mom. thickness
+  - \theta
+  - \Theta_{transition}
+  # Mayle 1991 uses δ_0 for momentum thickness (Nomenclature p.215 of original).
+  # Other papers (AGS, DN, Narasimha, LM) use θ canonically. δ_0 must be PAPER-
+  # SCOPED to mayle_1991 because most other papers' δ_0 means "BL thickness at
+  # reference station" or "initial value of δ" — collision risk.
+  paper_specific_aliases:
+    mayle_1991:
+    - δ_0
+    - δ₀
+    - \delta_0
+    - \delta_{0}
+    coder_maughmer_2014:
+    - δ_2
+    - δ₂
+    - \delta_2
+    - \delta_{2}
+    - "Re_{\\delta 2}"
+    matsubara_alfredsson_2001:
+    - δ_2
+    - \delta_2
+    durbin_wu_2007:
+    - Θ
+    - "\\Theta"
+    - "(Θ+θ')"
+    suzen_huang_2000:
+    - θ_t
+    - "\\theta_t"
+    # Schlichting & Gersten 2017 (Symbol list p.713):
+    #   "δ_2   m   boundary-layer thicknesses (momentum)"
+    # Schlichting's δ_2 = momentum thickness θ in the canonical notation.
+    schlichting_gersten_2017:
+    - δ_2
+    - δ₂
+    - \delta_2
+    - \delta_{2}
+displacement_thickness:
+  canonical: δ*
+  display: δ*
+  unit: m
+  description: Displacement thickness
+  aliases:
+  - delta_star
+  - δ₁
+  - δ*
+  - delta*
+  - \delta^*
+  - \delta^{*}
+  - displacement thickness
+  paper_specific_aliases:
+    matsubara_alfredsson_2001:
+    - δ_1
+    - δ₁
+    - \delta_1
+    - \delta_{1}
+    mcauliffe_yaras_2010:
+    - δ
+    - \delta
+    brandt_2004:
+    - δ_0*
+    - δ₀*
+    - \delta_0^*
+    - \delta_{0}^{*}
+    tani_1969:
+    - δ_t*
+    - δ*_t
+    - \delta^*_t
+    - "\\delta_{t}^{*}"
+    # Schlichting & Gersten 2017 (Symbol list p.713):
+    #   "δ_1   m   boundary-layer thicknesses, Eq. (10.95)-(10.98), (9.60), (9.68)"
+    # In Schlichting's notation the boundary-layer thickness family is
+    # δ_1 (displacement), δ_2 (momentum), δ_3 (energy).
+    schlichting_gersten_2017:
+    - δ_1
+    - δ₁
+    - \delta_1
+    - \delta_{1}
+boundary_layer_thickness:
+  canonical: δ
+  display: δ
+  unit: m
+  description: Boundary layer thickness (99%)
+  aliases:
+  - delta
+  - δ₉₉
+  - delta_99
+  - BL thickness
+  - \delta
+  - \delta_{99}
+  paper_specific_aliases:
+    # Schlichting & Gersten 2017 (List of Frequently Used Symbols, p.713):
+    #   "δ, δ_99, δ_R   m   boundary-layer thicknesses, Eq. (16.31)"
+    # δ_R is the Rotta-defined BL thickness (used in equilibrium / wake
+    # analysis); δ and δ_99 are already in the global aliases above.
+    schlichting_gersten_2017:
+    - δ_R
+    - \delta_R
+    - \delta_{R}
+shape_factor:
+  canonical: H
+  display: H
+  unit: '-'
+  description: Shape factor (δ*/θ)
+  aliases:
+  - H_12
+  - H₁₂
+  - shape factor
+  - H12
+  # H_t / H_L / H_T are NOT global aliases — they collide with Coder's H_L
+  # (local PG parameter) and with DN/Narasimha's own H_t / H_L / H_T usage.
+  # See paper_specific_aliases below for DN.
+  paper_specific_aliases:
+    coder_maughmer_2014:
+    - H_12
+    - H_{12}
+    matsubara_alfredsson_2001:
+    - H_12
+    - H_{12}
+    westin_et_al_1994:
+    - H_12
+    - H_{12}
+    dhawan_narasimha_1958:
+    - H_t
+    - H_L
+    - H_T
+    # Schlichting & Gersten 2017 (Symbol list p.711):
+    #   "H_12, H_32   -   shape factors, Eq. (8.26), (8.27)"
+    #   "Λ            -   shape factor, Eq. (15.27)"
+    # H_12 = δ*/θ (canonical H), H_32 = δ_E/θ (energy shape factor — paper-
+    # scoped here because outside Schlichting "H_32" is uncommon).  Λ is
+    # Pohlhausen's shape parameter used in stability/transition analysis.
+    schlichting_gersten_2017:
+    - H_12
+    - H_{12}
+    - H_32
+    - H_{32}
+    - Λ
+    - \Lambda
+turbulence_intensity:
+  canonical: Tu
+  display: Tu
+  unit: '%'
+  description: Freestream turbulence intensity
+  aliases:
+  - FSTI
+  - Ti
+  - TI
+  - T_u
+  - Tu_∞
+  - Tu_inf
+  - turbulence intensity
+  - freestream turbulence intensity
+  - free-stream turbulence intensity
+  - \text{Tu}
+  - FSTI (%)
+  - Tu
+  - Tu_L
+  # AGS 1980 uses τ_t for turbulence intensity in percent throughout the paper
+  # (e.g. Eq. 9: log_e(R_θ,S − 163) = 6.91 − τ_t).  Narasimha 1985 uses q for
+  # the same thing.  Both are paper-scoped because τ_t collides with the
+  # Reynolds-stress shear (canonical τ_t) used in modern RANS literature, and
+  # q is the standard heat-flux variable elsewhere.
+  paper_specific_aliases:
+    abu_ghannam_shaw_1980:
+    - τ_t
+    - τₜ
+    - \tau_t
+    - \tau_{t}
+    narasimha_1985:
+    - q
+    friedlander_georgiadis_2023:
+    - I
+    - I_in
+    - I_tip
+    - I_∞
+    - I_\infty
+    gonzalez_agrawal_wu_2025:
+    - FSTI
+    - FSTI_in
+    - FSTI_∞
+    - "FSTI_{in}"
+    xia_chen_2016:
+    - TI_∞
+    - TI_\infty
+    - TI_{\infty}
+    saru_ersan_pulat_2025:
+    - Tu (%)
+    - "u'/\\bar{u}"
+    schubauer_skramstad_1947:
+    - u'/U_0
+    - "\\sqrt{1/3(u'^2+v'^2+w'^2)}/U_0"
+    fransson_matsubara_alfredsson_2005:
+    - u_rms/U_∞
+    westin_et_al_1994:
+    - u_rms,0/U_0
+    matsubara_alfredsson_2001:
+    - Tu_∞
+    brandt_2004:
+    - Tu_in
+    jacobs_durbin_2001:
+    - Tu_in
+    menter_2015:
+    - Tu_L
+    - "Tu_{L}"
+re_momentum_thickness:
+  canonical: Re_θ
+  display: Re_θ
+  unit: '-'
+  description: Reynolds number based on momentum thickness
+  aliases:
+  - Re_theta
+  - Re_θ
+  - Re_{\theta}
+  - R_θ
+  - Re_mom
+  - Reynolds_theta
+  - R_l
+  paper_specific_aliases:
+    coder_maughmer_2014:
+    - Re_δ2
+    - Re_{δ2}
+    - Re_{\delta 2}
+    - Re_{\delta_2}
+    - "Re_{δ_2}"
+    durbin_2017:
+    - R_Θ
+    - R_\Theta
+    - R_{\Theta}
+    diwan_ramesh_2009:
+    - Re_θs
+    - Re_{θs}
+    - "Re_{\\theta s}"
+    marxen_henningson_2011:
+    - "Re_{θ,S}"
+    - "Re_{\\theta,S}"
+    - Re_θ_S
+    - Re_θ,S
+    mcauliffe_yaras_2010:
+    - Re_θs
+    - Re_{θs}
+    - "Re_{\\theta s}"
+    dick_kubacki_2017:
+    - Re_θs
+    - Re_{θs}
+    - Re_θE
+    - Re_{θE}
+    # Schlichting & Gersten 2017 (Symbol list p.712):
+    #   "Re_1, Re_2   -   Reynolds number, formed with δ_1, δ_2 respectively,
+    #                     Eq. (18.111)"
+    # Re_2 = Re based on δ_2 (momentum thickness) = Re_θ in canonical notation.
+    schlichting_gersten_2017:
+    - Re_2
+    - Re_{2}
+    - R_2
+re_momentum_thickness_transition:
+  canonical: Re_θt
+  display: Re_θ,t
+  unit: '-'
+  description: Transition Reynolds number based on momentum thickness (at start of transition)
+  aliases:
+  - Re_theta_t
+  - Re_{θ,t}
+  - Re_{\theta,t}
+  - Re_θ,tr
+  - Re_θ_tr
+  - Re_θ_onset
+  - (Re_θ)_t
+  # AGS 1980 uses R_{θ,S} (subscript S for "start of transition") throughout —
+  # Eq. 9, Eq. 11, etc. This is the canonical Re_θ,t under AGS's notation.
+  # Paper-scoped to AGS because some other authors use R_{θ,S} for stagnation
+  # Re_θ or for survey-data values.
+  paper_specific_aliases:
+    abu_ghannam_shaw_1980:
+    - R_{θ,S}
+    - R_{θ S}
+    - R_{\theta,S}
+    - R_{\theta S}
+    - R_θS
+    - R_θ_S
+    - R_{θ_s}
+    - R_θs
+    # AGS also has Re_θ subscripts that mean "momentum-thickness Re" — used in
+    # the nomenclature page as just "R_θ"; we map this to the generic Re_θ
+    # canonical via the standard alias (already listed under re_momentum_thickness).
+    dick_kubacki_2017:
+    - Re_θt
+    - "Re_{θt}"
+    - "Re_{\\theta t}"
+    saru_ersan_pulat_2025:
+    - Re_θt
+    - "Re_{θt}"
+    narasimha_1985:
+    - "Re_{\\theta t}"
+    - Re_{θt}
+    - Re_{θ,t}
+    - Re_{θcr}
+    suzen_huang_2000:
+    - "Re_{θ_t}"
+    - Re_θ_t
+    wang_zhang_li_meng_2015:
+    - "\\tilde{Re}_{θt}"
+    - "\\tilde{Re}_{\\theta t}"
+    coder_maughmer_2014:
+    - Re_δ2,0
+    - "Re_{δ_2,0}"
+intermittency:
+  canonical: γ
+  display: γ
+  unit: '-'
+  description: Intermittency factor
+  aliases:
+  - gamma
+  - \gamma
+  - intermittency
+  - γ_tr
+  # MAJOR COLLISION: γ has many non-intermittency meanings across the literature.
+  # The list below records the explicit DO-NOT-ALIAS cases (intermittency stays as
+  # canonical γ but per-paper γ-symbols are NOT mapped here when they mean
+  # something else — they are paper-scoped to OTHER canonicals).
+  #   - Herbert 1988 γ = Floquet exponent → see floquet_exponent below
+  #   - Mack 1984 γ = ratio of specific heats → see ratio_specific_heats below
+  #   - Brandt 2004 γ = wall-normal wavenumber in OS continuous spectrum
+  #   - ABH 2001 γ = Floquet detuning exponent
+  #   - Jacobs-Durbin 2001 γ = oblique-wave angle (tan γ = k_z/ω)
+  #   - Yoshikawa-Wesfreid 2011 γ = interfacial tension (N/m)
+  #   - Kachanov 1994 γ_1 = soliton asymmetry coefficient
+  #   - Reshotko 2001 γ = OS-Squire coupling coefficient ~ β·ū'
+  #   - Liu 2022 γ_g = specific-heat ratio (1.4)
+  #   - Emmons 1951 f (not γ) = intermittency — see Emmons paper_specific below.
+  # Where γ DOES match canonical intermittency (Suzen-Huang, MA 2001, Dick,
+  # Ge-Arolla-Durbin, Durbin 2012, Coder 2014 N_crit / γ_eff), the default
+  # global alias handles it.
+  paper_specific_aliases:
+    emmons_1951:
+    - f(P)
+    - f_emmons
+    - "f(P,t)"
+    - fraction turbulent time
+    suzen_huang_2000:
+    - γ_sep
+    - γ_eff
+    ge_arolla_durbin_2014:
+    - γ_eff
+    - "\\gamma_{eff}"
+    durbin_2012:
+    - γ_max
+    matsubara_alfredsson_2001:
+    - γ
+skin_friction:
+  canonical: Cf
+  display: C_f
+  unit: '-'
+  description: Skin friction coefficient
+  aliases:
+  - C_f
+  - cf
+  - c_f
+  - skin friction
+  - friction coefficient
+  - \text{C}_f
+  # f_t / f_L / f_T are NOT skin friction — they are Walters/Furst blending
+  # functions (paper-scoped under their own canonicals).
+pressure_gradient_parameter:
+  canonical: λ_θ
+  display: λ_θ
+  unit: '-'
+  description: |
+    Pressure gradient parameter (Thwaites): λ_θ = (θ²/ν)(dU/dx).
+    Dimensionless. Negative for adverse PG, zero for ZPG, positive for
+    favourable PG.  Mayle 1991 writes this as λ_0; map via
+    paper_specific_aliases.  Narasimha 1985 calls it m.  Van Ingen 2008
+    writes it as K (the Pohlhausen form of the same parameter — distinct
+    from canonical K = acceleration parameter, hence paper-scoped).
+  aliases:
+  - lambda_theta
+  - λ_θ
+  - \lambda_{\theta}
+  - Thwaites parameter
+  - pressure gradient parameter
+  - \lambda_{θ t}
+  - \lambda_{θ s}
+  - \lambda_{θ\,L}
+  - \lambda_{θ L}
+  paper_specific_aliases:
+    mayle_1991:
+    - λ_0
+    - λ₀
+    - \lambda_0
+    - \lambda_{0}
+    narasimha_1985:
+    - m
+    # AGS uses λ_θ canonically (no override needed)
+    van_ingen_2008:
+    - K (Pohlhausen)
+    - "θ²/ν · dU/dx"
+    durbin_2017:
+    - "Θ²/ν · dU_∞/dx"
+    menter_2015:
+    - λ_θ,L
+    - "λ_{θ,L}"
+    - "\\lambda_{\\theta,L}"
+    - "\\lambda_{θL}"
+    xia_chen_2016:
+    - "\\hat{λ}_θ"
+    - "\\hat{\\lambda}_θ"
+    - "\\hat{\\lambda}_{\\theta}"
+    reshotko_2001:
+    - β_H
+    - "\\beta_H"
+    - β_h
+    - "\\beta_h"
+n_factor:
+  canonical: N
+  display: N
+  unit: '-'
+  description: |
+    N-factor (e^N method) — logarithm of disturbance amplitude ratio
+    integrated along the wave-packet trajectory.  Critical N at
+    transition typically 8–11 in low-Tu wind tunnels; Mack/Van-Ingen
+    correlations relate it to Tu.
+  aliases:
+  - n_factor
+  - N_cr
+  - N_crit
+  - N_{cr}
+  - amplification factor
+  paper_specific_aliases:
+    van_ingen_1956:
+    - σ
+    - σ_max
+    - "\\sigma_{\\max}"
+    - amplification factor
+    van_ingen_2008:
+    - N_1
+    - N_2
+    - "N_{1}"
+    - "N_{2}"
+    - N1
+    - N2
+    - n(x,ω)
+    - "n_{x,\\omega}"
+    mack_1984:
+    - "ln(A/A_0)"
+    - "\\ln(A/A_0)"
+    - "\\ln(A/A_0)_{\\max}"
+    - "ln A/A_0"
+    coder_maughmer_2014:
+    - ñ
+    - "\\tilde{n}"
+    - "\\tilde n"
+    - N_crit
+    saric_reed_white_2003:
+    - N-factor
+    # reed_saric_arnal_1996 reproduces Mack's N = -8.43 - 2.4 ln(Tu) but the
+    # raw equation string would never match a real chunk — no per-paper alias.
+freestream_velocity:
+  canonical: U_∞
+  display: U_∞
+  unit: m/s
+  description: Freestream velocity
+  aliases:
+  - U_inf
+  - U_e
+  - U_∞
+  - U∞
+  - U_freestream
+  - U_0
+  - U_{\infty}
+  - U_infty
+  - Uinf
+  - freestream velocity
+  - free-stream velocity
+  - U_R
+  paper_specific_aliases:
+    tani_1969:
+    - U_1
+    - "U_{1}"
+    van_ingen_1956:
+    - V
+    - V_wind
+    westin_et_al_1994:
+    - U_0
+    - "U_{0}"
+    schubauer_skramstad_1947:
+    - U_0
+    - "U_{0}"
+    mack_1984:
+    - U_1
+    - U_1*
+    - "U_1^*"
+    - "U_1^{*}"
+    sreenivasan_1989:
+    - U_o
+    - "U_{o}"
+    matsubara_alfredsson_2001:
+    - U_∞
+    diwan_ramesh_2009:
+    - U_ref
+    - "U_{ref}"
+    friedlander_georgiadis_2023:
+    - u_tip
+    - "u_{tip}"
+    ge_arolla_durbin_2014:
+    - U_ref
+    - "U_{ref}"
+wall_shear_stress:
+  canonical: τ_w
+  display: τ_w
+  unit: Pa
+  description: |
+    Wall shear stress.  Mayle 1991 writes this as τ_0 (zero subscript
+    for "wall" — common in older heat-transfer literature).  CONFLICT
+    WARNING: bare τ in Mayle means wake-passing PERIOD (seconds),
+    NOT shear stress — so we do NOT add bare τ as an alias.
+  aliases:
+  - tau_w
+  - τ_w
+  - \tau_w
+  - \tau_{w}
+  - wall shear stress
+  - shear stress
+  - tau_0          # legacy global alias — paper-scoping below handles Mayle's τ_0
+  paper_specific_aliases:
+    mayle_1991:
+    - τ_0
+    - τ₀
+    - \tau_0
+    - \tau_{0}
+    # Langtry-Menter 2009 uses bare τ for wall shear — paper-scoped because
+    # for AGS bare τ alone is rare and for Mayle bare τ = wake period.
+    langtry_menter_2009:
+    - τ
+    - \tau
+    gbadebo_hynes_cumpsty_2004:
+    - τ_w
+    - "\\tau_w"
+    sreenivasan_1989:
+    - "τ_w (kinematic)"
+    - "τ_w_kin"
+kinematic_viscosity:
+  canonical: ν
+  display: ν
+  unit: m²/s
+  description: Kinematic viscosity
+  aliases:
+  - nu
+  - \nu
+  - kinematic viscosity
+  - nu_e
+  - nu_k
+turbulent_kinetic_energy:
+  canonical: k
+  display: k
+  unit: m²/s²
+  description: |
+    Turbulent kinetic energy.  CONFLICT WARNING: Narasimha 1985 writes
+    K (uppercase) for TKE; Mayle 1991 uses K (uppercase) for the
+    acceleration parameter; canonical uses k (lowercase) for TKE and
+    K (uppercase) for the acceleration parameter.  Paper-scoped.
+    Also: k_L (subscript L) means LAMINAR kinetic energy in
+    Walters-Cokljat — that's a SEPARATE canonical entry above
+    (laminar_kinetic_energy).  We REMOVED k_L from this entry's
+    aliases on 2026-05 to avoid collision.
+  aliases:
+  - TKE
+  - tke
+  - k_t
+  - turbulent kinetic energy
+  - \text{TKE}
+  - k_0
+  # NOTE: removed legacy k_L alias — k_L now canonicalises to
+  # laminar_kinetic_energy (Walters-Cokljat 2008).
+  paper_specific_aliases:
+    narasimha_1985:
+    - K         # Narasimha's "K = turbulent kinetic energy"
+    walters_cokljat_2008:
+    - k_T
+    - k_{T}     # Walters-Cokljat use k_T (uppercase T) for turbulent KE
+    walters_leylek_2004:
+    - k_T
+    - k_{T}
+    furst_2012:
+    - k_T
+    - k_{T}
+    - k_t
+    furst_2013:
+    - k_T
+    - k_{T}
+    - k_t
+    dick_kubacki_2017:
+    - k_T
+    - k_{T}
+    zhang_chen_zhao_liu_yan_2022:
+    - k_T
+    - k_{T}
+    suzen_huang_2000:
+    - k_T
+    - k_{T}
+    durbin_2012:
+    - "k_∞"
+    - "k_{\\infty}"
+    friedlander_georgiadis_2023:
+    - k_in
+    - "k_{in}"
+    - k_tip
+    - "k_{tip}"
+    liu_lu_wang_wang_yan_2022:
+    - v̄²
+    - "\\overline{v^2}"
+specific_dissipation_rate:
+  canonical: ω
+  display: ω
+  unit: 1/s
+  description: |
+    Specific dissipation rate in k-ω family models.  CONFLICT WARNING:
+    bare ω in many stability papers means disturbance angular frequency
+    (TS wave, Mack 2nd mode, OS continuous mode); in Mayle 1991 it is
+    wake-passing frequency; in Marxen 2011 ω_z is spanwise vorticity;
+    in McAuliffe-Yaras 2010 ω is vorticity magnitude.  Paper-scoping
+    keeps the k-ω-model ω canonical and confines disturbance/vorticity
+    interpretations to per-paper aliases on OTHER canonicals.
+  aliases:
+  - omega
+  - \omega
+  - specific dissipation
+  paper_specific_aliases:
+    friedlander_georgiadis_2023:
+    - ω_in
+    - "ω_{in}"
+    - ω_tip
+    - "ω_{tip}"
+    durbin_2012:
+    - "ω_∞"
+    - "ω_{\\infty}"
+integral_length_scale:
+  canonical: Λ
+  display: Λ
+  unit: m
+  description: |
+    Integral length scale of freestream turbulence — the dominant
+    eddy-size in the upstream FST.  CONFLICT WARNING: in DN 1958 and
+    Narasimha 1985, Λ (and λ) instead mean the intermittency-zone
+    length (x_(γ=0.75) − x_(γ=0.25)).  We resolve by paper-scoping
+    Λ → L_γ in those two papers (see intermittency_zone_length above)
+    rather than overloading this entry.  Mayle 1991 writes the
+    integral length scale as L (uppercase).
+  aliases:
+  - Lambda
+  - L_t
+  - L_T
+  - \Lambda
+  - integral length scale
+  - turbulence length scale
+  paper_specific_aliases:
+    mayle_1991:
+    - L         # Mayle uses L for integral length scale (Nomenclature p.215)
+    - \mathrm{L}
+    narasimha_1985:
+    - L         # Narasimha's "turbulence macroscale L"
+    brandt_2004:
+    - L
+    - L_11
+    - "L_{11}"
+    jacobs_durbin_2001:
+    - L
+    - L_11
+    - "L_{11}"
+    - L_k
+    - "L_{k}"
+    westin_et_al_1994:
+    - Λ_u
+    - Λ_v
+    - "\\Lambda_u"
+    - "\\Lambda_v"
+    saru_ersan_pulat_2025:
+    - LS
+    - "L_S"
+    durbin_2012:
+    - λ_∞
+    - "\\lambda_{\\infty}"
+    gonzalez_agrawal_wu_2025:
+    - L_in
+    - "L_{in}"
+    - L^int
+    - "L^{int}"
+    # Pope 2000 Nomenclature p.xxxi: "L_{11}, L_{22}   integral length scales"
+    # — L_11 is the longitudinal integral length scale; L_22 the lateral.
+    # Pope is the standard textbook source for this notation.
+    pope_2000:
+    - L_11
+    - L_{11}
+    - "L_{11}"
+    - L_22
+    - L_{22}
+    - "L_{22}"
+    - L_{ij}
+transition_onset_location:
+  canonical: x_t
+  display: x_t
+  unit: m
+  description: |
+    Streamwise location of transition onset.  CONFLICT WARNING: McAuliffe-
+    Yaras 2010 uses x_t for the END of transition (their x_st for start);
+    we DO NOT alias their x_t to canonical x_t — leave unmapped to avoid
+    inverting the meaning.  Marxen-Henningson 2011 uses x_T for the
+    "transition location" inside the bubble (max of û).
+  aliases:
+  - x_tr
+  - x_onset
+  - x_{tr}
+  - x_{t}
+  - transition location
+  - transition onset
+  - \int_{x_t'}
+  paper_specific_aliases:
+    mayle_1991:
+    - x_t
+    - x_tn
+    - x_tw
+    - "x_{tn}"
+    - "x_{tw}"
+    narasimha_1985:
+    - x_b
+    - "x_{b}"
+    suzen_huang_2000:
+    - s_t
+    - "s_{t}"
+    diwan_ramesh_2009:
+    - x_S
+    - "x_{S}"
+    marxen_henningson_2011:
+    - x_S
+    - "x_{S}"
+    emmons_1951:
+    - x_c
+    - "x_{c}"
+transition_length:
+  canonical: Δx_tr
+  display: Δx_tr
+  unit: m
+  description: |
+    FULL streamwise length of the transition zone, from x_t (start) to
+    x_T (γ=0.99 end).  AGS Eq. 15 relates this to L_γ (the 25-75
+    intermittency-zone length) by Δx_tr = 3.36·L_γ.  Distinct from
+    L_γ (intermittency_zone_length, above).  CONFLICT WARNING: removed
+    L_x and L_y from this entry's global aliases — those now mean the
+    AGS streamwise and transverse turbulence macroscales (separate
+    canonicals above).
+  aliases:
+  - transition length
+  - transition zone length
+  - \Delta x_{tr}
+  - L_tr
+  paper_specific_aliases:
+    abu_ghannam_shaw_1980:
+    - L           # AGS calls the full transition length just L
+    - L_{T}
+    - L_T
+    mayle_1991:
+    - L_T         # Mayle's subscript LT means "length of transition"
+re_x_transition:
+  canonical: Re_xt
+  display: Re_{x,t}
+  unit: '-'
+  description: Transition Reynolds number based on x (at start of transition)
+  aliases:
+  - Re_x_t
+  - Re_{x,t}
+  - Re_{x,tr}
+  - Re_x_tr
+  - (Re_x)_t
+  # AGS uses R_{XS} (subscript S for "start") for Re_x at start of transition.
+  paper_specific_aliases:
+    abu_ghannam_shaw_1980:
+    - R_{XS}
+    - R_{X,S}
+    - R_XS
+  # NOTE: R_T removed from global aliases — it now means viscosity ratio (μ_t/μ)
+  # in Langtry-Menter 2009.  Keep R_T global, but AGS callers should rely on
+  # R_{XS} for the transition-x Reynolds number.
+roughness_height:
+  canonical: k
+  display: k
+  unit: m
+  description: Roughness element height (geometric or equivalent sand-grain)
+  aliases:
+  - k_s
+  - k_sg
+  - roughness height
+  - sand-grain roughness
+  - equivalent sand-grain roughness
+  - k_{rough}
+re_kk:
+  canonical: Re_kk
+  display: Re_{kk}
+  unit: '-'
+  description: Roughness Reynolds number based on local velocity at k
+  aliases:
+  - Re_k
+  - Re_{k}
+  - roughness Reynolds number
+  - u_k k / nu
+  - Re_{rough}
+  - R_k
+trip_location:
+  canonical: x_k
+  display: x_k
+  unit: m
+  description: Streamwise location of the roughness trip patch
+  aliases:
+  - x_trip
+  - x_{trip}
+  - x_{rough}
+  - trip location
+  - roughness location
+spot_formation_rate:
+  canonical: σ̂n
+  display: σ̂n
+  unit: 1/m
+  description: Narasimha spot formation-rate / production parameter (n·σ̂)
+  aliases:
+  - n_sigma
+  - n*sigma
+  - n sigma
+  - spot formation rate
+  - spot production rate
+  - \hat{n}\hat{\sigma}
+  - n\hat
+  - Narasimha nσ
+  - \sigma
+friction_velocity:
+  canonical: u_τ
+  display: u_τ
+  unit: m/s
+  description: Wall friction velocity sqrt(τ_w/ρ)
+  aliases:
+  - u_tau
+  - \u_τ
+  - u^*
+  - u_*
+  - friction velocity
+y_plus:
+  canonical: y+
+  display: y^+
+  unit: '-'
+  description: Wall-normal distance in viscous units (y u_τ / ν)
+  aliases:
+  - y^+
+  - y_plus
+  - y_{+}
+  paper_specific_aliases:
+    # Schlichting & Gersten 2017 (Symbol list p.713):
+    #   "y+, y×   -   coordinate in viscous wall layer,
+    #                 Eq. (17.12), (17.100)"
+    # Schlichting introduces y× as the alternative wall coordinate used
+    # for layers with τ_w = 0 (separation-adjacent flows), formed with
+    # δ_v = ν/u_s and u_s instead of u_τ.  Treat as y+ analog so the
+    # retriever can still surface "wall coordinate" content cleanly.
+    schlichting_gersten_2017:
+    - y×
+    - y_×
+    - y_\times
+    - y_{\times}
+re_tau:
+  canonical: Re_τ
+  display: Re_{τ}
+  unit: '-'
+  description: Friction Reynolds number (δ u_τ / ν)
+  aliases:
+  - Re_tau
+  - Re_{\tau}
+  - friction Reynolds number
+acceleration_parameter:
+  canonical: K
+  display: K
+  unit: '-'
+  description: Acceleration parameter K = (ν/U^2)(dU/dx) — relaminarisation if K >
+    ~3e-6
+  aliases:
+  - K_acc
+  - K_lam
+  - acceleration parameter
+  - relaminarisation parameter
+clauser_parameter:
+  canonical: β_K
+  display: β_K
+  unit: '-'
+  description: Clauser pressure-gradient parameter β = (δ*/τ_w)(dp/dx)
+  aliases:
+  - beta_K
+  - beta_clauser
+  - Clauser parameter
+  - β_C
+density:
+  canonical: ρ
+  display: ρ
+  unit: kg/m^3
+  description: Fluid density
+  aliases:
+  - rho
+  - \rho
+  - density
+  - rho_e
+molecular_viscosity:
+  canonical: μ
+  display: μ
+  unit: Pa*s
+  description: Molecular (dynamic) viscosity
+  aliases:
+  - mu
+  - \mu
+  - dynamic viscosity
+  - molecular viscosity
+turbulent_viscosity:
+  canonical: μ_t
+  display: μ_t
+  unit: Pa*s
+  description: Turbulent (eddy) dynamic viscosity — RANS closure
+  aliases:
+  - mu_t
+  - \mu_t
+  - \mu_{t}
+  - mut
+  - turbulent viscosity
+  - eddy viscosity (dynamic)
+  - \mu_{t,L}
+turbulent_kinematic_viscosity:
+  canonical: ν_t
+  display: ν_t
+  unit: m^2/s
+  description: Turbulent (eddy) kinematic viscosity
+  aliases:
+  - nu_t
+  - \nu_t
+  - \nu_{t}
+  - nut
+  - eddy viscosity
+  - eddy viscosity (kinematic)
+  paper_specific_aliases:
+    # Pope 2000 Nomenclature: "ν_T   turbulent kinematic viscosity"
+    # — uppercase T, distinct from lowercase t convention used elsewhere.
+    pope_2000:
+    - ν_T
+    - "\\nu_T"
+    - "\\nu_{T}"
+reynolds_stress_shear:
+  canonical: τ_t
+  display: τ_t
+  unit: Pa
+  description: Turbulent shear stress (Reynolds stress component)
+  aliases:
+  - tau_t
+  - \tau_t
+  - Reynolds stress
+  - turbulent stress
+  - \tau
+  - \tau_{xy}
+reynolds_general:
+  canonical: Re
+  display: Re
+  unit: '-'
+  description: Generic Reynolds number — when no subscript indicates which
+  aliases:
+  - \text{Re}
+  - \mathrm{Re}
+  - Reynolds number
+  # R_c is Mack's critical stability Re (mack_critical_reynolds) — paper-scoped.
+  # Re_T is Walters turbulence Re — paper-scoped under re_vorticity_y2omega.
+re_x:
+  canonical: Re_x
+  display: Re_x
+  unit: '-'
+  description: Reynolds number based on streamwise distance x
+  aliases:
+  - Re_{x}
+  - (Re)_x
+  - Rex
+  - R_x
+prandtl:
+  canonical: Pr
+  display: Pr
+  unit: '-'
+  description: Prandtl number
+  aliases:
+  - \text{Pr}
+  - \mathrm{Pr}
+  - Prandtl number
+turbulent_prandtl:
+  canonical: Pr_t
+  display: Pr_t
+  unit: '-'
+  description: Turbulent Prandtl number
+  aliases:
+  - Pr_{t}
+  - Prt
+pressure:
+  canonical: p
+  display: p
+  unit: Pa
+  description: Static pressure
+  aliases:
+  - \mathrm{p}
+  - static pressure
+  - p_R
+  - p_0
+  # C_p is the pressure COEFFICIENT (or specific heat) — separately canonicalized
+  # as pressure_coefficient / specific_heat_constant_pressure. Do NOT alias here.
+temperature:
+  canonical: T
+  display: T
+  unit: K
+  description: Temperature
+  aliases:
+  - \mathrm{T}
+  - temperature
+strain_rate:
+  canonical: S
+  display: S
+  unit: 1/s
+  description: Mean strain rate magnitude
+  aliases:
+  - '|S|'
+  - strain rate
+vorticity_magnitude:
+  canonical: Ω
+  display: Ω
+  unit: 1/s
+  description: Vorticity magnitude
+  aliases:
+  - \Omega
+  - '|\Omega|'
+  - vorticity
+coordinate_x:
+  canonical: x
+  display: x
+  unit: m
+  description: Streamwise coordinate
+  aliases:
+  - x_1
+  - streamwise coordinate
+  - x_j
+coordinate_y:
+  canonical: y
+  display: y
+  unit: m
+  description: Wall-normal coordinate
+  aliases:
+  - x_2
+  - wall-normal coordinate
+  - \eta
+coordinate_z:
+  canonical: z
+  display: z
+  unit: m
+  description: Spanwise coordinate
+  aliases:
+  - x_3
+  - spanwise coordinate
+velocity_u:
+  canonical: u
+  display: u
+  unit: m/s
+  description: Streamwise velocity component
+  aliases:
+  - u_1
+  - streamwise velocity
+  - u_i
+velocity_v:
+  canonical: v
+  display: v
+  unit: m/s
+  description: Wall-normal velocity component
+  aliases:
+  - u_2
+  - wall-normal velocity
+velocity_w:
+  canonical: w
+  display: w
+  unit: m/s
+  description: Spanwise velocity component
+  aliases:
+  - u_3
+  - spanwise velocity
+time:
+  canonical: t
+  display: t
+  unit: s
+  description: Time
+  aliases:
+  - \mathrm{t}
+velocity_at_roughness_height:
+  canonical: U_k
+  display: U_k
+  unit: m/s
+  description: Streamwise velocity at the roughness height k inside the Blasius profile
+    (U_∞ · f'(η_k)). Directly determines Re_kk and is physically NOT the freestream
+    U_∞.
+  aliases:
+  - u_k
+  - U(k)
+  - u(k)
+  - U_{k}
+  - velocity at roughness height
+  - boundary-layer velocity at k
+roughness_diameter:
+  canonical: D
+  display: D
+  unit: m
+  description: Diameter of an isolated cylindrical or conical roughness element (Ergin
+    & White 2006 use D for pinned-array elements).
+  aliases:
+  - D_rough
+  - D_{rough}
+  - element diameter
+  - roughness diameter
+roughness_spacing:
+  canonical: λ_k
+  display: \lambda_k
+  unit: m
+  description: Streamwise or spanwise spacing between roughness elements in a distributed/array
+    configuration.
+  aliases:
+  - lambda_k
+  - \lambda_{k}
+  - roughness spacing
+  - element spacing
+strouhal_number_roughness:
+  canonical: Sr
+  display: Sr
+  unit: '-'
+  description: Strouhal number of unsteady vortex shedding behind a roughness element,
+    Sr = f δ*/U_∞ (Ergin & White 2006).
+  aliases:
+  - Sr
+  - St
+  - Sr_k
+  - Strouhal number
+  - Strouhal
+  - shedding Strouhal
+spot_formation_parameter_mayle:
+  canonical: N̂
+  display: \hat{N}
+  unit: '-'
+  description: Mayle's DIMENSIONLESS spot-formation parameter, N̂ ≈ 15·10⁻¹² · Tu^(7/4).
+    Convert to dimensional spot rate via n̂σ = N̂ · U_∞³ / ν² before inserting into
+    γ(x) = 1 - exp[-n̂σ(x-x_t)²].
+  aliases:
+  - N_hat
+  - N\hat
+  - \hat N
+  - Mayle N
+  - Mayle spot parameter
+  - dimensionless spot-formation parameter
+narasimha_universal_intermittency:
+  canonical: Γ̂
+  display: \hat{\Gamma}
+  unit: '-'
+  description: Narasimha's universal intermittency function, expressed in normalised
+    streamwise coordinate η = (x - x_t)/(x_(γ=0.75) - x_(γ=0.25)).
+  aliases:
+  - Gamma_hat
+  - \hat{Γ}
+  - universal intermittency
+  - Narasimha intermittency
+  - concentrated breakdown function
+relaxation_length_dn:
+  canonical: σΛ
+  display: \sigma\Lambda
+  unit: '-'
+  description: Dhawan-Narasimha spot-propagation parameter σΛ ≈ 0.412 in the universal
+    intermittency formulation. Distinct from σ̂n (the dimensional spot-formation rate).
+  aliases:
+  - sigma_Lambda
+  - σΛ_DN
+  - DN spot-propagation parameter
+  - Narasimha-Dhawan parameter
+re_transition_zone_mayle:
+  canonical: Re_LT
+  display: Re_{LT}
+  unit: '-'
+  description: Mayle 1991 transition-zone length Reynolds number, Re_LT ≈ 75 · Re_θ,t^(5/4)
+    for ZPG bypass transition.
+  aliases:
+  - Re_{L_T}
+  - Re_L_T
+  - Mayle zone-length Reynolds number
+  - transition-zone Reynolds number
+onset_function_lm:
+  canonical: F_onset
+  display: F_{onset}
+  unit: '-'
+  description: Langtry-Menter onset function controlling activation of the γ production
+    term. Function of Re_v, Re_θ_c, R_T.
+  aliases:
+  - F_{onset}
+  - F-onset
+  - onset function
+length_function_lm:
+  canonical: F_length
+  display: F_{length}
+  unit: '-'
+  description: Langtry-Menter length function controlling the streamwise extent of
+    the γ production zone.
+  aliases:
+  - F_{length}
+  - F-length
+  - transition length function
+gamma_effective:
+  canonical: γ_eff
+  display: \gamma_{eff}
+  unit: '-'
+  description: Effective intermittency in γ-Re_θ,t SST, blending the transported γ
+    with the separation-induced γ_sep.
+  aliases:
+  - gamma_eff
+  - γ_{eff}
+  - effective intermittency
+spatial_growth_rate:
+  canonical: -α_i
+  display: -\alpha_i
+  unit: 1/m
+  description: Spatial amplification rate of an unstable wave; the e^N method integrates
+    -α_i over x to yield the N-factor.
+  aliases:
+  - -alpha_i
+  - alpha_i
+  - α_i
+  - spatial growth rate
+  - amplification rate
+  paper_specific_aliases:
+    van_ingen_1956:
+    - β_i
+    - "\\beta_i"
+    mack_1984:
+    - σ
+    - "\\sigma"
+    - σ_max
+    - "\\sigma_{\\max}"
+    - σ_g
+    - "-\\alpha_i"
+    marxen_henningson_2011:
+    - Im(α)
+    - "Im(\\alpha)"
+    schubauer_skramstad_1947:
+    - β_i
+    - "\\beta_i"
+    ergin_white_2006:
+    - α
+    - α_{650}
+    - α_{1300}
+    saric_reed_white_2003:
+    - α_i
+disturbance_frequency:
+  canonical: f
+  display: f
+  unit: Hz
+  description: Frequency of a disturbance wave (TS wave, vortex shedding, free-stream
+    forcing). Used with Strouhal number and linear-stability dimensionless frequency
+    F = 2πfν/U_∞².
+  aliases:
+  - frequency
+  - omega/(2π)
+  - shedding frequency
+  paper_specific_aliases:
+    kachanov_1994:
+    - ω_1
+    - "\\omega_1"
+    - ω_{1/2}
+    - "\\omega_{1/2}"
+    - ω_subharmonic
+    - "Δω"
+    - "\\Delta\\omega"
+    diwan_ramesh_2009:
+    - f̄
+    - "\\bar{f}"
+    saric_reed_white_2003:
+    - f_SI
+    - "f_{SI}"
+    - f_TCF
+    - "f_{TCF}"
+    dick_kubacki_2017:
+    - f_d
+    - "f_{d}"
+    schubauer_skramstad_1947:
+    - β_r
+    - "\\beta_r"
+    van_ingen_1956:
+    - β_r/(2π)
+    tani_1969:
+    - ω
+
+# ═══════════════════════════════════════════════════════════════════════════
+# NEW CANONICALS — added in the 2026-05 paper-by-paper glossary review.
+# These cover quantities that appear in multiple papers but were missing
+# from the original glossary.  Critical for retrieval: ingest-time
+# normalisation rewrites every occurrence of the listed aliases to the
+# canonical form, so vector embeddings line up across papers.
+# ═══════════════════════════════════════════════════════════════════════════
+
+re_momentum_thickness_end_of_transition:
+  canonical: Re_θE
+  display: Re_θ,E
+  unit: '-'
+  description: |
+    Reynolds number based on momentum thickness at the END of transition
+    (γ ≈ 0.99 or last γ measurement).  Distinct from Re_θ,t (start of
+    transition).  AGS 1980 Eq. 6 establishes Re_θ,E = 2.667·Re_θ,S.
+  aliases:
+  - Re_theta_E
+  - Re_{θ,E}
+  - Re_{\theta,E}
+  - Re_θ,end
+  - Re_θ_end
+  - Re_θ_endt
+  paper_specific_aliases:
+    abu_ghannam_shaw_1980:
+    - R_{θ,E}
+    - R_{θ E}
+    - R_{\theta,E}
+    - R_{\theta E}
+    - R_θE
+    - R_θ_E
+
+re_x_end_of_transition:
+  canonical: Re_xE
+  display: Re_{x,E}
+  unit: '-'
+  description: |
+    Reynolds number based on streamwise distance x at the END of transition.
+    AGS 1980 Eq. 17 gives Re_xE = Re_xS + 16.8·(Re_xS)^0.8 for ZPG.
+  aliases:
+  - Re_x_E
+  - Re_{x,E}
+  - Re_x_end
+  paper_specific_aliases:
+    abu_ghannam_shaw_1980:
+    - R_{XE}
+    - R_{X,E}
+    - R_XE
+
+re_intermittency_zone_length:
+  canonical: Re_Lγ
+  display: Re_{L_γ}
+  unit: '-'
+  description: |
+    Reynolds number based on the intermittency-zone length L_γ — the
+    streamwise distance over which γ rises from 0.25 to 0.75.  AGS Eq. 14
+    (citing Dhawan & Narasimha): Re_Lγ = 5·(Re_xS)^0.8.  Dunham (1972)
+    relates this to the full transition length L by L = 3.36·L_γ.
+  aliases:
+  - Re_L_gamma
+  - Re_L_γ
+  paper_specific_aliases:
+    abu_ghannam_shaw_1980:
+    - R_{Lγ}
+    - R_{L,γ}
+    - R_{L\gamma}
+    - R_Lγ
+    - R_Lgamma
+
+intermittency_zone_length:
+  canonical: L_γ
+  display: L_γ
+  unit: m
+  description: |
+    Streamwise length over which intermittency rises from γ = 0.25 to
+    γ = 0.75.  AGS and Dhawan-Narasimha use this as the primary measure
+    of transition-zone extent.  Narasimha 1985 calls this λ (lowercase
+    lambda — see paper_specific_aliases on narasimha 1985 below for the
+    DN/Narasimha-only λ alias that maps here).  Distinct from the full
+    transition length Δx_tr.
+  aliases:
+  - L_gamma
+  - L_g
+  - intermittency zone length
+  paper_specific_aliases:
+    abu_ghannam_shaw_1980:
+    - L_γ
+    - L_g
+    dhawan_narasimha_1958:
+    - λ
+    - \lambda
+    narasimha_1985:
+    - λ
+    - \lambda
+
+shape_factor_start_of_transition:
+  canonical: H_S
+  display: H_S
+  unit: '-'
+  description: |
+    Shape factor (H = δ*/θ) measured at the START of transition.  Used
+    by AGS 1980 §4.2 in the normalised shape-factor function
+    H' = (H_S − H)/(H_S − H_E).
+  aliases:
+  - H_start
+  - H_s_t
+  paper_specific_aliases:
+    abu_ghannam_shaw_1980:
+    - H_S
+    - H_s
+    - H_{S}
+
+shape_factor_end_of_transition:
+  canonical: H_E
+  display: H_E
+  unit: '-'
+  description: |
+    Shape factor (H = δ*/θ) measured at the END of transition.  AGS
+    1980 §4.2 — see H' definition above.
+  aliases:
+  - H_end
+  - H_e_t
+  paper_specific_aliases:
+    abu_ghannam_shaw_1980:
+    - H_E
+    - H_e
+    - H_{E}
+
+shape_factor_normalized_ags:
+  canonical: H'
+  display: H′
+  unit: '-'
+  description: |
+    AGS 1980 §4.2 normalised shape-factor ratio that goes 0 → 1 as
+    transition proceeds:  H' = (H_S − H)/(H_S − H_E).  Eq. 26 fits
+    H' = sin(π/2 · y) where y is the streamwise progress through
+    transition.
+  aliases:
+  - H_prime
+  - H_normalized
+  - normalised shape factor
+  paper_specific_aliases:
+    abu_ghannam_shaw_1980:
+    - H'
+    - H′
+    - H prime
+
+ags_pressure_gradient_function:
+  canonical: F(λ_θ)
+  display: F(λ_θ)
+  unit: '-'
+  description: |
+    AGS 1980 pressure-gradient function (Eqs. 11–13).  F(λ_θ) is the
+    value of log_e(R_θ,S − 163) at τ_t = 0 for a given λ_θ; the slope
+    of the AGS log-form correlation is −F(λ_θ)/6.91.  Curve fits:
+      F(λ_θ) = 6.91 + 12.75·λ_θ + 63.64·λ_θ²    for λ_θ < 0  (Eq. 12)
+      F(λ_θ) = 6.91 + 2.48·λ_θ − 12.27·λ_θ²     for λ_θ > 0  (Eq. 13)
+  aliases:
+  - F_lambda_theta
+  - F_lambda
+  - F(lambda_theta)
+  paper_specific_aliases:
+    abu_ghannam_shaw_1980:
+    - F(λ_θ)
+    - F(\lambda_θ)
+    - F(\lambda_{\theta})
+
+tunnel_reference_velocity:
+  canonical: U_R
+  display: U_R
+  unit: m/s
+  description: |
+    Wind-tunnel reference velocity, measured at a fixed station upstream
+    or outside the boundary layer.  AGS 1980 uses U_R throughout (the
+    nomenclature page calls it "Tunnel reference velocity").  In ZPG
+    flow this equals U_∞; in PG flow it is the reference for normalising
+    the pressure coefficient.
+  aliases:
+  - U_ref
+  - U_reference
+  - tunnel reference velocity
+  paper_specific_aliases:
+    abu_ghannam_shaw_1980:
+    - U_R
+    - U_{R}
+
+streamwise_macroscale:
+  canonical: L_x
+  display: L_x
+  unit: m
+  description: |
+    Streamwise (axial) macroscale of free-stream turbulence — integral
+    length scale along the flow direction.  Distinct from the canonical
+    integral length scale Λ which AGS leaves undisambiguated.
+  aliases:
+  - streamwise macroscale
+  - axial macroscale
+  paper_specific_aliases:
+    abu_ghannam_shaw_1980:
+    - L_x
+    - L_{x}
+    - Lx
+
+transverse_macroscale:
+  canonical: L_y
+  display: L_y
+  unit: m
+  description: |
+    Transverse macroscale of free-stream turbulence — integral length
+    scale perpendicular to the flow direction.  AGS 1980 nomenclature.
+  aliases:
+  - transverse macroscale
+  - lateral macroscale
+  paper_specific_aliases:
+    abu_ghannam_shaw_1980:
+    - L_y
+    - L_{y}
+    - Ly
+
+grid_mesh_spacing:
+  canonical: M_grid
+  display: M
+  unit: m
+  description: |
+    Mesh spacing of turbulence-generating grid.  AGS 1980 uses uppercase
+    M for this.  CONFLICT WARNING: in Mayle 1991 (and many gas-turbine
+    papers) M means Mach number — paper-scoped to avoid the clash.
+  aliases:
+  - grid mesh spacing
+  - turbulence-grid mesh
+  paper_specific_aliases:
+    abu_ghannam_shaw_1980:
+    - M
+    - M_{grid}
+
+# ═══════════════════════════════════════════════════════════════════════════
+# Narasimha / DN intermittency model — additions
+# ═══════════════════════════════════════════════════════════════════════════
+
+narasimha_intermittency_transform:
+  canonical: F(γ)
+  display: F(γ)
+  unit: '-'
+  description: |
+    Narasimha 1985 §3 transform of intermittency:
+        F(γ) = [-ln(1 − γ)]^(1/2)
+    This linearises the universal γ(ξ) curve and is used to fit the
+    breakdown rate from experimental γ distributions.  Distinct from
+    F(λ_θ) (AGS pressure-gradient function).
+  aliases:
+  - F_gamma
+  - F(gamma)
+  paper_specific_aliases:
+    narasimha_1985:
+    - F(γ)
+    - F(\gamma)
+    dhawan_narasimha_1958:
+    - F(γ)
+    - F(\gamma)
+
+narasimha_dimensionless_spot_rate:
+  canonical: ñ
+  display: ñ
+  unit: '-'
+  description: |
+    Narasimha 1985 dimensionless spot-formation rate:
+        ñ = n·σ·ν² / U³
+    where n is the dimensional spot-formation rate (no./s·m) and σ is
+    the spot-propagation factor.  Used in the intermittency formula
+    γ(x) = 1 − exp(−ñ · σ · (x − x_t)²·U³/ν²).
+  aliases:
+  - n_tilde
+  - n_dimensionless
+  - dimensionless spot rate
+  paper_specific_aliases:
+    narasimha_1985:
+    - ñ
+    - \tilde{n}
+    - \tilde n
+
+narasimha_crumble_rate:
+  canonical: N_crumble
+  display: N
+  unit: '-'
+  description: |
+    Narasimha 1985 non-dimensional spot-formation rate ("crumble"):
+        N = n·σ·θ_t³ / ν
+    where n is the dimensional spot rate, σ is the spot propagation
+    factor, and θ_t is the momentum thickness at start of transition.
+    CONFLICT WARNING: in stability theory N is the N-factor amplification
+    exponent — these are DIFFERENT quantities sharing one letter.
+    Paper-scoped to narasimha_1985 so we don't rewrite N anywhere
+    stability papers use it.
+  aliases:
+  - N_n
+  - N_n_crumble
+  - Narasimha crumble
+  paper_specific_aliases:
+    narasimha_1985:
+    - N
+
+# ═══════════════════════════════════════════════════════════════════════════
+# Mayle 1991 — additions / clarifications
+# ═══════════════════════════════════════════════════════════════════════════
+
+mayle_acceleration_at_transition:
+  canonical: K_t
+  display: K_t
+  unit: '-'
+  description: |
+    Acceleration parameter K = (ν/U²)(dU/dx) EVALUATED AT the start of
+    transition (Mayle 1991 Fig. 2).  The base parameter K is already
+    in the glossary under acceleration_parameter; K_t is the
+    transition-onset value used as an axis in Mayle's regime maps.
+  aliases:
+  - K_t
+  - K_{t}
+  - K_transition
+  paper_specific_aliases:
+    mayle_1991:
+    - K_t
+
+mayle_wake_passing_period:
+  canonical: τ_wake
+  display: τ
+  unit: s
+  description: |
+    Wake-passing period in Mayle 1991 — the time between successive
+    upstream-blade-wake impingements on a downstream blade boundary
+    layer.  CONFLICT WARNING: bare τ in turbulence-model literature
+    means wall shear stress, and τ_t in AGS means turbulence intensity.
+    Paper-scoped to mayle_1991.
+  aliases:
+  - wake_passing_period
+  - tau_wake
+  paper_specific_aliases:
+    mayle_1991:
+    - τ
+    - \tau
+    - τ_wake
+    - τ_w (wake)
+
+mayle_wake_passing_frequency:
+  canonical: ω_wake
+  display: ω
+  unit: Hz
+  description: |
+    Wake-passing frequency in Mayle 1991, ω_wake = 2π/τ_wake.
+    CONFLICT WARNING: bare ω is the specific dissipation rate in
+    k-ω turbulence models.  Paper-scoped to mayle_1991.
+  aliases:
+  - wake_passing_frequency
+  - omega_wake
+  paper_specific_aliases:
+    mayle_1991:
+    - ω
+    - \omega
+
+mayle_thermal_intermittency:
+  canonical: γ_h
+  display: γ_h
+  unit: '-'
+  description: |
+    Thermal intermittency factor (Mayle 1991) — used for heat-transfer
+    transitional models where the thermal field lags the velocity-field
+    intermittency γ.
+  aliases:
+  - gamma_h
+  - thermal intermittency
+  - γ_thermal
+  paper_specific_aliases:
+    mayle_1991:
+    - γ_h
+    - γₕ
+    - \gamma_h
+
+mayle_dimensionless_pg_parameter:
+  canonical: λ_0
+  display: λ_0
+  unit: '-'
+  description: |
+    Mayle 1991 pressure-gradient parameter defined as λ_0 = (θ²/ν)(dU/dx).
+    This is IDENTICAL to the Thwaites pressure-gradient parameter λ_θ
+    in the canonical/AGS notation — Mayle just writes it as λ_0.
+    Map to λ_θ via paper_specific_alias so AGS, LM, and Mayle chunks
+    all retrieve under the same canonical token.
+  aliases: []
+  # All mappings handled below under pressure_gradient_parameter's
+  # paper_specific_aliases for mayle_1991.
+
+# ═══════════════════════════════════════════════════════════════════════════
+# Langtry-Menter 2009 — additions
+# ═══════════════════════════════════════════════════════════════════════════
+
+lm_local_transition_reynolds:
+  canonical: Re_θt_local
+  display: \widetilde{Re}_{θ,t}
+  unit: '-'
+  description: |
+    LANGTRY-MENTER 2009 LOCAL transition-onset momentum-thickness
+    Reynolds number, obtained from a TRANSPORT equation (not the
+    freestream correlation).  The tilde distinguishes it from the
+    freestream-based Re_θ,t.  Defer to Agent 2 — this is a transport-
+    equation closure quantity, not algebraic.
+  aliases:
+  - Re_theta_t_local
+  - Re_{theta,t}_local
+  paper_specific_aliases:
+    langtry_menter_2009:
+    - \widetilde{Re}_{θ t}
+    - \widetilde{Re}_{\theta t}
+    - \widetilde{Re}_{θ,t}
+
+lm_critical_transition_reynolds:
+  canonical: Re_θc
+  display: Re_{θ,c}
+  unit: '-'
+  description: |
+    LANGTRY-MENTER 2009 CRITICAL Re_θ — the threshold below which
+    intermittency cannot grow.  Distinct from Re_θ,t (transition onset).
+  aliases:
+  - Re_theta_c
+  - Re_{θ,c}
+  - Re_{\theta,c}
+  - Re_θ_crit
+  paper_specific_aliases:
+    langtry_menter_2009:
+    - Re_{θc}
+
+lm_viscosity_ratio:
+  canonical: R_T
+  display: R_T
+  unit: '-'
+  description: |
+    LANGTRY-MENTER 2009 viscosity ratio R_T = μ_t/μ.  Used as input to
+    F_onset.  CONFLICT WARNING: in some older papers R_T is the
+    "correlation coefficient" (AGS uses it that way), and in others it
+    is the turbulent Reynolds number.  Paper-scoped to LM 2009 (also
+    Walters-Cokljat, who use the same convention).
+  aliases:
+  - viscosity_ratio
+  - mu_t/mu
+  paper_specific_aliases:
+    langtry_menter_2009:
+    - R_T
+    - R_{T}
+    walters_cokljat_2008:
+    - R_T
+    - R_{T}
+    walters_leylek_2004:
+    - R_T
+    - R_{T}
+    durbin_2012:
+    - N_t
+    - "N_{t}"
+    - "ν_T/ν"
+    durbin_2017:
+    - R_T
+    - "R_{T}"
+    ge_arolla_durbin_2014:
+    - R_t
+    - "R_{t}"
+    - "ν_T/ν"
+    dick_kubacki_2017:
+    - R_T
+    - "R_{T}"
+    - μ_t/μ
+    - "\\mu_t/\\mu"
+    friedlander_georgiadis_2023:
+    - μ_t/μ
+    - "\\mu_t/\\mu"
+    menter_2015:
+    - R_T
+    - "R_{T}"
+    langtry_menter_2006:
+    - R_T
+    - "R_{T}"
+
+lm_wall_distance_reynolds:
+  canonical: R_y
+  display: R_y
+  unit: '-'
+  description: |
+    LANGTRY-MENTER 2009 wall-distance-based turbulent Reynolds number
+    R_y = ρ y √k / μ.  Input to F_onset.  CONFLICT WARNING:
+    Coder-Maughmer 2014 also uses Re_y but defines it differently:
+    Re_y = ρ U d/μ (velocity-based).  Same letter, distinct formula —
+    paper-scoped.  Dick-Kubacki 2017 uses Re_y = √k y/ν (same as LM).
+  aliases:
+  - R_y
+  - Re_y
+  - R_{y}
+  paper_specific_aliases:
+    langtry_menter_2009:
+    - R_y
+    langtry_menter_2006:
+    - R_y
+    - R_f
+    dick_kubacki_2017:
+    - Re_y
+    - "Re_{y}"
+    walters_leylek_2004:
+    - Re_y
+    - "Re_{y}"
+
+lm_vorticity_reynolds:
+  canonical: Re_v
+  display: Re_v
+  unit: '-'
+  description: |
+    LANGTRY-MENTER 2009 vorticity Reynolds number, Re_v = ρ y² Ω / μ
+    (often called R_ν).  Used in the F_onset correlation to detect the
+    location where transition initiates.  CRITICAL for the γ-Re_θ-SST
+    model — peaks inside the laminar BL near the transition point.
+  aliases:
+  - Re_omega
+  - vorticity Reynolds
+  - R_omega
+  paper_specific_aliases:
+    langtry_menter_2009:
+    - R_ν
+    - R_{ν}
+    - R_\nu
+    - R_{\nu}
+    durbin_2012:
+    - R_ν
+    - "R_{\\nu}"
+    durbin_2017:
+    - R_ν
+    - "R_{\\nu}"
+    ge_arolla_durbin_2014:
+    - R_ν
+    - "R_{\\nu}"
+    dick_kubacki_2017:
+    - Re_Ω
+    - "Re_{\\Omega}"
+    - Re_V
+    walters_cokljat_2008:
+    - Re_Ω
+    - "Re_{\\Omega}"
+    walters_leylek_2004:
+    - Re_Ω
+    - "Re_{\\Omega}"
+    furst_2012:
+    - Re_Ω
+    - "Re_{\\Omega}"
+    furst_2013:
+    - Re_Ω
+    - "Re_{\\Omega}"
+    menter_2015:
+    - Re_V
+    - "Re_{V}"
+    - Re_v
+    langtry_menter_2006:
+    - Re_V
+    - "Re_{V}"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# Walters-Cokljat kk-Lω — additions
+# ═══════════════════════════════════════════════════════════════════════════
+
+laminar_kinetic_energy:
+  canonical: k_L
+  display: k_L
+  unit: m²/s²
+  description: |
+    Walters-Cokljat 2008 LAMINAR kinetic energy — energy of the low-
+    frequency streamwise (Klebanoff-mode) fluctuations in the
+    pretransitional boundary layer.  Distinct from k (turbulent KE).
+    The kk-Lω model adds a transport equation for k_L.
+  aliases:
+  - k_L
+  - laminar kinetic energy
+  - laminar TKE
+  - k_{L}
+  paper_specific_aliases:
+    walters_cokljat_2008:
+    - k_L
+    - k_{L}
+    walters_leylek_2004:
+    - k_L
+    - k_{L}
+    furst_2012:
+    - k_L
+    - k_{L}
+    - k_l
+    furst_2013:
+    - k_L
+    - k_{L}
+    - k_l
+    dick_kubacki_2017:
+    - k_L
+    - k_{L}
+    liu_lu_wang_wang_yan_2022:
+    - k_L
+    - k_{L}
+    durbin_2017:
+    - k_L
+    - k_{L}
+    zhang_chen_zhao_liu_yan_2022:
+    - k_p
+    - k_{p}
+    suzen_huang_2000:
+    - k_L
+    - k_{L}
+
+# ═══════════════════════════════════════════════════════════════════════════
+# Generic length-of-transition (already covered under transition_length;
+# we add paper-specific aliases here so each paper's convention maps in).
+# ═══════════════════════════════════════════════════════════════════════════
+
+# ═══════════════════════════════════════════════════════════════════════════
+# 2026-05 EXPANSION (Wave 2) — synthesis of 13 agent-inventoried papers.
+# These canonicals were added because the quantity either (a) appears in
+# ≥2 of the 13 agent inventories, or (b) is the primary variable of a
+# transport equation / correlation that a user is likely to query (e.g.,
+# Coder's AFT ñ — only one paper but the central AFT variable).
+# Every paper-specific alias is expanded to Unicode + LaTeX (tilde, hat,
+# bar, prime, subscript) forms so the markdown corpus matches.
+# ═══════════════════════════════════════════════════════════════════════════
+
+# ── Compressible stability / Mack 1984 family ─────────────────────────────
+
+mack_stability_reynolds:
+  canonical: R_stab
+  display: R
+  unit: '-'
+  description: |
+    Mack 1984's primary stability Reynolds number based on the Falkner-
+    Skan similarity length L* = sqrt(ν* x*/U_1*), so R = sqrt(Re_x).
+    Used throughout compressible-stability tables (R_cr, R_L, R_U, R_s).
+    CONFLICT WARNING: bare R also means chord-Reynolds in Van Ingen 1956,
+    rotating-disk Reynolds in Saric-Reed-White 2003, or Re_δ in Westin
+    1994 / Zaki-Durbin 2005.  Paper-scoped so it does not collide with
+    canonical Re or with R_T (viscosity ratio in LM 2009).
+  aliases:
+  - R_Mack
+  - sqrt(Re_x)
+  - similarity Reynolds number
+  paper_specific_aliases:
+    mack_1984:
+    - R_s
+    - "R_{s}"
+    - R_0
+    - "R_{0}"
+    - R_c
+    - "R_{c}"
+    - R_{cr}
+    - R_cr
+    - R_L
+    - "R_{L}"
+    - R_U
+    - "R_{U}"
+    - R_δ
+    - "R_{\\delta}"
+    reed_saric_arnal_1996:
+    - R_RSA
+    - sqrt(Re_x)
+    - R_I
+    - "R_{I}"
+    - R_II
+    - "R_{II}"
+    saric_reed_white_2003:
+    - R_disk
+    - "R = r\\sqrt{\\Omega/\\nu}"
+
+mack_critical_reynolds:
+  canonical: R_cr
+  display: R_{cr}
+  unit: '-'
+  description: |
+    Minimum critical Reynolds number — smallest R at which a wave of any
+    frequency or wave angle first becomes neutrally stable.  Distinct
+    from R_L and R_U (lower/upper branch neutral points at fixed ω).
+    Used in Mack 1984, Reed-Saric-Arnal 1996, Van Ingen 1956/2008,
+    Schubauer-Skramstad 1947.
+  aliases:
+  - Re_cr
+  - "Re_{cr}"
+  - R_{cr}
+  - R_crit
+  - Re_crit
+  - critical Reynolds number
+  - minimum critical Reynolds number
+
+mack_dimensionless_frequency:
+  canonical: F_stab
+  display: F
+  unit: '-'
+  description: |
+    Mack 1984's dimensionless disturbance frequency F = ω* ν*/U_1*² = ω/R.
+    Constant along a fixed-frequency wave trajectory in a Blasius layer;
+    tabulated × 10⁶ throughout the linear-stability literature.  Used by
+    Mack 1984, Van Ingen 2008, Reed-Saric-Arnal 1996, Herbert 1988,
+    Westin 1994, Jacobs-Durbin 2001, Schubauer-Skramstad 1947.  CONFLICT
+    WARNING: F is also (i) AGS's pressure-gradient function F(λ_θ),
+    (ii) Langtry-Menter's F_onset / F_length closure functions,
+    (iii) Brandt 2004's volume-forcing amplitude.  Paper-scoping
+    confines this F to the stability-theory frequency parameter.
+  aliases:
+  - dimensionless frequency
+  - F-frequency
+  - frequency parameter
+  - F-parameter
+  - "F × 10^4"
+  - "F × 10^6"
+  - ω/R
+  - "ω ν / U_∞^2"
+  - "ω ν / U_1^{*2}"
+  paper_specific_aliases:
+    mack_1984:
+    - F
+    - "F × 10^4"
+    van_ingen_2008:
+    - F
+    - F_∞
+    - "F_{\\infty}"
+    reed_saric_arnal_1996:
+    - F
+    - "F = 2 \\pi \\nu f / U_\\infty^2"
+    herbert_1988:
+    - F
+    westin_et_al_1994:
+    - F
+    - "F = 2 \\pi f \\nu \\cdot 10^6 / U_0^2"
+    jacobs_durbin_2001:
+    - F
+    - "F = 10^6 \\omega \\nu / U_\\infty^2"
+    schubauer_skramstad_1947:
+    - F_ss
+    - "\\beta_r \\nu / U_0^2"
+
+mack_edge_mach:
+  canonical: M_e
+  display: M_e
+  unit: '-'
+  description: |
+    Mach number at the edge of the boundary layer, M_e = U_e/a_e.
+    Primary control parameter of compressible-stability theory.  Mack
+    1984 also uses M_∞ for the undisturbed-freestream Mach number on
+    a swept wing.  Friedlander-Georgiadis 2023 uses M_∞ throughout.
+  aliases:
+  - M_1
+  - "M_{1}"
+  - M_∞
+  - "M_{\\infty}"
+  - M_inf
+  - edge Mach number
+  - freestream Mach number
+  - Mach edge
+  paper_specific_aliases:
+    mack_1984:
+    - M_1
+    - "M_{1}"
+    - M_∞
+    - "M_{\\infty}"
+    reed_saric_arnal_1996:
+    - M_e
+    - "M_{e}"
+    friedlander_georgiadis_2023:
+    - M_∞
+    - "M_{\\infty}"
+    - Ma_∞
+    - "Ma_{\\infty}"
+    liu_lu_wang_wang_yan_2022:
+    - Ma_∞
+    - "Ma_{\\infty}"
+    - Ma_t
+    - "Ma_{t}"
+
+mack_relative_mach:
+  canonical: M̄
+  display: \bar{M}
+  unit: '-'
+  description: |
+    Mack 1984 relative local Mach number M̄ = (αU + βW − ω)·M_1 /
+    [sqrt(α²+β²)·T^(1/2)].  M̄² > 1 somewhere in the boundary layer
+    is the necessary condition for Mack 2nd-mode (higher-mode)
+    instability.  Real for temporal-neutral waves; complex otherwise.
+    Liu et al. 2022 use Ma_rel for the same concept on hypersonic cones.
+  aliases:
+  - bar_M
+  - M_bar
+  - "\\bar{M}"
+  - "\\bar{M}_1"
+  - relative Mach number
+  - relative local Mach number
+  paper_specific_aliases:
+    mack_1984:
+    - M̄
+    - "\\bar{M}"
+    - "\\bar{M}_1"
+    reed_saric_arnal_1996:
+    - M̄
+    - "\\bar{M}"
+    liu_lu_wang_wang_yan_2022:
+    - Ma_rel
+    - "Ma_{rel}"
+
+falkner_skan_hartree:
+  canonical: β_h
+  display: β_h
+  unit: '-'
+  description: |
+    Hartree pressure-gradient parameter for the Falkner-Skan family,
+    β_h = 2m/(m+1) where U_e ∝ x^m.  Range: −0.1988 (separation) → 0
+    (Blasius) → 1.0 (stagnation/attachment line).  CONFLICT WARNING:
+    bare β has many other uses (spanwise wavenumber, Clauser parameter,
+    Emmons spot-velocity ratio).  Subscript h is mandatory.  Reed-
+    Saric-Arnal 1996 instead writes G for this same parameter.
+  aliases:
+  - Hartree parameter
+  - Falkner-Skan beta
+  - "\\beta_h"
+  - "\\beta_{h}"
+  - beta_H
+  - Hartree β
+  paper_specific_aliases:
+    mack_1984:
+    - β_h
+    - "\\beta_h"
+    - "\\beta_{h}"
+    narasimha_1985:
+    - β_FS
+    - "\\beta_{FS}"
+    - Falkner-Skan β
+    van_ingen_1956:
+    - β
+    - "\\beta"
+    van_ingen_2008:
+    - β
+    - "\\beta"
+    saric_reed_white_2003:
+    - β
+    - "\\beta"
+    reed_saric_arnal_1996:
+    - G
+    - Hartree G
+    - "Hartree-G"
+    reshotko_2001:
+    - β_H
+    - "\\beta_H"
+
+falkner_skan_m:
+  canonical: m_fs
+  display: m
+  unit: '-'
+  description: |
+    Falkner-Skan velocity-gradient parameter m = (x/U_e)·dU_e/dx.
+    Related to Hartree β_h by β_h = 2m/(m+1).  Used by Mack 1984
+    (paper-scoped to avoid collision with Narasimha's m = Thwaites
+    λ_θ), Van Ingen 2008, Westin 1994.
+  aliases:
+  - Falkner-Skan m
+  - power-law exponent
+  paper_specific_aliases:
+    mack_1984:
+    - m
+    - "(m+1)"
+    van_ingen_2008:
+    - M
+    - "U = u_1 x^M"
+    westin_et_al_1994:
+    - m
+    # Narasimha 1985's m = Thwaites λ_θ — already aliased there.
+
+# ── Wavenumbers / stability theory ────────────────────────────────────────
+
+streamwise_wavenumber:
+  canonical: α_w
+  display: α
+  unit: 1/m
+  description: |
+    Complex streamwise wavenumber α = α_r + i α_i used in linear-stability
+    normal-mode ansatz exp(iαx + iβz − iωt).  α_r is the physical
+    wavenumber 2π/λ_x; α_i is minus the spatial growth rate.  Distinct
+    from spatial_growth_rate (canonical -α_i, which is the GROWTH ONLY).
+    CONFLICT WARNING: bare α has many other meanings (angle of attack,
+    Emmons spot half-angle, etc.).  Paper-scoped to stability papers.
+  aliases:
+  - chordwise wavenumber
+  - streamwise wavenumber
+  - "\\alpha_r + i \\alpha_i"
+  paper_specific_aliases:
+    mack_1984:
+    - α
+    - "\\alpha"
+    - α_r
+    - "\\alpha_r"
+    - α̃
+    - "\\tilde{\\alpha}"
+    reed_saric_arnal_1996:
+    - α
+    - "\\alpha"
+    herbert_1988:
+    - α
+    - "\\alpha"
+    - α̂
+    - "\\hat{\\alpha}"
+    van_ingen_1956:
+    - α
+    - "\\alpha"
+    schubauer_skramstad_1947:
+    - α
+    - "α δ*"
+    - "\\alpha \\delta^*"
+    andersson_brandt_bottaro_henningson_2001:
+    - α
+    - "\\alpha"
+    brandt_2004:
+    - α
+    - "\\alpha"
+    jacobs_durbin_2001:
+    - α
+    - "\\alpha"
+    matsubara_alfredsson_2001:
+    - α
+    - α*
+    - "\\alpha^*"
+    - "\\alpha \\delta^*"
+    kachanov_1994:
+    - α_1
+    - "\\alpha_1"
+    - α_{1/2}
+    - "\\alpha_{1/2}"
+    - α̂
+    - "\\hat{\\alpha}"
+
+spanwise_wavenumber:
+  canonical: β_w
+  display: β
+  unit: 1/m
+  description: |
+    Spanwise (cross-flow) wavenumber β = 2π/λ_z of an oblique wave or
+    streak.  Considered real because of spanwise homogeneity.  CONFLICT
+    WARNING: bare β is also the Hartree pressure-gradient parameter
+    (see falkner_skan_hartree above) in Van Ingen / Saric-Reed-White —
+    Reed-Saric-Arnal disambiguates by using G for Hartree, β for
+    spanwise wavenumber.  Marxen 2011 forces with β_0 = 0.3
+    (fundamental forcing frequency), separate paper-specific.
+  aliases:
+  - spanwise wavenumber
+  - cross-flow wavenumber
+  - "2 \\pi / \\lambda_z"
+  paper_specific_aliases:
+    reed_saric_arnal_1996:
+    - β
+    - "\\beta"
+    - β_r
+    - "\\beta_r"
+    herbert_1988:
+    - β
+    - "\\beta"
+    - b
+    - b_β
+    andersson_brandt_bottaro_henningson_2001:
+    - β
+    - "\\beta"
+    brandt_2004:
+    - β
+    - "\\beta"
+    matsubara_alfredsson_2001:
+    - β
+    - "\\beta"
+    - "β = 2 \\pi / \\lambda_z"
+    jacobs_durbin_2001:
+    - β
+    - "\\beta"
+    kachanov_1994:
+    - β
+    - "\\beta"
+    - β_1
+    - "\\beta_1"
+    mack_1984:
+    - β_θ
+    - "\\beta_\\theta"
+    saric_reed_white_2003:
+    - k_CF
+    - "k = 2\\pi/\\lambda_{CF}"
+    marxen_henningson_2011:
+    - γ_0
+    - "\\gamma_0"
+
+floquet_exponent:
+  canonical: γ_floq
+  display: \gamma_{floq}
+  unit: '-'
+  description: |
+    Floquet characteristic exponent γ = γ_r + i γ_i for secondary
+    instability of a 2D primary TS wave.  γ_r is the spatial growth
+    rate of the 3D secondary mode; γ_i is the streamwise detuning
+    parameter (γ_i = 0 fundamental, γ_i = 1/2 subharmonic, 0<|γ_i|<1/2
+    detuned).  CONFLICT WARNING: γ canonically means intermittency
+    factor — paper-scoped strictly to herbert_1988 and the streak-
+    stability papers (ABH 2001 uses γ for Floquet detuning, also
+    paper-scoped here).
+  aliases:
+  - Floquet exponent
+  - Floquet characteristic exponent
+  - Floquet detuning
+  paper_specific_aliases:
+    herbert_1988:
+    - γ
+    - "\\gamma"
+    - γ_r
+    - "\\gamma_r"
+    - γ_i
+    - "\\gamma_i"
+    andersson_brandt_bottaro_henningson_2001:
+    - γ
+    - "\\gamma"
+
+phase_velocity_complex:
+  canonical: c_phase
+  display: c
+  unit: '-'
+  description: |
+    Complex phase velocity c = c_r + i c_i = ω/α of an instability
+    wave, normalised by edge velocity.  Used in Mack 1984 (with
+    special phase velocities c_s, c_0, c_02 marking generalised-
+    inflection-point, sonic, and upper-sonic limits), Reed-Saric-
+    Arnal 1996, Schubauer-Skramstad 1947, Herbert 1988, Van Ingen 1956.
+    CONFLICT WARNING: bare c also denotes airfoil chord, sound speed,
+    or skin-friction coefficient — paper-scoped.
+  aliases:
+  - phase velocity
+  - "c_r + i c_i"
+  - phase speed
+  - wave speed
+  paper_specific_aliases:
+    mack_1984:
+    - c_r
+    - c_i
+    - c_s
+    - "c_{s}"
+    - c_0
+    - "c_{0}"
+    - c_02
+    - "c_{02}"
+    - c̃
+    - "\\tilde{c}"
+    reed_saric_arnal_1996:
+    - c_r
+    - "c_{r}"
+    - c*
+    - "c^*"
+    schubauer_skramstad_1947:
+    - c_r
+    - "c/U_0"
+    herbert_1988:
+    - c_r
+    - "c_{r}"
+
+# ── Klebanoff modes / streak instability ──────────────────────────────────
+
+streak_amplitude:
+  canonical: A_streak
+  display: A
+  unit: '-'
+  description: |
+    Klebanoff-streak nonlinear amplitude A = (1/2)[max(U-U_B) − min(U-U_B)]
+    used as the bifurcation parameter for secondary instability of streaks.
+    Critical A ≈ 26 % U_∞ for subharmonic-sinuous breakdown (ABH 2001)
+    and ≈ 30 % U_∞ for streak breakdown (Brandt 2004).  CONFLICT WARNING:
+    A also means Herbert's TS-wave amplitude, AGS log-law constant,
+    Mack's incoming-wave amplitude, etc.  Paper-scoped strictly.
+  aliases:
+  - streak amplitude
+  - Klebanoff streak amplitude
+  paper_specific_aliases:
+    andersson_brandt_bottaro_henningson_2001:
+    - A
+    - A_s
+    - A_v
+    brandt_2004:
+    - A
+    - "\\bar{u}_{rms}/U_\\infty"
+    herbert_1988:
+    - A
+    - A_TS
+    kachanov_1994:
+    - A_1
+    - "A_{1}"
+    - A^+
+    - A^-
+    - A_m
+    - A_s
+
+klebanoff_mode:
+  canonical: KMODE_KLEBANOFF
+  display: Klebanoff mode
+  unit: '-'
+  description: |
+    Klebanoff mode / breathing mode / streamwise streak — superposition
+    of OS and Squire continuous-spectrum modes that produces strong
+    streamwise-velocity fluctuations in the pretransitional boundary
+    layer with u_rms ∝ x^(1/2), peaking near y ≈ 1.3 δ*.  Term used
+    by Klebanoff 1971; central to bypass-transition discussions in
+    Westin 1994, Matsubara-Alfredsson 2001, Jacobs-Durbin 2001,
+    Brandt 2004, Zaki-Durbin 2005, Durbin-Wu 2007.
+  aliases:
+  - Klebanoff mode
+  - K-mode
+  - breathing mode
+  - streamwise streak
+  - laminar streak
+  - pre-transitional streak
+
+floquet_detuning:
+  canonical: ε_detune
+  display: ε
+  unit: '-'
+  description: |
+    Floquet detuning parameter ε for secondary-instability classification.
+    ε = 0 fundamental resonance (K-type/peak-valley), ε = 1 subharmonic
+    resonance (H-type/staggered), 0 < |ε| < 1 detuned / combination
+    modes (C-type triad).  CONFLICT WARNING: ε also means dissipation
+    rate in k-ε models — paper-scoped.
+  aliases:
+  - detuning
+  - varepsilon
+  - "\\varepsilon"
+  paper_specific_aliases:
+    herbert_1988:
+    - ε
+    - "\\varepsilon"
+    walters_leylek_2004:
+    - ε
+    - "\\varepsilon"
+    sreenivasan_1989:
+    - ε
+    - "\\langle \\varepsilon \\rangle"
+
+breakdown_type_label:
+  canonical: BREAKDOWN_TYPE
+  display: breakdown type
+  unit: '-'
+  description: |
+    Conceptual label for the secondary-breakdown mechanism observed in
+    boundary-layer transition.  K-type (Klebanoff): peak-valley splitting
+    of Λ-vortices, fundamental resonance ε=0.  H-type (Herbert):
+    subharmonic resonance ε=1, staggered Λ-vortices.  C-type (Craik):
+    detuned triad resonance.  N-type (Novosibirsk): subharmonic
+    parametric resonance in low-Tu Russian experiments (Kachanov).
+    These are STRINGS, not numerical quantities — they should be
+    indexed as concept tokens, never aliased to acceleration parameter
+    K or shape factor H.
+  aliases:
+  - K-type
+  - H-type
+  - C-type
+  - N-type
+  - Klebanoff breakdown
+  - Herbert breakdown
+  - Craik triad
+  - Novosibirsk breakdown
+  - peak-valley splitting
+  - staggered Λ-vortex
+
+# ── Pre-transitional / Walters-Cokljat-family auxiliary quantities ─────────
+
+total_fluctuation_kinetic_energy:
+  canonical: k_TOT
+  display: k_{TOT}
+  unit: m²/s²
+  description: |
+    Total fluctuation kinetic energy k_TOT = k_T + k_L used in
+    Walters-Cokljat 2008 / Walters-Leylek 2004 / Furst 2012-13.
+    Distinct from k (canonical TKE) because of the LAMINAR contribution.
+  aliases:
+  - k_total
+  - k_{Tot}
+  - k_TOT
+  - "k_T + k_L"
+  paper_specific_aliases:
+    walters_cokljat_2008:
+    - k_TOT
+    - "k_{TOT}"
+    walters_leylek_2004:
+    - k_TOT
+    - "k_{TOT}"
+    furst_2013:
+    - k_Tot
+    - "k_{Tot}"
+    liu_lu_wang_wang_yan_2022:
+    - "k_L + v̄²"
+
+walters_eff_length_scale:
+  canonical: λ_eff
+  display: λ_{eff}
+  unit: m
+  description: |
+    Walters-Cokljat / Walters-Leylek / Furst effective turbulence length
+    scale λ_eff = min(C_λ d, λ_T) where d is wall distance and λ_T is
+    the unrestricted turbulence length scale.  Used in their k-k_L-ω
+    model for shear sheltering and small-scale eddy-viscosity definition.
+    CONFLICT WARNING: λ_eff is NOT the canonical Thwaites λ_θ — paper-
+    scoped to the Walters family.
+  aliases:
+  - lambda_eff
+  - λ_{eff}
+  - effective length scale
+  - "min(C_\\lambda d, \\lambda_T)"
+
+walters_turb_length_scale:
+  canonical: λ_T_turb
+  display: λ_T
+  unit: m
+  description: |
+    Walters-Cokljat / Furst unrestricted turbulence length scale
+    λ_T = sqrt(k_T)/ω (k-ω version) or k^(3/2)/ε (k-ε version in
+    Walters-Leylek 2004).  CONFLICT WARNING: distinct from canonical
+    λ_θ (Thwaites pressure-gradient parameter) — paper-scoped to the
+    Walters family.  Liu et al. 2022 use ξ_t for the analogous variable.
+  aliases:
+  - lambda_T
+  - λ_{T}
+  - turbulence length scale
+  - "\\sqrt{k_T}/\\omega"
+
+walters_shear_sheltering_function:
+  canonical: f_SS
+  display: f_{SS}
+  unit: '-'
+  description: |
+    Walters-Cokljat / Walters-Leylek / Furst / Liu / Dick shear-sheltering
+    damping function f_SS = exp[-(C_SS·ν·Ω/k_T)²], close to 1 outside
+    the BL and 0 deep inside.  Limits which freestream turbulence
+    "penetrates" past the BL edge into the pretransitional shear region
+    (Hunt-Durbin sheltering).
+  aliases:
+  - f_SS
+  - f_ss
+  - shear-sheltering function
+  - "\\exp[-(C_{SS} \\nu \\Omega / k_T)^2]"
+
+walters_bypass_threshold:
+  canonical: β_BP
+  display: β_{BP}
+  unit: '-'
+  description: |
+    Walters-Cokljat / Walters-Leylek / Furst / Liu / Dick BYPASS transition
+    threshold function β_BP = 1 − exp(−φ_BP/A_BP), with φ_BP =
+    max(k_T/(νΩ) − C_BP,crit, 0).  Activates the k_L → k_T transfer
+    once the local Reynolds-number ratio exceeds the bypass threshold.
+    CONFLICT WARNING: β here is NOT the Hartree pressure-gradient
+    parameter or the Clauser parameter — paper-scoped strictly.
+  aliases:
+  - beta_BP
+  - β_bp
+  - bypass-threshold function
+
+walters_natural_threshold:
+  canonical: β_NAT
+  display: β_{NAT}
+  unit: '-'
+  description: |
+    Walters-Cokljat / Walters-Leylek / Furst / Liu / Dick NATURAL
+    transition threshold function β_NAT = 1 − exp(−φ_NAT/A_NAT) with
+    φ_NAT = max(Re_Ω − C_NAT,crit/f_NAT,crit, 0).  Drives the natural
+    (TS-mediated) k_L → k_T transfer in the absence of bypass-class
+    forcing.  CONFLICT WARNING: β here is NOT Hartree / Clauser β.
+  aliases:
+  - beta_NAT
+  - β_nat
+  - natural-threshold function
+
+walters_TS_threshold:
+  canonical: β_TS
+  display: β_{TS}
+  unit: '-'
+  description: |
+    Walters-Cokljat / Furst / Walters-Leylek Tollmien-Schlichting threshold
+    function β_TS = 1 − exp(−(max(Re_Ω − C_TS,crit, 0))²/A_TS).  Activates
+    the orderly-mode contribution to ν_T,l once the vorticity-Reynolds
+    number exceeds the TS critical.
+  aliases:
+  - beta_TS
+  - β_ts
+  - Tollmien-Schlichting threshold function
+
+walters_bypass_transfer:
+  canonical: R_BP
+  display: R_{BP}
+  unit: m²/s³
+  description: |
+    Walters-Cokljat / Walters-Leylek / Furst / Liu / Dick BYPASS-transition
+    energy-transfer term R_BP = C_R · β_BP · k_L · ω / f_W, transferring
+    laminar kinetic energy k_L into the turbulent k equation.  CONFLICT
+    WARNING: R is heavily overloaded — paper-scoped.
+  aliases:
+  - R_BP
+  - bypass transfer
+  - "C_R \\beta_{BP} k_L \\omega / f_W"
+
+walters_natural_transfer:
+  canonical: R_NAT
+  display: R_{NAT}
+  unit: m²/s³
+  description: |
+    Walters-Cokljat / Walters-Leylek / Furst / Liu / Dick NATURAL-transition
+    energy-transfer term R_NAT = C_R,NAT · β_NAT · k_L · Ω.  Transfers
+    laminar kinetic energy into k under TS-dominated breakdown.
+  aliases:
+  - R_NAT
+  - natural transfer
+  - "C_{R,NAT} \\beta_{NAT} k_L \\Omega"
+
+re_vorticity_y2omega:
+  canonical: Re_Ω
+  display: Re_{\Omega}
+  unit: '-'
+  description: |
+    Vorticity Reynolds number based on wall distance and vorticity
+    magnitude, Re_Ω = d² Ω / ν.  Used by Walters-Cokljat 2008,
+    Walters-Leylek 2004, Furst 2012/13, Dick-Kubacki 2017, Durbin 2012/
+    2017, Ge-Arolla-Durbin 2014.  Closely related to the LM
+    canonical Re_v = ρ y² Ω/μ (identical up to ρ factor).
+  aliases:
+  - Re_omega
+  - "Re_{\\Omega}"
+  - d^2 Omega / nu
+  - vorticity Reynolds
+
+walters_intermittency_damping:
+  canonical: f_INT
+  display: f_{INT}
+  unit: '-'
+  description: |
+    Walters-Cokljat / Furst intermittency damping function
+    f_INT = min(k_T/(C_INT (k_T+k_L)), 1) — represents the gradual
+    transfer of laminar fluctuation energy into turbulent fluctuation
+    energy as the boundary layer transitions.
+  aliases:
+  - f_INT
+  - intermittency damping function
+
+walters_wall_damping:
+  canonical: f_W
+  display: f_W
+  unit: '-'
+  description: |
+    Walters-Cokljat / Furst near-wall damping function
+    f_W = (λ_eff/λ_T)^(2/3), enforcing inviscid-near-wall behaviour of
+    the small-scale eddy-viscosity branch.
+  aliases:
+  - f_W
+  - inviscid wall damping function
+
+# ── Durbin / Ge-Arolla-Durbin transitional-RANS auxiliary quantities ──────
+
+durbin_tomega:
+  canonical: T_ω
+  display: T_ω
+  unit: '-'
+  description: |
+    Durbin 2012 / Durbin 2017 / Ge-Arolla-Durbin 2014 turbulent time-
+    scale ratio T_ω = N_t · |Ω|/ω = ν_T|Ω|/(ν·ω) used as input to the
+    critical-Reynolds threshold R_c = 400 − 260·min(T_ω/2, 1).  In
+    parallel flow T_ω = |uv|/(ν·ω) (Eq. 5 of Durbin 2012).
+  aliases:
+  - T_omega
+  - "T_{\\omega}"
+  - "N_t |\\Omega|/\\omega"
+  paper_specific_aliases:
+    durbin_2012:
+    - T_ω
+    - "T_{\\omega}"
+    durbin_2017:
+    - T_ω
+    - "T_{\\omega}"
+    ge_arolla_durbin_2014:
+    - T_ω
+    - "T_{\\omega}"
+
+durbin_critical_reynolds:
+  canonical: R_c_thresh
+  display: R_c
+  unit: '-'
+  description: |
+    Durbin 2012 / Ge-Arolla-Durbin 2014 critical-Reynolds threshold
+    R_c = 400 − 260·min(T_ω/2, 1)  (Durbin 2012) or R_c = 400 −
+    360·min(T_ω/2, 1)  (Ge-Arolla-Durbin 2014).  Threshold below which
+    the intermittency source F_γ vanishes, i.e. transition is forbidden
+    even though R_ν exceeds the laminar Re_θ.  CONFLICT WARNING: R_c is
+    also overloaded with chord Reynolds (Mack) and Reshotko's pipe Re_D —
+    paper-scoped strictly to the Durbin γ-Re_θ family.
+  aliases:
+  - R_c
+  - R_{c}
+  - critical Reynolds threshold (Durbin)
+  paper_specific_aliases:
+    durbin_2012:
+    - R_c
+    - "R_{c}"
+    ge_arolla_durbin_2014:
+    - R_c
+    - "R_{c}"
+
+# ── Coder AFT (Amplification Factor Transport) model ──────────────────────
+
+aft_amplification_factor:
+  canonical: ñ_aft
+  display: \tilde{n}
+  unit: '-'
+  description: |
+    Coder-Maughmer 2014 AFT (Amplification Factor Transport) primary
+    variable — a transported envelope amplification factor representing
+    the e^N integration in PDE form.  Compares against critical N_crit
+    to determine transition onset.  CONFLICT WARNING: Narasimha 1985's
+    ñ = n·σ·ν²/U³ (dimensionless spot rate) — completely different
+    physical meaning.  STRICTLY paper-scoped.
+  aliases:
+  - n_tilde_aft
+  - "\\tilde{n}_{aft}"
+  - amplification factor (transport)
+  - AFT envelope amplification
+  paper_specific_aliases:
+    coder_maughmer_2014:
+    - ñ
+    - "\\tilde{n}"
+    - "\\tilde n"
+    - "\\widetilde{n}"
+
+aft_local_pg_parameter:
+  canonical: H_L_aft
+  display: H_L
+  unit: '-'
+  description: |
+    Coder-Maughmer 2014 AFT local pressure-gradient parameter
+    H_L = S·d/U_e, a CFD-local proxy for the integral shape factor
+    H_12.  A piecewise polynomial (Eq. 6 of Coder-Maughmer) relates
+    H_L → H_12 in the AFT closure.  CONFLICT WARNING: H_L canonically
+    means "fully laminar shape factor" — paper-scoped strictly.
+  aliases:
+  - H_L_local
+  - AFT local PG parameter
+  - "S \\cdot d / U_e"
+  paper_specific_aliases:
+    coder_maughmer_2014:
+    - H_L
+    - "H_{L}"
+
+# ── Compressibility/Mach/heat-transfer common quantities ──────────────────
+
+mach_number:
+  canonical: M_mach
+  display: M
+  unit: '-'
+  description: |
+    Mach number (general).  CONFLICT WARNING: M is also AGS's
+    turbulence-grid mesh spacing (already paper-scoped on
+    grid_mesh_spacing).  Mack 1984 / Reed-Saric-Arnal / Tani /
+    Friedlander / Braslow / Liu all use M for Mach number.
+  aliases:
+  - Ma
+  - mach number
+  paper_specific_aliases:
+    braslow_1960:
+    - M
+    - M_0
+    - "M_{0}"
+    - M_∞
+    - "M_{\\infty}"
+    tani_1969:
+    - M
+    friedlander_georgiadis_2023:
+    - M_∞
+    - "M_{\\infty}"
+
+wall_temperature:
+  canonical: T_w
+  display: T_w
+  unit: K
+  description: |
+    Wall temperature.  Used in compressible BL stability (Mack 1984,
+    Tani 1969, Reed-Saric-Arnal 1996, Reshotko 2001, Liu 2022,
+    Friedlander 2023, Mayle 1991 wall-cooling parameter).  Ratio
+    T_w/T_r (recovery) and T_w/T_aw (adiabatic-wall) are the standard
+    cooling parameters.
+  aliases:
+  - wall temperature
+  - "T_{w}"
+  - T_wall
+
+recovery_temperature:
+  canonical: T_r
+  display: T_r
+  unit: K
+  description: |
+    Adiabatic-wall recovery temperature T_r = T_e + r·U_e²/(2·c_p),
+    where r is the recovery factor.  Used by Mack 1984 / Tani 1969 /
+    Reshotko 2001 for compressible-BL stability.  CONFLICT WARNING:
+    bare r in Liu 2022 also means recovery factor; in Diwan-Ramesh
+    r_avg is a vortex eddy radius — paper-scoped.
+  aliases:
+  - recovery temperature
+  - adiabatic recovery temperature
+  - adiabatic wall temperature
+
+stanton_number:
+  canonical: St_heat
+  display: St
+  unit: '-'
+  description: |
+    Stanton number St = q̇_w/[ρ_∞·U_∞·c_p·(T_aw − T_w)], heat-transfer
+    coefficient nondimensionalised by enthalpy convection.  Used by
+    Mayle 1991, Friedlander-Georgiadis 2023, Liu et al. 2022.  CONFLICT
+    WARNING: St is heavily overloaded with shear-layer Strouhal number
+    (McAuliffe) and wake-passing Strouhal (Dick) — paper-scoped.
+  aliases:
+  - Stanton number
+  - "\\mathrm{St}"
+  - St
+  paper_specific_aliases:
+    mayle_1991:
+    - St
+    - "\\mathrm{St}"
+    friedlander_georgiadis_2023:
+    - St
+    - "\\mathrm{St}"
+    liu_lu_wang_wang_yan_2022:
+    - St
+    - "\\mathrm{St}"
+
+# ── Separation-bubble geometry ────────────────────────────────────────────
+
+bubble_separation_location:
+  canonical: x_S
+  display: x_S
+  unit: m
+  description: |
+    Streamwise location of the mean SEPARATION point of a laminar
+    separation bubble.  Used by Diwan-Ramesh 2009, Marxen-Henningson
+    2011, McAuliffe-Yaras 2010, Mayle 1991.
+  aliases:
+  - x_S
+  - "x_{S}"
+  - separation location
+  paper_specific_aliases:
+    diwan_ramesh_2009:
+    - x_S
+    - "x_{S}"
+    - S
+    marxen_henningson_2011:
+    - x_S
+    - "x_{S}"
+    mcauliffe_yaras_2010:
+    - x_s
+    - "x_{s}"
+    mayle_1991:
+    - x_s
+    - "x_{s}"
+
+bubble_reattachment_location:
+  canonical: x_R
+  display: x_R
+  unit: m
+  description: |
+    Streamwise location of the mean REATTACHMENT point of a laminar
+    separation bubble.  Used by Diwan-Ramesh 2009, Marxen-Henningson
+    2011, McAuliffe-Yaras 2010, Mayle 1991.
+  aliases:
+  - x_R
+  - "x_{R}"
+  - reattachment location
+  paper_specific_aliases:
+    diwan_ramesh_2009:
+    - x_R
+    - "x_{R}"
+    - R (reattach)
+    marxen_henningson_2011:
+    - x_R
+    - "x_{R}"
+    mcauliffe_yaras_2010:
+    - x_r
+    - "x_{r}"
+    mayle_1991:
+    - x_r
+    - "x_{r}"
+
+separation_momentum_thickness_reynolds:
+  canonical: Re_θs
+  display: Re_{θ,s}
+  unit: '-'
+  description: |
+    Reynolds number based on momentum thickness AT THE SEPARATION POINT
+    of a laminar separation bubble.  Distinct from Re_θ,t (transition
+    onset) and Re_θ,c (LM critical).  Used by Mayle 1991 (Eq. 10),
+    Marxen 2011, Diwan-Ramesh 2009 (Re_θs = 322 / 454), McAuliffe-Yaras
+    2010 (267 / 535), Dick-Kubacki 2017.  CRITICAL COLLISION: AGS 1980
+    uses R_{θ,S} for "Re_θ at START OF TRANSITION" — a different
+    location (no separation present).  We resolve by paper-scoping:
+    Marxen / DR / McAuliffe / Mayle / Dick send Re_{θ,S} → Re_θs
+    (separation); AGS sends R_{θ,S} → Re_θt (start of transition).
+  aliases:
+  - Re_theta_s
+  - "Re_{\\theta,s}"
+  - "Re_{\\theta s}"
+  - Re_θ_separation
+  paper_specific_aliases:
+    mayle_1991:
+    - Re_θs
+    - "Re_{θs}"
+    - Re_{θ,s}
+    marxen_henningson_2011:
+    - "Re_{θ,S}"
+    - "Re_{\\theta,S}"
+    - Re_θ_S
+    - Re_θ,S
+    - Re_θS
+    diwan_ramesh_2009:
+    - Re_θs
+    - "Re_{θs}"
+    - "Re_{\\theta s}"
+    mcauliffe_yaras_2010:
+    - Re_θs
+    - "Re_{θs}"
+    dick_kubacki_2017:
+    - Re_θs
+    - "Re_{θs}"
+
+# ── Pohlhausen pressure-gradient parameter (distinct from Thwaites) ───────
+
+pohlhausen_pg_parameter:
+  canonical: Λ_pohl
+  display: Λ
+  unit: '-'
+  description: |
+    Pohlhausen pressure-gradient parameter Λ = (δ²/ν)(dU/dx), based on
+    boundary-layer thickness δ rather than momentum thickness θ.
+    Distinct from canonical λ_θ (Thwaites form using θ²).  Used by
+    Tani 1969, Van Ingen 1956 ("λ_Pohl"), Schubauer-Skramstad 1947
+    ("Λ_KP" = Karman-Pohlhausen), Diwan-Ramesh 2009.  CONFLICT WARNING:
+    Λ canonically is the integral length scale of FST — paper-scoped
+    strictly so the two never collide.
+  aliases:
+  - Pohlhausen parameter
+  - Karman-Pohlhausen parameter
+  - "\\Lambda_{KP}"
+  - "Λ_{KP}"
+  paper_specific_aliases:
+    tani_1969:
+    - λ
+    - "\\lambda"
+    - λ*
+    - "\\lambda^*"
+    van_ingen_1956:
+    - λ
+    - "\\lambda"
+    - λ_P
+    - "\\lambda_P"
+    schubauer_skramstad_1947:
+    - Λ_KP
+    - "\\Lambda_{KP}"
+    - "Λ_{KP}"
+    diwan_ramesh_2009:
+    - Λ
+    - "\\Lambda"
+
+# ── Reynolds numbers based on displacement thickness ──────────────────────
+
+re_displacement_thickness:
+  canonical: Re_δ*
+  display: Re_{δ*}
+  unit: '-'
+  description: |
+    Reynolds number based on displacement thickness δ*.  Critical for
+    Tollmien-Schlichting onset: Re_{δ*,cr} ≈ 450–520 for Blasius
+    (Schlichting / Liepmann / Schubauer-Skramstad / Tani 1969).  Used
+    extensively by Tani 1969, Van Ingen 1956/2008, Schubauer-Skramstad
+    1947, Westin 1994 ("R" = 1.72 sqrt(Re_x)), Brandt 2004, Marxen 2011.
+  aliases:
+  - Re_delta_star
+  - "Re_{\\delta^*}"
+  - "Re_{\\delta*}"
+  - "R_{\\delta^*}"
+  - displacement-thickness Reynolds number
+  paper_specific_aliases:
+    tani_1969:
+    - R_{δ*}
+    - "R_{\\delta^*}"
+    - R_δ*
+    van_ingen_1956:
+    - R
+    - "U_0 \\delta^* / \\nu"
+    van_ingen_2008:
+    - Re_δ*
+    - "Re_{\\delta^*}"
+    schubauer_skramstad_1947:
+    - R
+    - "R = U_0 \\delta^* / \\nu"
+    westin_et_al_1994:
+    - R
+    - "R = 1.72 \\sqrt{R_x}"
+    marxen_henningson_2011:
+    - "Re_{δ*}"
+    - "Re_{\\delta^*}"
+    brandt_2004:
+    - Re_δ_0*
+    - "Re_{\\delta_0^*}"
+
+re_displacement_thickness_critical:
+  canonical: Re_δ*_cr
+  display: Re_{δ*, cr}
+  unit: '-'
+  description: |
+    Critical displacement-thickness Reynolds number — minimum Re_δ* at
+    which a Blasius / Falkner-Skan boundary layer is unstable to TS
+    waves.  Modern value 520; older values 450 (Schubauer-Skramstad),
+    680 (Van Ingen 1956 — replaced by Arnal 520).
+  aliases:
+  - Re_delta_star_crit
+  - "(Re_{\\delta^*})_{cr}"
+  - critical Reynolds number TS
+  - critical Re_δ*
+
+# ── Stability-theory eigenfunction & primary variables ────────────────────
+
+orr_sommerfeld_eigenfunction:
+  canonical: φ_OS
+  display: φ_{OS}
+  unit: '-'
+  description: |
+    Amplitude function (eigenfunction) of the disturbance stream function
+    obtained from the Orr-Sommerfeld equation.  φ(0) = φ'(0) = 0 at the
+    wall; φ → 0 as y → ∞.  Used by Van Ingen 1956/2008, Schubauer-
+    Skramstad 1947, Reed-Saric-Arnal 1996, Andersson-Brandt 2001,
+    Jacobs-Durbin 2001.  CONFLICT WARNING: bare φ is also Emmons'
+    cone-half-angle indicator, Mack's group-velocity angle, Gbadebo's
+    flow coefficient — paper-scoped.
+  aliases:
+  - phi
+  - "\\phi"
+  - "\\varphi"
+  - Orr-Sommerfeld eigenfunction
+  - varphi(y)
+  paper_specific_aliases:
+    van_ingen_1956:
+    - φ(y)
+    - "\\phi(y)"
+    - F(y)
+    van_ingen_2008:
+    - φ(y)
+    - "\\phi(y)"
+    - "\\varphi(y)"
+    schubauer_skramstad_1947:
+    - F(y)
+    - φ_OS
+    - "\\phi_{OS}"
+    reed_saric_arnal_1996:
+    - q_0(y)
+    - "q_{0}(y)"
+    andersson_brandt_bottaro_henningson_2001:
+    - p̂_k(y)
+    - "\\hat{p}_k(y)"
+
+# ── Group velocity ────────────────────────────────────────────────────────
+
+group_velocity:
+  canonical: c_g
+  display: c_g
+  unit: m/s
+  description: |
+    Group velocity of an instability-wave packet, c_g = dω/dα.
+    Real part c_g,r governs wave-packet propagation; complex part
+    appears in saddle-point analysis (Mack 1984 §7).  Gaster (1962)
+    transformation: ω_i = (-α_i) · Re(c_g).
+  aliases:
+  - c_g
+  - "c_{g}"
+  - group velocity
+  - "\\vec{c}_g"
+
+# ── DNS / streak literature: spanwise wavelength of streaks ───────────────
+
+streak_spanwise_wavelength:
+  canonical: λ_z_streak
+  display: λ_z
+  unit: m
+  description: |
+    Spanwise wavelength λ_z of pretransitional streaks / oblique-wave
+    pair packing.  Streaks have λ_z ≈ 2 δ (Matsubara-Alfredsson),
+    λ_z ≈ 1.2 δ_99 (Jacobs-Durbin), λ_z·β·δ* ≈ 0.77 optimal.  CONFLICT
+    WARNING: λ_z in Marxen-Henningson 2011 is the SPANWISE COMPUTATIONAL
+    DOMAIN WIDTH (52.36) — different but related concept; paper-scoped.
+    Distinct from λ_CF (crossflow wavelength, swept-wing) and λ_x
+    (streamwise wavelength).
+  aliases:
+  - lambda_z
+  - "\\lambda_z"
+  - streak spanwise wavelength
+  - spanwise wavelength of streaks
+  paper_specific_aliases:
+    matsubara_alfredsson_2001:
+    - λ
+    - "\\lambda"
+    - λ_z
+    - "\\lambda_z"
+    saric_reed_white_2003:
+    - λ_CF
+    - "\\lambda_{CF}"
+    - λ_s
+    - "\\lambda_s"
+    sreenivasan_1989:
+    - Λ
+    - "\\Lambda"
+    - Λ⁺
+    - "\\Lambda^+"
+    - "\\Lambda \\cdot u_*/\\nu"
+    andersson_brandt_bottaro_henningson_2001:
+    - λ_z
+    - "\\lambda_z"
+
+# ── Wake-passing in LP-turbine cascades ───────────────────────────────────
+
+wake_passing_strouhal:
+  canonical: St_wake
+  display: St_{wake}
+  unit: '-'
+  description: |
+    Reduced (Strouhal) frequency of wake passing in turbomachinery
+    cascades, St = f_d · b_s / U_0 — wake-passing frequency times bar
+    spacing on the wake-generator wheel, divided by inlet velocity.
+    Used by Dick-Kubacki 2017 (= 1.22 for N3-60 cascade).  Distinct
+    from McAuliffe shear-layer Strouhal St_θ and Liu Stanton St.
+  aliases:
+  - reduced wake-passing frequency
+  - wake Strouhal
+  paper_specific_aliases:
+    dick_kubacki_2017:
+    - St
+    - "\\mathrm{St}"
+
+shear_layer_strouhal:
+  canonical: Sr_θ
+  display: Sr_θ
+  unit: '-'
+  description: |
+    Shear-layer Strouhal number Sr_θ = f·θ/ΔU based on momentum
+    thickness θ of a planar free shear layer and velocity-difference
+    ΔU across the shear layer.  Most-amplified value Sr_θ ≈ 0.016
+    (Ho-Huerre 1984).  At separation, McAuliffe-Yaras 2010 use
+    Sr_{θs} = f·θ_s/U_es.  Also Ergin-White 2006 Sr = f δ*/U_∞ for
+    roughness-vortex shedding.
+  aliases:
+  - shear-layer Strouhal
+  - "Sr_{\\theta}"
+  - "St_f"
+  - "St_{f0}"
+  paper_specific_aliases:
+    mcauliffe_yaras_2010:
+    - Sr_θ
+    - "Sr_{\\theta}"
+    - Sr_θs
+    - "Sr_{\\theta_s}"
+    - St_f
+    - St_f0
+    ergin_white_2006:
+    - Sr
+    - "f δ^*/U_\\infty"
+
+# ── Vortex identification ─────────────────────────────────────────────────
+
+lambda2_vortex_criterion:
+  canonical: λ_2
+  display: λ_2
+  unit: 1/s²
+  description: |
+    Jeong-Hussain (1995) vortex-identification criterion based on the
+    second-largest eigenvalue of the symmetric pressure-Hessian tensor.
+    Used by Brandt 2004, Marxen-Henningson 2011 for vortex visualisation.
+    CONFLICT WARNING: λ_2 must NOT alias to canonical λ (intermittency-
+    zone length) or λ_θ (Thwaites parameter) — paper-scoped.
+  aliases:
+  - lambda_2
+  - "\\lambda_2"
+  - Jeong-Hussain criterion
+  - lambda_2 criterion
+  paper_specific_aliases:
+    brandt_2004:
+    - λ_2
+    - "\\lambda_2"
+    marxen_henningson_2011:
+    - λ_2
+    - "\\lambda_2"
+
+streamwise_vorticity:
+  canonical: ω_x
+  display: ω_x
+  unit: 1/s
+  description: |
+    Streamwise component of vorticity, ω_x = ∂v/∂z − ∂w/∂y.
+    Visualises hairpin vortex structures in DNS transition simulations
+    (Marxen 2011, McAuliffe-Yaras 2010, Durbin-Wu 2007, Brandt 2004).
+    CONFLICT WARNING: bare ω is canonical specific-dissipation rate —
+    paper-scoped strictly so the streamwise-vorticity ω_x does not
+    collide with the k-ω model ω.
+  aliases:
+  - omega_x
+  - "\\omega_x"
+  - streamwise vorticity
+
+# ── Concept / mechanism labels (string tokens, not numerics) ──────────────
+
+shear_sheltering:
+  canonical: SHEAR_SHELTERING
+  display: shear sheltering
+  unit: '-'
+  description: |
+    Hunt-Durbin (1999) shear-sheltering mechanism — strong mean shear
+    in the boundary layer filters out high-frequency freestream
+    disturbances, admitting only low-frequency components that produce
+    streaks.  Discussed by Zaki-Durbin 2005, Durbin-Wu 2007,
+    Walters-Cokljat 2008, Walters-Leylek 2004, Furst 2012.  This is a
+    CONCEPT TOKEN, not a number.
+  aliases:
+  - shear sheltering
+  - Hunt-Durbin sheltering
+  - shear filtering
+  - sheltering effect
+
+lift_up_effect:
+  canonical: LIFT_UP_EFFECT
+  display: lift-up effect
+  unit: '-'
+  description: |
+    Landahl 1980 / Ellingsen-Palm 1975 / Moffatt 1967 lift-up mechanism —
+    a wall-normal disturbance v' acting on the mean shear S = dU/dy
+    produces a streamwise streak u' via du'/dt = -S·v'.  Algebraic
+    (non-modal) growth of streaks.  CENTRAL to bypass transition:
+    Jacobs-Durbin 2001, Brandt 2004, Durbin-Wu 2007, Reshotko 2001.
+  aliases:
+  - lift-up effect
+  - lift-up mechanism
+  - Landahl lift-up
+  - algebraic growth
+  - transient growth
+
+kelvin_helmholtz_instability:
+  canonical: KH_INSTABILITY
+  display: Kelvin-Helmholtz instability
+  unit: '-'
+  description: |
+    Kelvin-Helmholtz instability — inviscid inflectional instability of
+    a free shear layer.  Central to laminar-separation-bubble transition
+    (Diwan-Ramesh 2009, Marxen 2011, McAuliffe-Yaras 2010) and to
+    top-of-BL breakdown of lifted streaks (Zaki-Durbin 2005, Durbin-Wu
+    2007).  Most-amplified Strouhal Sr_θ ≈ 0.016 for planar free shear.
+  aliases:
+  - KH instability
+  - Kelvin-Helmholtz
+  - K-H instability
+  - inflectional instability
+
+# ── Wall units / wall-bounded turbulence ──────────────────────────────────
+
+von_karman_constant:
+  canonical: κ_vK
+  display: κ
+  unit: '-'
+  description: |
+    von Kármán constant in the inertial-sublayer log-law,
+    ∂U/∂y = u*/(κ y), κ ≈ 0.41.  Used by Sreenivasan 1989, Menter 1994,
+    Gbadebo et al. 2004 (= 0.4).  CONFLICT WARNING: AGS 1980 also uses
+    K for the Kármán constant in their Law-of-the-Wall calibration —
+    paper-scoped so it does not collide with canonical K = acceleration
+    parameter.
+  aliases:
+  - kappa
+  - "\\kappa"
+  - "\\kappa_{vK}"
+  - Karman constant
+  - von Karman constant
+  paper_specific_aliases:
+    sreenivasan_1989:
+    - κ
+    - "\\kappa"
+    menter_1994:
+    - κ
+    - "\\kappa"
+    gbadebo_hynes_cumpsty_2004:
+    - A
+    - A_vonKarman
+    abu_ghannam_shaw_1980:
+    - K_wall
+    - K (Karman)
+
+log_law_intercept:
+  canonical: B_log
+  display: B
+  unit: '-'
+  description: |
+    Additive constant in the log-law U⁺ = (1/κ)·log(y⁺) + B.  Smooth-wall
+    value B ≈ 5.0–5.5 (Sreenivasan 1989: 5.5; Gbadebo: 5.24; McAuliffe
+    log-law reference 5.0).  Rough-wall: Δ_B(k⁺) = (1/κ) log(1 + 0.3 k⁺)
+    downward shift.
+  aliases:
+  - B_log
+  - log-law constant
+  - log-law intercept
+  paper_specific_aliases:
+    sreenivasan_1989:
+    - B
+    gbadebo_hynes_cumpsty_2004:
+    - B
+    mcauliffe_yaras_2010:
+    - "5.0"
+
+coles_wake_parameter:
+  canonical: Π_coles
+  display: Π
+  unit: '-'
+  description: |
+    Coles' wake parameter Π in the composite-law
+    U(y)/u_τ = f_i(y⁺) + (Π/κ)·w(y/δ).  Asymptotic high-R_θ value
+    Π ≈ 0.55 (Sreenivasan 1989).  CONFLICT WARNING: Π also denotes
+    the generic Buckingham group; paper-scoped.
+  aliases:
+  - Pi
+  - "\\Pi"
+  - "\\Pi_w"
+  - wake parameter
+  - Coles parameter
+  paper_specific_aliases:
+    sreenivasan_1989:
+    - Π
+    - "\\Pi"
+
+# ── Roughness / boundary-layer-tripping quantities ────────────────────────
+
+roughness_reynolds_local:
+  canonical: Re_k_local
+  display: Re_k
+  unit: '-'
+  description: |
+    Roughness Reynolds number using LOCAL boundary-layer velocity at
+    the top of the element, Re_k = u_k · k/ν.  Same physical quantity
+    as canonical Re_kk; Braslow 1960 uses ν_k (local viscosity at
+    roughness top) for compressible adjustment.  Critical values
+    ~600–900 for 3D roughness (Klebanoff et al., Ergin-White 2006).
+  aliases:
+  - Re_k
+  - "Re_{k}"
+  - R_k
+  - "R_{k}"
+  - "R_{k,t}"
+  - Re_k_crit
+  - "Re_{k,crit}"
+  paper_specific_aliases:
+    braslow_1960:
+    - R_k
+    - "R_{k}"
+    - R_{k,t}
+    - "\\sqrt{R_{k,t}}"
+    - "R_{k,t_{PAIR}}"
+    - "R_{k,t_{SINGLE}}"
+    ergin_white_2006:
+    - Re_k
+    - "Re_{k,crit}"
+    - "Re_{k,\\text{crit}}"
+    saric_reed_white_2003:
+    - Re_k
+    tani_1969:
+    - R_k
+    - "u_k k/\\nu"
+    mayle_1991:
+    - Re_ks
+    - "Re_{ks}"
+
+# ── Heat-transfer and related quantities ──────────────────────────────────
+
+heat_transfer_coefficient:
+  canonical: h_heat
+  display: h
+  unit: W/(m²·K)
+  description: |
+    Heat-transfer coefficient h = q̇_w/(T_w − T_aw).  Used by Mayle 1991,
+    Liu et al. 2022 (h_FR Fay-Riddell reference).  CONFLICT WARNING:
+    bare h also denotes blade span (Gbadebo turbomachinery), channel
+    half-height (Sreenivasan, Matsubara), enthalpy (Friedlander) —
+    paper-scoped.
+  aliases:
+  - heat transfer coefficient
+  - heat-transfer coefficient
+  paper_specific_aliases:
+    mayle_1991:
+    - h
+    liu_lu_wang_wang_yan_2022:
+    - h
+    - h_FR
+    - "h_{FR}"
+
+nusselt_number:
+  canonical: Nu
+  display: Nu
+  unit: '-'
+  description: |
+    Nusselt number Nu = h·L/k_cond, dimensionless heat-transfer
+    coefficient.  Used by Mayle 1991 in turbomachinery transition
+    discussions.
+  aliases:
+  - Nusselt
+  - Nusselt number
+  - "\\mathrm{Nu}"
+
+# ── Compressible-flow auxiliary symbols ───────────────────────────────────
+
+specific_heats_ratio:
+  canonical: γ_h
+  display: γ
+  unit: '-'
+  description: |
+    Ratio of specific heats c_p/c_v ≈ 1.4 for air.  Used by Mack 1984,
+    Liu 2022 (γ_g to disambiguate from intermittency), Reed-Saric-Arnal
+    1996.  CONFLICT WARNING: bare γ canonically is intermittency factor
+    — strictly paper-scoped here.
+  aliases:
+  - gamma_h
+  - "\\gamma_h"
+  - gamma_specific_heats
+  - ratio of specific heats
+  paper_specific_aliases:
+    mack_1984:
+    - γ
+    - "\\gamma"
+    liu_lu_wang_wang_yan_2022:
+    - γ_g
+    - "\\gamma_g"
+
+specific_heat_constant_pressure:
+  canonical: c_p_heat
+  display: c_p
+  unit: J/(kg·K)
+  description: |
+    Specific heat at constant pressure.  Used by Mack 1984 (c_p* = 0.24
+    cal/g·K), Friedlander 2023.  CONFLICT WARNING: c_p also denotes
+    pressure coefficient (Mayle 1991, AGS 1980, Marxen 2011, Diwan-
+    Ramesh 2009) — paper-scoped so the heat-capacity c_p and pressure
+    coefficient C_p stay disambiguated.
+  aliases:
+  - c_p
+  - "c_{p}"
+  - specific heat at constant pressure
+
+pressure_coefficient:
+  canonical: C_p_pressure
+  display: C_p
+  unit: '-'
+  description: |
+    Pressure coefficient C_p = (p − p_∞)/(½ ρ_∞ U_∞²).  Used by
+    Mack 1984, AGS 1980, Gbadebo 2004, Marxen 2011, Diwan-Ramesh 2009,
+    Westin 1994, Mayle 1991 (figs. 27, 39).
+  aliases:
+  - C_p
+  - "C_{p}"
+  - pressure coefficient
+  - Cp
+
+# ── Bypass-transition concept ─────────────────────────────────────────────
+
+bypass_transition:
+  canonical: BYPASS_TRANSITION
+  display: bypass transition
+  unit: '-'
+  description: |
+    Morkovin's "bypass transition" — boundary-layer transition that
+    skips the orderly Tollmien-Schlichting linear stage, instead
+    going from FST → streaks → secondary instability → spots.
+    Discussed by Narasimha 1985 (the term originates with Morkovin),
+    Jacobs-Durbin 2001, Brandt 2004, Westin 1994, Matsubara-Alfredsson
+    2001, Zaki-Durbin 2005, Durbin-Wu 2007, Walters-Cokljat 2008.
+  aliases:
+  - bypass transition
+  - Morkovin bypass
+  - bypass route
+  - non-modal transition
+
+# ══════════════════════════════════════════════════════════════════════
+# NEW CANONICALS — added 2026-05-18 from Schlichting & Gersten (2017)
+# "List of Frequently Used Symbols" (pp. 709-716).  These concepts had
+# no existing canonical entry; Schlichting is currently the primary
+# source.  When other papers later cite the same concept, add their
+# notation under `paper_specific_aliases`.
+# ══════════════════════════════════════════════════════════════════════
+
+karman_constant:
+  canonical: κ
+  display: κ
+  unit: '-'
+  description: |
+    Kármán constant ≈ 0.41, appears in the law of the wall
+    u+ = (1/κ) ln(y+) + B.  Source: Schlichting & Gersten 2017
+    Eq. (17.17); Pope 2000 §7.1.4 Eq. (7.43).
+  aliases:
+  - kappa
+  - \kappa
+  - κ_K
+  - von Kármán constant
+  - Karman constant
+  - "Kármán constant"
+  paper_specific_aliases:
+    schlichting_gersten_2017:
+    - κ
+    - \kappa
+    pope_2000:
+    - κ
+
+wake_parameter:
+  canonical: Π
+  display: Π
+  unit: '-'
+  description: |
+    Coles' wake parameter quantifying the strength of the outer-layer
+    wake component in the turbulent boundary-layer mean profile.
+    Source: Schlichting & Gersten 2017 Eq. (18.70).
+  aliases:
+  - Pi
+  - \Pi
+  - Coles wake parameter
+  - Π_C
+  paper_specific_aliases:
+    schlichting_gersten_2017:
+    - Π
+    - \Pi
+
+drag_coefficient:
+  canonical: c_D
+  display: c_D
+  unit: '-'
+  description: |
+    Drag coefficient c_D = D / (½ρU²·A).  Source: Schlichting & Gersten
+    2017 Eq. (1.5).
+  aliases:
+  - cD
+  - C_D
+  - "C_{D}"
+  - drag coefficient
+  paper_specific_aliases:
+    schlichting_gersten_2017:
+    - c_D
+
+lift_coefficient:
+  canonical: c_L
+  display: c_L
+  unit: '-'
+  description: |
+    Lift coefficient c_L = L / (½ρU²·A).  Source: Schlichting & Gersten
+    2017 Eq. (1.5).
+  aliases:
+  - cL
+  - C_L
+  - "C_{L}"
+  - lift coefficient
+  paper_specific_aliases:
+    schlichting_gersten_2017:
+    - c_L
+
+viscous_wall_layer_thickness:
+  canonical: δ_v
+  display: δ_v
+  unit: m
+  description: |
+    Thickness of the viscous wall layer: δ_v = ν / u_τ.  Sets the
+    scale at which viscous stresses become comparable to Reynolds
+    stresses in turbulent boundary layers.  Source: Schlichting &
+    Gersten 2017 Eq. (17.11).
+  aliases:
+  - delta_v
+  - \delta_v
+  - "\\delta_{v}"
+  - viscous wall layer thickness
+  - viscous length scale
+  paper_specific_aliases:
+    schlichting_gersten_2017:
+    - δ_v
+    - \delta_v
+
+re_displacement_thickness:
+  canonical: Re_δ*
+  display: Re_{δ*}
+  unit: '-'
+  description: |
+    Reynolds number formed with the displacement thickness δ_1 (= δ*).
+    Source: Schlichting & Gersten 2017 Eq. (18.111) — referred to
+    as Re_1 in Schlichting's notation.
+  aliases:
+  - Re_delta_star
+  - Re_{δ*}
+  - "Re_{\\delta^*}"
+  - R_δ*
+  paper_specific_aliases:
+    schlichting_gersten_2017:
+    - Re_1
+    - Re_{1}
+    - R_1
+
+# ══════════════════════════════════════════════════════════════════════
+# NEW CANONICALS — added 2026-05-18 from Pope (2000) "Turbulent Flows"
+# Nomenclature (pp. xxix-xxxiv).  Pope is the canonical reference for
+# Kolmogorov-scale arguments + the dissipation rate ε.  These concepts
+# had no canonical home before; Pope is currently the primary source.
+# ══════════════════════════════════════════════════════════════════════
+
+dissipation_rate:
+  canonical: ε
+  display: ε
+  unit: m²/s³
+  description: |
+    Turbulent kinetic energy dissipation rate per unit mass.
+    Central to Kolmogorov scaling: η = (ν³/ε)^(1/4), τ_η = (ν/ε)^(1/2),
+    u_η = (νε)^(1/4).  Source: Pope 2000 §6.1 (energy cascade) and
+    §5.5 (k-equation).
+  aliases:
+  - epsilon
+  - \varepsilon
+  - \epsilon
+  - dissipation
+  - TKE dissipation
+  - turbulent dissipation rate
+  paper_specific_aliases:
+    pope_2000:
+    - ε
+    - \varepsilon
+    schlichting_gersten_2017:
+    # Schlichting Eq. (16.17): "ε" turbulent dissipation
+    # Schlichting Eq. (16.19): "ε̃" pseudo-dissipation (distinct concept)
+    - ε
+    - ε̃
+
+kolmogorov_length:
+  canonical: η
+  display: η
+  unit: m
+  description: |
+    Kolmogorov length scale, η = (ν³/ε)^(1/4).  The smallest spatial
+    scale in turbulent flow before viscous dissipation dominates.
+    Sets the lower bound for hot-wire spatial resolution (Hutchins
+    et al. 2009 explicitly uses η as the resolution criterion).
+    Source: Pope 2000 §6.1 Eq. (6.5).
+  aliases:
+  - eta
+  - \eta
+  - Kolmogorov length
+  - Kolmogorov scale
+  - dissipative length scale
+  paper_specific_aliases:
+    pope_2000:
+    - η
+    - \eta
+    schlichting_gersten_2017:
+    # Schlichting uses ℓ_K for Kolmogorov length (Eq. 16.26)
+    - ℓ_K
+    - "\\ell_K"
+    - "\\ell_{K}"
+
+kolmogorov_time:
+  canonical: τ_η
+  display: τ_η
+  unit: s
+  description: |
+    Kolmogorov time scale, τ_η = (ν/ε)^(1/2).  Smallest temporal
+    scale in turbulent flow; sets the upper bound for the
+    acquisition frequency needed to resolve the dissipative range.
+    Source: Pope 2000 §6.1 Eq. (6.6); see also note on Eq. (6.99).
+  aliases:
+  - tau_eta
+  - \tau_\eta
+  - "\\tau_{\\eta}"
+  - Kolmogorov time
+  - Kolmogorov time scale
+  paper_specific_aliases:
+    pope_2000:
+    - τ_η
+    - "\\tau_{\\eta}"
+
+kolmogorov_velocity:
+  canonical: u_η
+  display: u_η
+  unit: m/s
+  description: |
+    Kolmogorov velocity scale, u_η = (νε)^(1/4).  Velocity scale
+    associated with the smallest eddies; u_η/U_∞ characterises the
+    velocity variation across one Kolmogorov length.  Source:
+    Pope 2000 §6.1 Eq. (6.7).
+  aliases:
+  - u_eta
+  - \u_\eta
+  - "u_{\\eta}"
+  - Kolmogorov velocity
+  paper_specific_aliases:
+    pope_2000:
+    - u_η
+    - "u_{\\eta}"
+
+reynolds_stress_tensor:
+  canonical: ⟨u_iu_j⟩
+  display: ⟨u_iu_j⟩
+  unit: m²/s²
+  description: |
+    Reynolds stress tensor R_ij = ⟨u'_i u'_j⟩.  The mean of the
+    product of fluctuating velocity components; appears in the
+    Reynolds-averaged momentum equation as -ρ⟨u_iu_j⟩.  The off-
+    diagonal ⟨u'v'⟩ (= reynolds_stress_shear) is what drives mean-
+    flow momentum transfer in the BL.  Source: Pope 2000 §4.4.
+  aliases:
+  - R_ij
+  - "R_{ij}"
+  - Reynolds stress
+  - Reynolds stress tensor
+  - "<u_i u_j>"
+  - "u_i'u_j'"
+  - "\\langle u_i u_j \\rangle"
+  paper_specific_aliases:
+    pope_2000:
+    - ⟨u_iu_j⟩
+    - "\\langle u_i u_j \\rangle"
+    - R_ij
+    schlichting_gersten_2017:
+    # Schlichting Eq. (16.37): "τ_ij^v" viscous + "τ_t" turbulent stresses
+    - τ_t
+    - τ_ij
+    - "\\tau_t"
+    - "\\tau_{ij}"
+

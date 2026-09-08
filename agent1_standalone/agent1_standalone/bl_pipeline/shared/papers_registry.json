@@ -1,0 +1,597 @@
+{
+  "abu_ghannam_shaw_1980": {
+    "title": "Natural transition of boundary layers — the effects of turbulence, pressure gradient, and flow history",
+    "authors": [
+      "Abu-Ghannam, B.J.",
+      "Shaw, R."
+    ],
+    "year": 1980,
+    "journal": "Journal of Mechanical Engineering Science",
+    "volume": "22(5)",
+    "pages": "213-228"
+  },
+  "andersson_brandt_bottaro_henningson_2001": {
+    "title": "On the breakdown of boundary layer streaks",
+    "authors": [
+      "Andersson, P.",
+      "Brandt, L.",
+      "Bottaro, A.",
+      "Henningson, D.S."
+    ],
+    "year": 2001,
+    "journal": "Journal of Fluid Mechanics",
+    "volume": "428",
+    "pages": "29-60"
+  },
+  "brandt_2004": {
+    "title": "Transition in boundary layers subject to free-stream turbulence",
+    "authors": [
+      "Brandt, L.",
+      "Schlatter, P.",
+      "Henningson, D.S."
+    ],
+    "year": 2004,
+    "journal": "Journal of Fluid Mechanics",
+    "volume": "517",
+    "pages": "167-198"
+  },
+  "braslow_1960": {
+    "title": "Effect of distributed surface roughness on laminar flow",
+    "authors": [
+      "Braslow, A.L."
+    ],
+    "year": 1960,
+    "journal": "NACA Technical Note",
+    "volume": "TN-4363",
+    "pages": ""
+  },
+  "carnes_coder_2023": {
+    "title": "Exploring the Langtry-Menter Transition Model for High-Reynolds-Number External Flows",
+    "authors": [
+      "Carnes, J.",
+      "Coder, J.G."
+    ],
+    "year": 2023,
+    "journal": "NASA Technical Memorandum",
+    "volume": "NASA/TM-20230009565",
+    "pages": ""
+  },
+  "coder_maughmer_2014": {
+    "title": "Computationally practical algebraic transition model",
+    "authors": [
+      "Coder, J.G.",
+      "Maughmer, M.D."
+    ],
+    "year": 2014,
+    "journal": "AIAA Journal",
+    "volume": "52(10)",
+    "pages": "2163-2175"
+  },
+  "coupland_1990": {
+    "title": "ERCOFTAC special interest group on laminar to turbulent transition and retransition: T3A and T3B test cases",
+    "authors": [
+      "Coupland, J."
+    ],
+    "year": 1990,
+    "journal": "ERCOFTAC Bulletin",
+    "volume": "",
+    "pages": ""
+  },
+  "dhawan_narasimha_1958": {
+    "title": "Some properties of boundary layer flow during transition from laminar to turbulent motion",
+    "authors": [
+      "Dhawan, S.",
+      "Narasimha, R."
+    ],
+    "year": 1958,
+    "journal": "Journal of Fluid Mechanics",
+    "volume": "3(4)",
+    "pages": "418-436"
+  },
+  "dick_kubacki_2017": {
+    "title": "Transition models for turbomachinery boundary layer flows: a review",
+    "authors": [
+      "Dick, E.",
+      "Kubacki, S."
+    ],
+    "year": 2017,
+    "journal": "International Journal of Turbomachinery, Propulsion and Power",
+    "volume": "2(2)",
+    "pages": "4"
+  },
+  "diwan_ramesh_2009": {
+    "title": "On the origin of the inflectional instability of a laminar separation bubble",
+    "authors": [
+      "Diwan, S.S.",
+      "Ramesh, O.N."
+    ],
+    "year": 2009,
+    "journal": "Journal of Fluid Mechanics",
+    "volume": "629",
+    "pages": "263-298"
+  },
+  "durbin_2012": {
+    "title": "An intermittency model for bypass transition",
+    "authors": [
+      "Durbin, P.A."
+    ],
+    "year": 2012,
+    "journal": "International Journal of Heat and Fluid Flow",
+    "volume": "36",
+    "pages": "1-6"
+  },
+  "durbin_2017": {
+    "title": "Perspectives on the phenomenology and modeling of boundary layer transition",
+    "authors": [
+      "Durbin, P.A."
+    ],
+    "year": 2017,
+    "journal": "Flow, Turbulence and Combustion",
+    "volume": "99",
+    "pages": "1-23"
+  },
+  "durbin_wu_2007": {
+    "title": "Transition beneath vortical disturbances",
+    "authors": [
+      "Durbin, P.A.",
+      "Wu, X."
+    ],
+    "year": 2007,
+    "journal": "Annual Review of Fluid Mechanics",
+    "volume": "39",
+    "pages": "107-128"
+  },
+  "emmons_1951": {
+    "title": "The laminar-turbulent transition in a boundary layer — Part I",
+    "authors": [
+      "Emmons, H.W."
+    ],
+    "year": 1951,
+    "journal": "Journal of the Aeronautical Sciences",
+    "volume": "18(7)",
+    "pages": "490-498"
+  },
+  "ergin_white_2006": {
+    "title": "Unsteady and transitional flows behind roughness elements",
+    "authors": [
+      "Ergin, F.G.",
+      "White, E.B."
+    ],
+    "year": 2006,
+    "journal": "AIAA Journal",
+    "volume": "44(11)",
+    "pages": "2504-2514"
+  },
+  "fransson_matsubara_alfredsson_2005": {
+    "title": "Transition induced by free-stream turbulence",
+    "authors": [
+      "Fransson, J.H.M.",
+      "Matsubara, M.",
+      "Alfredsson, P.H."
+    ],
+    "year": 2005,
+    "journal": "Journal of Fluid Mechanics",
+    "volume": "527",
+    "pages": "1-25"
+  },
+  "furst_2013": {
+    "title": "Numerical simulation of transitional flows with laminar kinetic energy",
+    "authors": [
+      "Fürst, J."
+    ],
+    "year": 2013,
+    "journal": "Engineering Mechanics",
+    "volume": "20(5)",
+    "pages": "379-388"
+  },
+  "ge_arolla_durbin_2014": {
+    "title": "A bypass transition model based on the intermittency function",
+    "authors": [
+      "Ge, X.",
+      "Arolla, S.",
+      "Durbin, P.A."
+    ],
+    "year": 2014,
+    "journal": "Flow, Turbulence and Combustion",
+    "volume": "93",
+    "pages": "37-61"
+  },
+  "ghimire_ni_wang_2025": {
+    "title": "Assessment of Transitional RANS Models and Implementation of Transitional IDDES Method for Boundary Layer Transition and Separated Flows in OpenFOAM-V2312",
+    "authors": [
+      "Ghimire, S.",
+      "Ni, X.",
+      "Wang, Y."
+    ],
+    "year": 2025,
+    "journal": "Fluids",
+    "volume": "10(9)",
+    "pages": "230"
+  },
+  "gonzalez_agrawal_wu_2025": {
+    "title": "Development of transitional Reynolds number correlation and assessment of RANS for predictions of bypass transition",
+    "authors": [
+      "Gonzalez",
+      "Agrawal",
+      "Wu"
+    ],
+    "year": 2025,
+    "journal": "arXiv preprint",
+    "volume": "arXiv:2502.19609",
+    "pages": ""
+  },
+  "herbert_1988": {
+    "title": "Secondary instability of boundary layers",
+    "authors": [
+      "Herbert, T."
+    ],
+    "year": 1988,
+    "journal": "Annual Review of Fluid Mechanics",
+    "volume": "20",
+    "pages": "487-526"
+  },
+  "ijtpp2020004": {
+    "title": "Transition modeling for turbomachinery flows",
+    "authors": [
+      "Pacciani, R.",
+      "Marconcini, M.",
+      "Fadai-Ghotbi, A."
+    ],
+    "year": 2020,
+    "journal": "International Journal of Turbomachinery, Propulsion and Power",
+    "volume": "5(1)",
+    "pages": "4"
+  },
+  "jacobs_durbin_2001": {
+    "title": "Simulations of bypass transition",
+    "authors": [
+      "Jacobs, R.G.",
+      "Durbin, P.A."
+    ],
+    "year": 2001,
+    "journal": "Journal of Fluid Mechanics",
+    "volume": "428",
+    "pages": "185-212"
+  },
+  "kachanov_1994": {
+    "title": "Physical mechanisms of laminar-boundary-layer transition",
+    "authors": [
+      "Kachanov, Y.S."
+    ],
+    "year": 1994,
+    "journal": "Annual Review of Fluid Mechanics",
+    "volume": "26",
+    "pages": "411-482"
+  },
+  "langtry_menter_2006": {
+    "title": "A correlation-based transition model using local variables for unstructured parallelized CFD codes",
+    "authors": [
+      "Langtry, R.B.",
+      "Menter, F.R."
+    ],
+    "year": 2006,
+    "journal": "ASME Journal of Turbomachinery",
+    "volume": "128(3)",
+    "pages": "413-422"
+  },
+  "langtry_menter_2009": {
+    "title": "Correlation-based transition modeling for unstructured parallelized computational fluid dynamics codes",
+    "authors": [
+      "Langtry, R.B.",
+      "Menter, F.R."
+    ],
+    "year": 2009,
+    "journal": "AIAA Journal",
+    "volume": "47(12)",
+    "pages": "2894-2906"
+  },
+  "mack_1984": {
+    "title": "Boundary layer linear stability theory",
+    "authors": [
+      "Mack, L.M."
+    ],
+    "year": 1984,
+    "journal": "AGARD Report",
+    "volume": "709",
+    "pages": ""
+  },
+  "marxen_henningson_2011": {
+    "title": "The effect of small-amplitude convective disturbances on the size and bursting of a laminar separation bubble",
+    "authors": [
+      "Marxen, O.",
+      "Henningson, D.S."
+    ],
+    "year": 2011,
+    "journal": "Journal of Fluid Mechanics",
+    "volume": "671",
+    "pages": "1-33"
+  },
+  "matsubara_alfredsson_2001": {
+    "title": "Disturbance growth in boundary layers subjected to free-stream turbulence",
+    "authors": [
+      "Matsubara, M.",
+      "Alfredsson, P.H."
+    ],
+    "year": 2001,
+    "journal": "Journal of Fluid Mechanics",
+    "volume": "430",
+    "pages": "149-168"
+  },
+  "mayle_1991": {
+    "title": "The role of laminar-turbulent transition in gas turbine engines",
+    "authors": [
+      "Mayle, R.E."
+    ],
+    "year": 1991,
+    "journal": "ASME Journal of Turbomachinery",
+    "volume": "113",
+    "pages": "509-537"
+  },
+  "mcauliffe_yaras_2010": {
+    "title": "Transition mechanisms in separation bubbles under low and elevated free-stream turbulence",
+    "authors": [
+      "McAuliffe, B.R.",
+      "Yaras, M.I."
+    ],
+    "year": 2010,
+    "journal": "ASME Journal of Turbomachinery",
+    "volume": "132(1)",
+    "pages": "011004"
+  },
+  "menter_1994": {
+    "title": "Two-equation eddy-viscosity turbulence models for engineering applications",
+    "authors": [
+      "Menter, F.R."
+    ],
+    "year": 1994,
+    "journal": "AIAA Journal",
+    "volume": "32(8)",
+    "pages": "1598-1605"
+  },
+  "menter_2015": {
+    "title": "Transition modelling for general purpose CFD codes",
+    "authors": [
+      "Menter, F.R.",
+      "Smirnov, P.E.",
+      "Liu, T.",
+      "Avancha, R."
+    ],
+    "year": 2015,
+    "journal": "Flow, Turbulence and Combustion",
+    "volume": "95",
+    "pages": "583-619"
+  },
+  "narasimha_1957": {
+    "title": "On the distribution of intermittency in the transition region of a boundary layer",
+    "authors": [
+      "Narasimha, R."
+    ],
+    "year": 1957,
+    "journal": "Journal of the Aeronautical Sciences",
+    "volume": "24(9)",
+    "pages": "711-712"
+  },
+  "narasimha_1985": {
+    "title": "The laminar-turbulent transition zone in the boundary layer",
+    "authors": [
+      "Narasimha, R."
+    ],
+    "year": 1985,
+    "journal": "Progress in Aerospace Sciences",
+    "volume": "22(1)",
+    "pages": "29-80"
+  },
+  "reed_saric_arnal_1996": {
+    "title": "Linear stability theory applied to boundary layers",
+    "authors": [
+      "Reed, H.L.",
+      "Saric, W.S.",
+      "Arnal, D."
+    ],
+    "year": 1996,
+    "journal": "Annual Review of Fluid Mechanics",
+    "volume": "28",
+    "pages": "389-428"
+  },
+  "reshotko_2001": {
+    "title": "Transient growth: a factor in bypass transition",
+    "authors": [
+      "Reshotko, E."
+    ],
+    "year": 2001,
+    "journal": "Physics of Fluids",
+    "volume": "13(5)",
+    "pages": "1067-1075"
+  },
+  "roach_brierley_1992": {
+    "title": "The influence of a turbulent free stream on zero pressure gradient transitional boundary layer development",
+    "authors": [
+      "Roach, P.E.",
+      "Brierley, D.H."
+    ],
+    "year": 1992,
+    "journal": "ERCOFTAC Series",
+    "volume": "1",
+    "pages": "319-347"
+  },
+  "saric_reed_white_2003": {
+    "title": "On the stability and transition of three-dimensional boundary layers",
+    "authors": [
+      "Saric, W.S.",
+      "Reed, H.L.",
+      "White, E.B."
+    ],
+    "year": 2003,
+    "journal": "Annual Review of Fluid Mechanics",
+    "volume": "35",
+    "pages": "413-440"
+  },
+  "saru_ersan_pulat_2025": {
+    "title": "The Effect of Turbulent Intensity on Friction Coefficient in Boundary-Layer Transitional Flat Plate Flow",
+    "authors": [
+      "Saru, M.",
+      "Erşan, H.A.",
+      "Pulat, E."
+    ],
+    "year": 2025,
+    "journal": "Applied Sciences",
+    "volume": "15",
+    "pages": "5852"
+  },
+  "schubauer_skramstad_1947": {
+    "title": "Laminar boundary layer oscillations and stability of laminar flow",
+    "authors": [
+      "Schubauer, G.B.",
+      "Skramstad, H.K."
+    ],
+    "year": 1947,
+    "journal": "Journal of the Aeronautical Sciences",
+    "volume": "14(2)",
+    "pages": "69-78"
+  },
+  "sreenivasan_1989": {
+    "title": "The turbulent boundary layer",
+    "authors": [
+      "Sreenivasan, K.R."
+    ],
+    "year": 1989,
+    "journal": "Frontiers in Experimental Fluid Mechanics (Springer)",
+    "volume": "",
+    "pages": ""
+  },
+  "stripf_2005": {
+    "title": "A model for rough wall heat transfer and its application to a turbine cascade",
+    "authors": [
+      "Stripf, M.",
+      "Schulz, A.",
+      "Wittig, S."
+    ],
+    "year": 2005,
+    "journal": "ASME Paper GT2005-68342",
+    "volume": "",
+    "pages": ""
+  },
+  "suzen_huang_2000": {
+    "title": "Modeling of flow transition using an intermittency transport equation",
+    "authors": [
+      "Suzen, Y.B.",
+      "Huang, P.G."
+    ],
+    "year": 2000,
+    "journal": "ASME Journal of Fluids Engineering",
+    "volume": "122(2)",
+    "pages": "273-284"
+  },
+  "tani_1969": {
+    "title": "Boundary layer transition",
+    "authors": [
+      "Tani, I."
+    ],
+    "year": 1969,
+    "journal": "Annual Review of Fluid Mechanics",
+    "volume": "1",
+    "pages": "169-196"
+  },
+  "van_ingen_1956": {
+    "title": "A suggested semi-empirical method for the calculation of the boundary layer transition region",
+    "authors": [
+      "van Ingen, J.L."
+    ],
+    "year": 1956,
+    "journal": "Delft University of Technology, Department of Aeronautical Engineering Report",
+    "volume": "VTH-74",
+    "pages": ""
+  },
+  "van_ingen_2008": {
+    "title": "The eN method for transition prediction. Historical review of work at TU Delft",
+    "authors": [
+      "van Ingen, J.L."
+    ],
+    "year": 2008,
+    "journal": "AIAA Paper",
+    "volume": "2008-3830",
+    "pages": ""
+  },
+  "walters_cokljat_2008": {
+    "title": "A three-equation eddy-viscosity model for Reynolds-averaged Navier-Stokes simulations of transitional flows",
+    "authors": [
+      "Walters, D.K.",
+      "Cokljat, D."
+    ],
+    "year": 2008,
+    "journal": "ASME Journal of Fluids Engineering",
+    "volume": "130(12)",
+    "pages": "121401"
+  },
+  "westin_et_al_1994": {
+    "title": "Experiments in a boundary layer subjected to free stream turbulence. Part 1. Boundary layer structure and receptivity",
+    "authors": [
+      "Westin, K.J.A.",
+      "Boiko, A.V.",
+      "Klingmann, B.G.B.",
+      "Kozlov, V.V.",
+      "Alfredsson, P.H."
+    ],
+    "year": 1994,
+    "journal": "Journal of Fluid Mechanics",
+    "volume": "281",
+    "pages": "193-218"
+  },
+  "zaki_durbin_2005": {
+    "title": "Mode interaction and the bypass route to transition",
+    "authors": [
+      "Zaki, T.A.",
+      "Durbin, P.A."
+    ],
+    "year": 2005,
+    "journal": "Journal of Fluid Mechanics",
+    "volume": "531",
+    "pages": "85-111"
+  },
+  "suluksna_juntasaro_2008": {
+    "title": "Assessment of intermittency transport equations for modeling transition in boundary layers subjected to freestream turbulence",
+    "authors": [
+      "Suluksna, K.",
+      "Juntasaro, E."
+    ],
+    "year": 2008,
+    "journal": "International Journal of Heat and Fluid Flow",
+    "volume": "29",
+    "pages": "48-61"
+  },
+  "yin_pavesi_yuan_2023": {
+    "title": "On the use of a 2D Reynolds-averaged Navier-Stokes turbulence transition model for the prediction of laminar-turbulent transition on flat plates",
+    "authors": [
+      "Yin, T.",
+      "Pavesi, G.",
+      "Yuan, S."
+    ],
+    "year": 2023,
+    "journal": "International Journal of Numerical Methods for Heat & Fluid Flow",
+    "volume": "33(8)",
+    "pages": "2806-2828"
+  },
+  "spalart_rumsey_2007": {
+    "title": "Effective inflow conditions for turbulence models in aerodynamic calculations",
+    "authors": [
+      "Spalart, P.R.",
+      "Rumsey, C.L."
+    ],
+    "year": 2007,
+    "journal": "AIAA Journal",
+    "volume": "45(10)",
+    "pages": "2544-2553"
+  },
+  "malan_suluksna_juntasaro_2009": {
+    "title": "Calibrating the gamma-Re_theta transition model for commercial CFD",
+    "authors": [
+      "Malan, P.",
+      "Suluksna, K.",
+      "Juntasaro, E."
+    ],
+    "year": 2009,
+    "journal": "47th AIAA Aerospace Sciences Meeting, AIAA Paper 2009-1142",
+    "volume": "",
+    "pages": ""
+  }
+}

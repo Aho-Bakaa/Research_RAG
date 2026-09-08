@@ -1,0 +1,394 @@
+[
+  {
+    "canonical": "λ_θ",
+    "alias": "\\g",
+    "paper_id": "mayle_1991",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "Tu",
+    "alias": "\\tau",
+    "paper_id": "abu_ghannam_shaw_1980",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "γ",
+    "alias": "\\tag",
+    "paper_id": "abu_ghannam_shaw_1980",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "Re_θt",
+    "alias": "\\text",
+    "paper_id": "mayle_1991",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "λ_θ",
+    "alias": "\\begin",
+    "paper_id": "dick_kubacki_2017",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "N",
+    "alias": "\\sigma",
+    "paper_id": "dick_kubacki_2017",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "N",
+    "alias": "\\hat",
+    "paper_id": "dick_kubacki_2017",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "Re_θt",
+    "alias": "\\overline",
+    "paper_id": "dick_kubacki_2017",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "Re_xt",
+    "alias": "R_T",
+    "paper_id": "westin_et_al_1994",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "ω",
+    "alias": "\\beta_{2r}",
+    "paper_id": "schubauer_skramstad_1947_data",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "ω",
+    "alias": "\\beta",
+    "paper_id": "schubauer_skramstad_1947",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "ν",
+    "alias": "nu_e",
+    "paper_id": "roach_brierley_1992",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "k",
+    "alias": "nu_T",
+    "paper_id": "dick_kubacki_2017",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "ν",
+    "alias": "\\mu",
+    "paper_id": "dick_kubacki_2017",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "k",
+    "alias": "Re_T",
+    "paper_id": "dick_kubacki_2017",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "k",
+    "alias": "\\k",
+    "paper_id": "dick_kubacki_2017",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "μ_t",
+    "alias": "\\mu_{T,std}",
+    "paper_id": "coupland_1990",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "x",
+    "alias": "x_j",
+    "paper_id": "dick_kubacki_2017",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "Δx_tr",
+    "alias": "L_y",
+    "paper_id": "abu_ghannam_shaw_1980",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "ρ",
+    "alias": "rho_e",
+    "paper_id": "roach_brierley_1992",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "τ_w",
+    "alias": "tau_0",
+    "paper_id": "abu_ghannam_shaw_1980",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "Re_x",
+    "alias": "R_x",
+    "paper_id": "dhawan_narasimha_1958",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "λ_θ",
+    "alias": "\\lambda_{θ t}",
+    "paper_id": "mayle_1991",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "Cf",
+    "alias": "f_t",
+    "paper_id": "dhawan_narasimha_1958",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "Cf",
+    "alias": "f_L",
+    "paper_id": "dhawan_narasimha_1958",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "Cf",
+    "alias": "f_T",
+    "paper_id": "dhawan_narasimha_1958",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "τ_t",
+    "alias": "\\tau",
+    "paper_id": "sreenivasan_1989",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "τ_w",
+    "alias": "τ_w,",
+    "paper_id": "sreenivasan_1989",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "τ_t",
+    "alias": "τ_t,",
+    "paper_id": "sreenivasan_1989",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "Re_kk",
+    "alias": "R_k",
+    "paper_id": "braslow_1960",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "ν",
+    "alias": "nu_k",
+    "paper_id": "braslow_1960",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "σ̂n",
+    "alias": "\\sigma",
+    "paper_id": "mayle_1991",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "y",
+    "alias": "\\eta",
+    "paper_id": "ergin_white_2006",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "λ_θ",
+    "alias": "\\lambda_{θ s}",
+    "paper_id": "mayle_1991",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "Re",
+    "alias": "R_c",
+    "paper_id": "durbin_2012",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "k",
+    "alias": "k_L",
+    "paper_id": "walters_leylek_2004",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "k",
+    "alias": "k_0",
+    "paper_id": "durbin_2012",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "U_∞",
+    "alias": "U_R",
+    "paper_id": "abu_ghannam_shaw_1980",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "θ",
+    "alias": "\\Theta_{transition}",
+    "paper_id": "durbin_2012",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "Re",
+    "alias": "Re_T",
+    "paper_id": "dick_kubacki_2017",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "Re_θ",
+    "alias": "R_l",
+    "paper_id": "dhawan_narasimha_1958",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "p",
+    "alias": "p_R",
+    "paper_id": "abu_ghannam_shaw_1980",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "τ_w",
+    "alias": "τ_was",
+    "paper_id": "westin_et_al_1994",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "p",
+    "alias": "p_0",
+    "paper_id": "westin_et_al_1994",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "p",
+    "alias": "C_p",
+    "paper_id": "abu_ghannam_shaw_1980",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "μ_t",
+    "alias": "\\mu_{t,L}",
+    "paper_id": "liu_lu_wang_wang_yan_2022",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "λ_θ",
+    "alias": "\\lambda_{θ\\,L}",
+    "paper_id": "menter_2015",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "Tu",
+    "alias": "Tu_L",
+    "paper_id": "menter_2015",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "λ_θ",
+    "alias": "\\lambda_{θ L}",
+    "paper_id": "menter_2015",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "u",
+    "alias": "u_i",
+    "paper_id": "ghimire_ni_wang_2025",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "Δx_tr",
+    "alias": "L_x",
+    "paper_id": "abu_ghannam_shaw_1980",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "H",
+    "alias": "H_t",
+    "paper_id": "dhawan_narasimha_1958",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "H",
+    "alias": "H_L",
+    "paper_id": "dhawan_narasimha_1958",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "H",
+    "alias": "H_T",
+    "paper_id": "dhawan_narasimha_1958",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "x_t",
+    "alias": "\\int_{x_t'}",
+    "paper_id": "dhawan_narasimha_1958",
+    "page": "",
+    "added_by": "auto"
+  },
+  {
+    "canonical": "τ_t",
+    "alias": "\\tau_{xy}",
+    "paper_id": "mayle_1991",
+    "page": "",
+    "added_by": "auto"
+  }
+]
