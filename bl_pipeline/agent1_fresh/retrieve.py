@@ -169,11 +169,15 @@ def _expand_query(
     #   • Bare list:  [...]  — Sonnet sometimes returns just the list
     #   • None / non-dict: defensive default to a single-query plan
     if isinstance(parsed, list):
-        parsed = {"search_queries": parsed}
+        queries_str = [q for q in parsed if isinstance(q, str) and q.strip()]
+        parsed = {"search_queries": queries_str if queries_str else [user_query]}
     elif not isinstance(parsed, dict):
         parsed = {}
-    queries = parsed.get("search_queries") or [user_query]
-    if not isinstance(queries, list) or not queries:
+    raw_queries = parsed.get("search_queries") or [user_query]
+    if not isinstance(raw_queries, list):
+        raw_queries = [user_query]
+    queries = [q for q in raw_queries if isinstance(q, str) and q.strip()]
+    if not queries:
         queries = [user_query]
     # Ensure the original query is always first.
     if queries[0] != user_query:
