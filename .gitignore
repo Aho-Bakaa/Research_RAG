@@ -1,0 +1,27 @@
+# Environment & Secrets (NEVER COMMIT API KEYS)
+.env
+*.env
+
+# Python Bytecode & Cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Benchmark Runs, Logs & Artifacts
+runs/
+*.log
+
+# Data & Binary Documents (Keep repository lightweight for git push)
+data/
+*.pdf
+*.docx
+
+# Vector Stores & Temporary Indices
+qdrant_storage/
+.chroma/
+
+# Virtual Environments
+.venv/
+env/
+venv/
