@@ -14,27 +14,120 @@ from collections import Counter
 from typing import Any, Sequence
 
 
+import unicodedata
+from bl_pipeline.rag.parsers.scientific_normalizer import normalize_scientific_text
+
+# Comprehensive bidirectional Greek & aerodynamic mapping
+GREEK_TO_NAME: dict[str, str] = {
+    "α": "alpha",   "β": "beta",     "γ": "gamma",   "δ": "delta",
+    "ε": "epsilon", "ϵ": "epsilon",  "ζ": "zeta",    "η": "eta",
+    "θ": "theta",   "ϑ": "theta",    "ι": "iota",    "κ": "kappa",
+    "λ": "lambda",  "μ": "mu",       "ν": "nu",      "ξ": "xi",
+    "π": "pi",      "ρ": "rho",      "ϱ": "rho",     "σ": "sigma",
+    "τ": "tau",     "υ": "upsilon",  "ϕ": "phi",     "φ": "phi",
+    "χ": "chi",     "ψ": "psi",      "ω": "omega",   "∞": "inf",
+}
+
+NAME_TO_GREEK: dict[str, str] = {
+    "alpha": "α",   "beta": "β",     "gamma": "γ",   "delta": "δ",
+    "epsilon": "ε", "zeta": "ζ",     "eta": "η",     "theta": "θ",
+    "iota": "ι",    "kappa": "κ",    "lambda": "λ",  "mu": "μ",
+    "nu": "ν",      "xi": "ξ",       "pi": "π",      "rho": "ρ",
+    "sigma": "σ",   "tau": "τ",      "upsilon": "υ", "phi": "ϕ",
+    "chi": "χ",     "psi": "ψ",      "omega": "ω",   "inf": "∞",
+    "infinity": "∞",
+}
+
+GREEK_SET: set[str] = set(GREEK_TO_NAME.keys())
+WHITELIST_SINGLE_VARS: set[str] = {"k", "u", "v", "w", "p", "q", "m", "c", "x", "y", "z", "h", "l", "r", "s", "t"}
+
+GREEK_RANGE = r"\u0370-\u03ff\u1f00-\u1fff"
+SUBSCRIPT_RANGE = r"\u2080-\u2089\u2090-\u209c"
+SPECIAL_MATH = r"\u221e"  # ∞
+SCI_TOKEN_CHAR = rf"[a-z0-9{GREEK_RANGE}{SUBSCRIPT_RANGE}{SPECIAL_MATH}]"
+SCI_TOKEN_RX = re.compile(rf"{SCI_TOKEN_CHAR}+(?:[_\.-]{SCI_TOKEN_CHAR}+)*")
+DELIM_SPLIT_RX = re.compile(r"([_\.-])")
+
+
+def expand_token_aliases(token: str) -> list[str]:
+    """Generate dual-indexed canonical aliases between Greek Unicode and Latin names."""
+    expanded = [token]
+
+    # 1. Greek Unicode -> Spelled-out Latin name
+    if any(c in GREEK_SET for c in token):
+        spelled = token
+        for g_char, g_name in GREEK_TO_NAME.items():
+            if g_char in spelled:
+                spelled = spelled.replace(g_char, g_name)
+        if spelled != token and spelled not in expanded:
+            expanded.append(spelled)
+
+    # 2. Spelled-out Latin name -> Greek Unicode (segment-aware)
+    segments = DELIM_SPLIT_RX.split(token)
+    changed = False
+    new_segments = []
+    for seg in segments:
+        if seg in NAME_TO_GREEK:
+            new_segments.append(NAME_TO_GREEK[seg])
+            changed = True
+        else:
+            # Handle variable suffixes (e.g. 'thetat' -> 'θt', 're_thetat' -> 're_θt')
+            matched = False
+            for name, g_char in sorted(NAME_TO_GREEK.items(), key=lambda x: len(x[0]), reverse=True):
+                if seg.startswith(name) and len(seg) > len(name):
+                    suffix = seg[len(name):]
+                    if len(suffix) <= 2:
+                        new_segments.append(g_char + suffix)
+                        changed = True
+                        matched = True
+                        break
+            if not matched:
+                new_segments.append(seg)
+    if changed:
+        symbolic = "".join(new_segments)
+        if symbolic not in expanded:
+            expanded.append(symbolic)
+
+    return expanded
+
+
 def tokenize_scientific_text(text: str) -> list[str]:
-    """Tokenize text preserving scientific terms, equations, underscores, and numbers.
-    
-    Examples:
-    - 'Re_theta_t' -> 're_theta_t', 're_theta', 'theta'
-    - '6.91' -> '6.91'
-    - 'Tu > 3%' -> 'tu', '3'
-    - 'k-kL-omega' -> 'k-kl-omega', 'omega'
-    """
-    cleaned = text.lower()
-    # Find words with optional underscores, hyphens, or decimal points
-    raw_tokens = re.findall(r"[a-z0-9]+(?:[_\.-][a-z0-9]+)*", cleaned)
-    tokens = []
+    """Tokenize scientific text preserving Greek letters, subscripts, formulas, and dual aliases."""
+    if not text:
+        return []
+
+    # Defense-in-depth: normalize accents, ligatures, and kerning spaces first
+    normalized = normalize_scientific_text(text)
+    cleaned = unicodedata.normalize("NFKC", normalized).lower()
+    raw_tokens = SCI_TOKEN_RX.findall(cleaned)
+    tokens: list[str] = []
+
     for t in raw_tokens:
-        tokens.append(t)
-        # If token has sub-parts like re_theta, also include component parts
-        if "_" in t:
-            tokens.extend([part for part in t.split("_") if len(part) > 1])
-        if "-" in t:
-            tokens.extend([part for part in t.split("-") if len(part) > 1])
-    return [t for t in tokens if len(t) > 1 or t.isdigit()]
+        aliases = expand_token_aliases(t)
+        for a in aliases:
+            tokens.append(a)
+            if "_" in a:
+                for p in a.split("_"):
+                    tokens.append(p)
+                    for sub_a in expand_token_aliases(p):
+                        tokens.append(sub_a)
+            if "-" in a:
+                for p in a.split("-"):
+                    tokens.append(p)
+                    for sub_a in expand_token_aliases(p):
+                        tokens.append(sub_a)
+
+    # Filter single-character tokens: keep digits, Greek symbols, and whitelisted physical variables
+    res: list[str] = []
+    seen: set[str] = set()
+    for t in tokens:
+        if len(t) == 1:
+            if t not in GREEK_SET and not t.isdigit() and t not in WHITELIST_SINGLE_VARS:
+                continue
+        if t not in seen:
+            seen.add(t)
+            res.append(t)
+    return res
 
 
 class SimpleBM25:

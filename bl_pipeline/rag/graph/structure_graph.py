@@ -18,8 +18,10 @@ from typing import Any, Sequence
 import networkx as nx
 
 from bl_pipeline.rag.structured_chunker import StructuredChunk
-
-log = logging.getLogger(__name__)
+try:
+    from bl_pipeline.rag.hierarchical_chunker import HierarchicalDocumentTree, HierarchicalNode
+except ImportError:
+    HierarchicalDocumentTree, HierarchicalNode = None, None  # type: ignore
 
 # Cross-reference regexes matching inline paper text citations
 _EQ_XREF_RX = re.compile(
@@ -161,8 +163,11 @@ class DocumentStructureGraph:
         predecessors = self.g.predecessors(eq_node)
         chunk_ids = []
         for p in predecessors:
-            if self.g.nodes[p].get("node_type") == "chunk":
+            ntype = self.g.nodes[p].get("node_type")
+            if ntype == "chunk":
                 chunk_ids.append(self.g.nodes[p]["chunk_id"])
+            elif ntype == "hierarchical_node":
+                chunk_ids.append(self.g.nodes[p]["node_id"])
         return chunk_ids
 
     def get_chunks_referencing_figure(self, paper_id: str, fig_id: str) -> list[str]:
@@ -173,8 +178,11 @@ class DocumentStructureGraph:
         predecessors = self.g.predecessors(fig_node)
         chunk_ids = []
         for p in predecessors:
-            if self.g.nodes[p].get("node_type") == "chunk":
+            ntype = self.g.nodes[p].get("node_type")
+            if ntype == "chunk":
                 chunk_ids.append(self.g.nodes[p]["chunk_id"])
+            elif ntype == "hierarchical_node":
+                chunk_ids.append(self.g.nodes[p]["node_id"])
         return chunk_ids
 
     def get_section_chunks(self, paper_id: str, section_path: str) -> list[str]:
@@ -188,6 +196,123 @@ class DocumentStructureGraph:
             if self.g.nodes[s].get("node_type") == "chunk":
                 chunk_ids.append(self.g.nodes[s]["chunk_id"])
         return chunk_ids
+
+    def get_chunks_referencing_table(self, paper_id: str, tab_id: str) -> list[str]:
+        """Find all chunk IDs that refer to a given table in a paper."""
+        tab_node = f"tab:{paper_id}:{tab_id}"
+        if not self.g.has_node(tab_node):
+            return []
+        predecessors = self.g.predecessors(tab_node)
+        chunk_ids = []
+        for p in predecessors:
+            if self.g.nodes[p].get("node_type") in ("chunk", "hierarchical_node"):
+                chunk_ids.append(self.g.nodes[p].get("chunk_id") or self.g.nodes[p].get("node_id"))
+        return chunk_ids
+
+    def add_hierarchical_tree(self, tree: Any) -> None:
+        """Register a complete HierarchicalDocumentTree into the structure graph."""
+        if tree is None:
+            return
+
+        paper_id = tree.paper_id
+        paper_node_id = f"paper:{paper_id}"
+        if not self.g.has_node(paper_node_id):
+            self.add_paper(paper_id)
+
+        # 1. Add all nodes
+        for node_id, node in tree.nodes.items():
+            g_node_id = f"hnode:{node_id}"
+            self.g.add_node(
+                g_node_id,
+                node_type="hierarchical_node",
+                node_id=node.node_id,
+                paper_id=node.paper_id,
+                depth=node.depth,
+                element_type=node.element_type,
+                section_path=node.section_path,
+                heading_title=node.heading_title,
+                content=node.content,
+                content_snippet=node.content[:200],
+                page_start=node.page_start,
+                page_end=node.page_end,
+            )
+
+        # 2. Add hierarchical containment and sibling edges
+        for node_id, node in tree.nodes.items():
+            g_node_id = f"hnode:{node_id}"
+
+            # Link to parent
+            if node.parent_id and f"hnode:{node.parent_id}" in self.g:
+                parent_g_id = f"hnode:{node.parent_id}"
+                self.g.add_edge(parent_g_id, g_node_id, relation="parent_of")
+                self.g.add_edge(g_node_id, parent_g_id, relation="child_of")
+            elif node.depth == 1:
+                self.g.add_edge(paper_node_id, g_node_id, relation="contains")
+
+            # Link sequential siblings in linear reading order
+            if node.sibling_next and f"hnode:{node.sibling_next}" in self.g:
+                next_g_id = f"hnode:{node.sibling_next}"
+                self.g.add_edge(g_node_id, next_g_id, relation="next_sibling")
+                self.g.add_edge(next_g_id, g_node_id, relation="prev_sibling")
+
+            # Cross-reference extraction on leaf text
+            if node.depth == 3 and node.content:
+                text = node.content
+                for match in _EQ_XREF_RX.finditer(text):
+                    eq_id = match.group(1)
+                    eq_node = f"eq:{paper_id}:{eq_id}"
+                    if not self.g.has_node(eq_node):
+                        self.g.add_node(eq_node, node_type="equation", paper_id=paper_id, eq_id=eq_id)
+                    self.g.add_edge(g_node_id, eq_node, relation="refers_to")
+
+                for match in _TAB_XREF_RX.finditer(text):
+                    tab_id = match.group(1)
+                    tab_node = f"tab:{paper_id}:{tab_id}"
+                    if not self.g.has_node(tab_node):
+                        self.g.add_node(tab_node, node_type="table", paper_id=paper_id, tab_id=tab_id)
+                    self.g.add_edge(g_node_id, tab_node, relation="refers_to")
+
+    def get_sibling_nodes(self, node_id: str, before: int = 1, after: int = 1) -> list[str]:
+        """Traverse sequential reading-order sibling edges in the graph."""
+        g_id = f"hnode:{node_id}"
+        if not self.g.has_node(g_id):
+            return [node_id]
+
+        res_before = []
+        curr = g_id
+        for _ in range(before):
+            prev_nodes = [u for u, v, d in self.g.in_edges(curr, data=True) if d.get("relation") == "next_sibling"]
+            if not prev_nodes:
+                break
+            curr = prev_nodes[0]
+            res_before.append(self.g.nodes[curr]["node_id"])
+        res_before.reverse()
+
+        res_after = []
+        curr = g_id
+        for _ in range(after):
+            next_nodes = [v for u, v, d in self.g.out_edges(curr, data=True) if d.get("relation") == "next_sibling"]
+            if not next_nodes:
+                break
+            curr = next_nodes[0]
+            res_after.append(self.g.nodes[curr]["node_id"])
+
+        return res_before + [node_id] + res_after
+
+    def get_hierarchical_ancestors(self, node_id: str) -> list[dict[str, Any]]:
+        """Walk up hierarchy tree via child_of edges."""
+        g_id = f"hnode:{node_id}"
+        if not self.g.has_node(g_id):
+            return []
+        ancestors = []
+        curr = g_id
+        while True:
+            parent_nodes = [v for u, v, d in self.g.out_edges(curr, data=True) if d.get("relation") == "child_of"]
+            if not parent_nodes:
+                break
+            curr = parent_nodes[0]
+            ancestors.append(dict(self.g.nodes[curr]))
+        return ancestors
 
     def get_citing_papers(self, paper_id: str) -> list[str]:
         """Get all papers that cite this paper."""
