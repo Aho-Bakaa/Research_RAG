@@ -20,9 +20,9 @@ import re
 import sys
 import time
 
-# Windows console encoding fix
+# Windows console encoding and unbuffered output fix
 if hasattr(sys.stdout, "reconfigure"):
-    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace", line_buffering=True)
 if hasattr(sys.stderr, "reconfigure"):
     sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 from collections import Counter, defaultdict
@@ -42,7 +42,9 @@ from bl_pipeline.rag.crag_gate import RetrievalQualityGate
 from bl_pipeline.rag.dedup import deduplicate_chunks
 from bl_pipeline.rag.graph.structure_graph import DocumentStructureGraph
 from bl_pipeline.rag.hybrid_search import tokenize_scientific_text, rrf_fusion
+from bl_pipeline.rag.parent_child import ParentChildRetriever
 from bl_pipeline.rag.parsers.layout_parser import LayoutAwareParser
+from bl_pipeline.rag.parsers.scientific_normalizer import normalize_scientific_text
 from bl_pipeline.rag.qdrant_store import QdrantMultiTrackStore
 from bl_pipeline.rag.reranker import CrossEncoderReranker
 from bl_pipeline.rag.router import QueryRouter
@@ -86,6 +88,7 @@ def load_groq_client() -> tuple[OpenAI, str]:
     client = OpenAI(
         api_key=api_key,
         base_url="https://api.groq.com/openai/v1",
+        timeout=30.0,
     )
     return client, model
 
@@ -98,7 +101,7 @@ def groq_completion_with_backoff(
     max_retries: int = 4,
     initial_delay: float = 3.0,
 ) -> str:
-    """Execute Groq completion with exponential backoff on rate limits (HTTP 429)."""
+    """Execute Groq judge completion with exponential backoff on rate limits and network errors."""
     delay = initial_delay
     last_err: Exception | None = None
     for attempt in range(max_retries):
@@ -115,14 +118,47 @@ def groq_completion_with_backoff(
             return response.choices[0].message.content or "{}"
         except Exception as e:
             err_str = str(e).lower()
-            if "429" in err_str or "rate limit" in err_str:
-                last_err = e
-                print(f"      [Groq Rate Limit] Attempt {attempt+1}/{max_retries}. Backing off for {delay:.1f}s...")
+            last_err = e
+            if "429" in err_str or "rate limit" in err_str or "timeout" in err_str or "connection" in err_str:
+                print(f"      [Groq Evaluator Retry] Attempt {attempt+1}/{max_retries} ({type(e).__name__}). Backing off for {delay:.1f}s...")
                 time.sleep(delay)
                 delay *= 2.0
             else:
                 raise e
-    raise RuntimeError(f"Groq completion failed after {max_retries} attempts: {last_err}")
+    print(f"      [Groq Evaluator Fallback] Failed after {max_retries} attempts: {last_err}")
+    return "{}"
+
+
+def groq_generation_with_backoff(
+    client: OpenAI,
+    model: str,
+    prompt: str,
+    max_tokens: int = 350,
+    max_retries: int = 4,
+    initial_delay: float = 3.0,
+) -> str:
+    """Execute Groq answer generation with exponential backoff on rate limits and network errors."""
+    delay = initial_delay
+    last_err: Exception | None = None
+    for attempt in range(max_retries):
+        try:
+            ans_resp = client.chat.completions.create(
+                model=model,
+                messages=[{"role": "user", "content": prompt}],
+                temperature=0.0,
+                max_tokens=max_tokens,
+            )
+            return ans_resp.choices[0].message.content or ""
+        except Exception as e:
+            err_str = str(e).lower()
+            last_err = e
+            if "429" in err_str or "rate limit" in err_str or "timeout" in err_str or "connection" in err_str:
+                print(f"      [Groq Generation Retry] Attempt {attempt+1}/{max_retries} ({type(e).__name__}). Backing off for {delay:.1f}s...")
+                time.sleep(delay)
+                delay *= 2.0
+            else:
+                raise e
+    return f"API Error after {max_retries} retries: {last_err}"
 
 
 class ScientificCorpusBM25:
@@ -136,7 +172,8 @@ class ScientificCorpusBM25:
         self.inverted_index: dict[str, list[tuple[int, int]]] = defaultdict(list)
         
         for idx, doc in enumerate(docs):
-            full_text = f"{doc['paper_id']} {doc['content']}"
+            content = normalize_scientific_text(doc.get("content", ""))
+            full_text = f"{doc['paper_id']} {content}"
             tokens = tokenize_scientific_text(full_text)
             self.doc_lengths.append(len(tokens))
             term_counts = Counter(tokens)
@@ -150,7 +187,8 @@ class ScientificCorpusBM25:
             self.idf[term] = math.log(1.0 + (self.num_docs - df + 0.5) / (df + 0.5))
 
     def search(self, query: str, top_n: int = 30) -> list[dict[str, Any]]:
-        query_tokens = tokenize_scientific_text(query)
+        clean_query = normalize_scientific_text(query)
+        query_tokens = tokenize_scientific_text(clean_query)
         doc_scores: dict[int, float] = defaultdict(float)
         
         query_year = None
@@ -722,7 +760,7 @@ def grade_chunk_relevance(
         return 0
 
     c_text = (chunk.get("content") or chunk.get("payload", {}).get("content", "")).lower()
-    c_paper = chunk.get("payload", {}).get("paper_id", "").lower()
+    c_paper = (chunk.get("paper_id") or chunk.get("payload", {}).get("paper_id", "")).lower()
     target_paper = query_item["target_paper"].lower()
     relevant_papers = [p.lower() for p in query_item.get("relevant_papers", [])]
     target_keywords = [kw.lower() for kw in query_item.get("target_keywords", [])]
@@ -774,15 +812,16 @@ def compute_true_ndcg(
 
 def run_scaled_50q_benchmark(
     data_dir: str = "data/primary_rag_v2_nemotron_8b",
-    index_path: str = "runs/qdrant_scaled_corpus",
+    index_path: str = "runs/qdrant_scaled_corpus_v2",
     min_cross_encoder_score: float = -1.5,
     groq_delay_s: float = 2.0,
+    limit_queries: int | None = None,
 ):
     data_dir_path = Path(data_dir)
     print(f"\n{'='*85}")
     print(f"SCALED PRODUCTION RAG BENCHMARK EVALUATION (50 REAL, UNBIASED QUERIES)")
     print(f"Corpus: {data_dir_path} (39 primary literature PDFs)")
-    print(f"Persistent Store: {index_path} (12,104 points across multi-tracks)")
+    print(f"Persistent Store: {index_path} (12,614 points across multi-tracks)")
     print(f"Retrieval: Full-Corpus In-Memory BM25 + Qdrant Dense + RRF + MS-MARCO Cross-Encoder")
     print(f"Unbiased Controls: ZERO target paper filters, ZERO OOD keyword interception")
     print(f"{'='*85}\n")
@@ -797,9 +836,11 @@ def run_scaled_50q_benchmark(
     chunker = StructurePreservingChunker()
     router = QueryRouter()
     reranker = CrossEncoderReranker(model_name="cross-encoder/ms-marco-MiniLM-L-6-v2")
+    parent_retriever = ParentChildRetriever(qdrant.client, parent_collection="parent")
     groq_client, groq_model = load_groq_client()
     print(f"      Embedder: all-MiniLM-L6-v2 (dim=384)")
     print(f"      Reranker: cross-encoder/ms-marco-MiniLM-L-6-v2")
+    print(f"      Parent Cache: {len(parent_retriever.parent_cache)} sections preloaded in memory")
     print(f"      LLM Evaluator: Groq ({groq_model})")
 
     # 2. Build In-Memory Corpus BM25 Index over all chunks
@@ -808,7 +849,7 @@ def run_scaled_50q_benchmark(
     corpus_docs = []
 
     for track in ["text", "equation"]:
-        points, _ = qdrant.client.scroll(track, limit=12000, with_payload=True, with_vectors=False)
+        points, _ = qdrant.client.scroll(track, limit=20000, with_payload=True, with_vectors=False)
         for pt in points:
             payload = pt.payload or {}
             content = payload.get("content", "")
@@ -833,7 +874,8 @@ def run_scaled_50q_benchmark(
     graph.add_citation("walters_cokljat_2008", "walters_leylek_2004", ref_num="[4]")
 
     # 3. Run Benchmark Queries
-    print(f"\n[4/5] Running unassisted retrieval & evaluation across {len(SCALED_50_EVAL_SET)} queries...")
+    eval_set = SCALED_50_EVAL_SET[:limit_queries] if limit_queries else SCALED_50_EVAL_SET
+    print(f"\n[4/5] Running unassisted retrieval & evaluation across {len(eval_set)} queries...")
 
     hit_at_1 = []
     hit_at_3 = []
@@ -848,7 +890,7 @@ def run_scaled_50q_benchmark(
     llm_latencies = []
     eval_results = []
 
-    for idx, item in enumerate(SCALED_50_EVAL_SET, 1):
+    for idx, item in enumerate(eval_set, 1):
         q_id = item["id"]
         category = item["category"]
         query = item["query"]
@@ -856,7 +898,7 @@ def run_scaled_50q_benchmark(
         is_cit = item.get("is_citation_query", False)
         is_ood = item.get("is_ood", False)
 
-        print(f"\n--- [{q_id}] ({category}) Query {idx}/{len(SCALED_50_EVAL_SET)}: \"{query[:65]}...\" ---")
+        print(f"\n--- [{q_id}] ({category}) Query {idx}/{len(eval_set)}: \"{query[:65]}...\" ---")
 
         # Citation graph query path
         if is_cit:
@@ -875,12 +917,12 @@ def run_scaled_50q_benchmark(
 
         else:
             # Pure Unbiased Hybrid Retrieval Path
-            # A. Full Corpus BM25
+            # A. Full Corpus BM25 on child chunks
             bm25_top = corpus_bm25.search(query, top_n=25)
 
-            # B. Dense Qdrant Multi-Track Search
+            # B. Dense Qdrant Multi-Track Search (focused on text and equation child tracks)
             query_emb = embedder.encode([query], convert_to_numpy=True)[0].tolist()
-            dense_hits = qdrant.search_multitrack(["text", "equation", "parent"], query_emb, limit_per_track=15)
+            dense_hits = qdrant.search_multitrack(["text", "equation"], query_emb, limit_per_track=15)
             for h in dense_hits:
                 h["paper_id"] = h.get("payload", {}).get("paper_id", "")
 
@@ -890,8 +932,19 @@ def run_scaled_50q_benchmark(
             # C. Reciprocal Rank Fusion (BM25 + Dense)
             fused_candidates = rrf_fusion(dense_top, bm25_top, k=60)
 
-            # D. Cross-Encoder Re-ranking on top 15 fused candidates
-            reranked = reranker.rerank(query, fused_candidates[:15], top_k=3, min_score=min_cross_encoder_score)
+            # D. Cross-Encoder Re-ranking on top 15 fused candidates (enriched with parent context)
+            enriched_candidates = []
+            for c in fused_candidates[:15]:
+                c_copy = dict(c)
+                c_copy["content"] = parent_retriever.enrich_candidate_for_reranking(c)
+                c_copy["raw_child_content"] = c.get("content", "")
+                enriched_candidates.append(c_copy)
+
+            reranked = reranker.rerank(query, enriched_candidates, top_k=6, min_score=min_cross_encoder_score)
+
+            for c in reranked:
+                if "raw_child_content" in c:
+                    c["content"] = c["raw_child_content"]
 
             # E. Natural CRAG Quality Gate: If reranked is empty or top score < min_score -> natural refusal
             if not reranked:
@@ -899,7 +952,8 @@ def run_scaled_50q_benchmark(
                 top_raw_score = -99.0
                 ood_rejected = True
             else:
-                selected_chunks = reranked
+                # F. Expand & Deduplicate by Parent Section (Small-to-Big Retrieval)
+                selected_chunks = parent_retriever.expand_and_deduplicate(reranked, max_parents=3)
                 top_raw_score = reranked[0].get("rerank_score", 0.0)
                 ood_rejected = False
 
@@ -943,10 +997,13 @@ def run_scaled_50q_benchmark(
             print(f"      [OOD Probe] Natural Rejection: {'SUCCESS (0 chunks retrieved)' if ood_rejected else 'FAILED (false positive chunks)'}")
 
         # Real LLM Generation & Verification via Groq
-        context_block = "\n\n---\n\n".join([
-            f"[Source Paper: {c.get('payload', {}).get('paper_id', 'unknown')}]\n{c.get('content', '')}"
-            for c in selected_chunks
-        ])
+        if is_cit:
+            context_block = "\n\n---\n\n".join([
+                f"[Source Paper: {c.get('paper_id') or c.get('payload', {}).get('paper_id', 'unknown')}]\n{c.get('content', '')}"
+                for c in selected_chunks
+            ])
+        else:
+            context_block = parent_retriever.format_llm_context_block(selected_chunks, query=query)
 
         llm_start = time.time()
         if not selected_chunks:
@@ -965,17 +1022,12 @@ Context Excerpts:
 {context_block}
 
 Answer:"""
-            try:
-                ans_resp = groq_client.chat.completions.create(
-                    model=groq_model,
-                    messages=[{"role": "user", "content": ans_prompt}],
-                    temperature=0.0,
-                    max_tokens=300,
-                )
-                answer = ans_resp.choices[0].message.content or ""
-            except Exception as e:
-                answer = f"API Error: {e}"
-
+            answer = groq_generation_with_backoff(
+                groq_client,
+                groq_model,
+                ans_prompt,
+                max_tokens=300,
+            )
             time.sleep(groq_delay_s)
 
             # Strict Judge Prompt for Faithfulness & Context Relevance
@@ -985,7 +1037,7 @@ Output a JSON object with:
 - "context_relevance": score 0 to 100 on whether the context contains the specific answer to the user's question.
 
 Question: {query}
-Context: {context_block[:1500]}
+Context: {context_block[:8000]}
 Answer: {answer}
 
 JSON output:"""
@@ -1090,4 +1142,15 @@ JSON output:"""
 
 
 if __name__ == "__main__":
-    run_scaled_50q_benchmark()
+    import argparse
+    parser = argparse.ArgumentParser(description="Run Scaled Production RAG Benchmark")
+    parser.add_argument("--limit", type=int, default=None, help="Limit number of queries to evaluate")
+    parser.add_argument("--min-score", type=float, default=-1.5, help="Minimum cross-encoder logit threshold")
+    parser.add_argument("--groq-delay", type=float, default=2.0, help="Delay between Groq requests in seconds")
+    args = parser.parse_args()
+
+    run_scaled_50q_benchmark(
+        min_cross_encoder_score=args.min_score,
+        groq_delay_s=args.groq_delay,
+        limit_queries=args.limit,
+    )

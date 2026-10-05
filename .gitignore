@@ -25,3 +25,14 @@ qdrant_storage/
 .venv/
 env/
 venv/
+
+# Intermediate Verification Crops & Results
+*_crops/
+verification_*/
+multi_paper_test_results/
+scratch/
+report_data.json
+font_code_inventory.json
+font_deep_dive.json
+coder_glyph_comparison.json
+

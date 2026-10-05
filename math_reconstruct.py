@@ -21,12 +21,15 @@ GLYPH_MAP_PATH = Path(__file__).parent / "glyph_map.json"
 with open(GLYPH_MAP_PATH, "r", encoding="utf-8") as f:
     GLYPH_MAP: dict[str, dict[str, dict[str, str]]] = json.load(f)
 
-MATH_FONTS = {"AdvP49C2A1", "AdvP3E483E", "AdvP4A4712", "AdvP415979", "AdvP3DD108"}
+MATH_FONTS = {
+    "AdvP49C2A1", "AdvP3E483E", "AdvP4A4712", "AdvP415979", "AdvP3DD108", "AdvP499F1B", "AdvP4A7961",
+    "MathematicalPi-One", "MathematicalPi-Three", "MathematicalPi-Four", "Universal-GreekwithMathPi"
+}
 
 GREEK_AND_SYMBOLS = [
     r"\\theta", r"\\rho", r"\\mu", r"\\omega", r"\\gamma",
     r"\\delta", r"\\lambda", r"\\nu", r"\\sigma", r"\\Omega",
-    r"\\cdot", r"\\le", r"\\ge", r"\\partial"
+    r"\\cdot", r"\\le", r"\\ge", r"\\partial", r"\\alpha", r"\\beta"
 ]
 ALL_SYM_PATTERN = "(?:" + "|".join(GREEK_AND_SYMBOLS) + ")"
 
@@ -240,13 +243,82 @@ def reconstruct_simple_equation(doc: fitz.Document, page_num: int, eq_bbox: tupl
         return post_process_latex(full)
 
 
+def get_tight_formula_rect(page: fitz.Page, rough_bbox: list[float] | tuple[float, ...], tag_id: str | None = None) -> fitz.Rect:
+    """Computes the tight bounding box spanning strictly the mathematical equation and drawings."""
+    p_rect = page.rect
+    mid = p_rect.width / 2.0
+    bx0, by0, bx1, by1 = rough_bbox
+
+    # Determine column boundaries
+    if bx1 < mid + 20:
+        col_x0, col_x1 = max(0.0, p_rect.x0 + 35.0), mid - 5.0
+    elif bx0 > mid - 20:
+        col_x0, col_x1 = mid + 5.0, p_rect.width - 35.0
+    else:
+        col_x0, col_x1 = max(0.0, p_rect.x0 + 35.0), p_rect.width - 35.0
+
+    # Search for equation tag in dict spans
+    d = page.get_text("dict")
+    tag_span = None
+    if tag_id:
+        for b in d.get("blocks", []):
+            for l in b.get("lines", []):
+                for s in l.get("spans", []):
+                    t = s["text"].strip()
+                    if tag_id in t and (t.startswith("(") or t.startswith("\x03") or t.endswith(")") or t.endswith("\x04")):
+                        if (s["bbox"][0] > col_x1 - 70) and (by0 - 30 <= s["bbox"][1] <= by1 + 30):
+                            tag_span = s
+                            break
+
+    ref_y0 = tag_span["bbox"][1] if tag_span else by0
+    ref_y1 = tag_span["bbox"][3] if tag_span else by1
+
+    # Find prose paragraph boundaries in this column to strictly bound equation zone
+    blocks = page.get_text("blocks")
+    prev_y1 = 0.0
+    next_y0 = p_rect.height
+
+    for b in blocks:
+        ibx0, iby0, ibx1, iby1, itxt = b[:5]
+        if not (ibx1 < col_x0 or ibx0 > col_x1):
+            clean_txt = itxt.strip()
+            is_tag = bool(re.search(r"^[\(\x03]\s*\d+[\.\da-z]*\s*[\)\x04]$", clean_txt))
+            is_math = any(sym in clean_txt for sym in ["=", "∂", "∫", "∑", "√", "∕"])
+            is_prose = (len(clean_txt) >= 80 or (len(clean_txt) >= 40 and not is_math and " " in clean_txt))
+            if is_prose and not is_tag:
+                if iby1 <= ref_y0 - 10.0 and iby1 > prev_y1:
+                    prev_y1 = iby1
+                elif iby0 >= ref_y1 + 5.0 and iby0 < next_y0:
+                    next_y0 = iby0
+
+    # Safe vertical window bounded by adjacent prose
+    win_y0 = max(prev_y1 + 1.5, ref_y0 - 45.0)
+    win_y1 = min(next_y0 - 1.5, ref_y1 + 15.0)
+
+    # Collect math words and drawings within the safe window
+    words = page.get_text("words")
+    eq_words = [w for w in words if col_x0 - 5 <= w[0] and w[2] <= col_x1 + 15 and win_y0 <= w[1] and w[3] <= next_y0 - 0.5]
+
+    drawings = page.get_drawings()
+    eq_drawings = [d["rect"] for d in drawings if col_x0 - 5 <= d["rect"][0] and d["rect"][2] <= col_x1 + 5 and win_y0 - 2 <= d["rect"][1] and d["rect"][3] <= next_y0 - 0.5]
+
+    all_rects = [fitz.Rect(w[:4]) for w in eq_words] + [fitz.Rect(r) for r in eq_drawings]
+    if all_rects:
+        u = all_rects[0]
+        for r in all_rects[1:]:
+            u |= r
+        return fitz.Rect(max(0.0, u.x0 - 2.0), max(0.0, u.y0 - 2.0), min(p_rect.width, u.x1 + 2.0), min(p_rect.height, u.y1 + 2.0))
+    
+    return fitz.Rect(rough_bbox)
+
+
 def classify_equation(doc: fitz.Document, page_num: int, eq_bbox: tuple[float, float, float, float]) -> dict[str, Any]:
-    """Classify an equation as 'simple' or 'hard' based on structural criteria."""
+    """Classify an equation as 'simple' or 'hard' based on structural and font criteria."""
     page = doc[page_num]
     d = page.get_text("rawdict", clip=eq_bbox)
 
     reasons = []
-    has_advp415979 = False
+    has_delimiter_font = False
     has_radical = False
     has_sum_integral = False
     has_unmapped_glyph = False
@@ -258,7 +330,8 @@ def classify_equation(doc: fitz.Document, page_num: int, eq_bbox: tuple[float, f
             lines.append(l)
             for s in l.get("spans", []):
                 text_raw = "".join(ch["c"] if isinstance(ch["c"], str) else chr(ch["c"]) for ch in s.get("chars", []))
-                if re.match(r"^\(\d+\)$", text_raw.strip()) and s["origin"][0] > 500:
+                # Strip equation tag at right margin
+                if re.match(r"^[\(\x03]\d+[\)\x04]$", text_raw.strip()):
                     continue
                 if not text_raw.strip():
                     continue
@@ -266,13 +339,17 @@ def classify_equation(doc: fitz.Document, page_num: int, eq_bbox: tuple[float, f
 
     for s in spans:
         fn = clean_font_name(s["font"])
-        if fn == "AdvP415979":
-            has_advp415979 = True
-            reasons.append("Contains AdvP415979 (multi-piece delimiter / radical)")
+        if fn in ["AdvP415979", "MathematicalPi-Three", "MathematicalPi-Four"]:
+            has_delimiter_font = True
+            reasons.append(f"Contains delimiter/symbol font {fn}")
 
         for ch in s.get("chars", []):
             c = ch["c"]
             code = ord(c) if isinstance(c, str) else int(c)
+            # Check integral code 'Z' (90) in AdvP415979
+            if fn == "AdvP415979" and code == 90:
+                has_sum_integral = True
+                reasons.append("Contains integral (AdvP415979 code 'Z')")
             if fn in MATH_FONTS:
                 if str(code) not in GLYPH_MAP.get(fn, {}):
                     has_unmapped_glyph = True
@@ -286,12 +363,13 @@ def classify_equation(doc: fitz.Document, page_num: int, eq_bbox: tuple[float, f
                     has_sum_integral = True
                     reasons.append("Contains sum/integral")
 
-    # Multi-line cases / piecewise layout
-    has_matrix_cases = len(lines) >= 3 and has_advp415979
+    # Multi-line cases / piecewise layout or tall drawing
+    eq_height = eq_bbox[3] - eq_bbox[1]
+    has_matrix_cases = (len(lines) >= 3 or eq_height > 35.0) and has_delimiter_font
     if has_matrix_cases:
         reasons.append("Multi-line cases / piecewise layout")
 
-    is_hard = has_advp415979 or has_radical or has_sum_integral or has_matrix_cases or has_unmapped_glyph
+    is_hard = has_delimiter_font or has_radical or has_sum_integral or has_matrix_cases or has_unmapped_glyph
 
     return {
         "classification": "hard" if is_hard else "simple",

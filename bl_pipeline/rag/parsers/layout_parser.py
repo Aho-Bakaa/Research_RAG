@@ -179,11 +179,29 @@ class LayoutAwareParser:
         else:
             col_x0, col_x1 = max(0.0, page.rect.x0 + 30.0), page.rect.x1 - 30.0
 
-        band_y0 = max(0.0, y0 - 35.0)
-        band_y1 = min(page.rect.height, y1 + 10.0)
+        # Detect prose paragraph boundaries in this column to prevent bleeding into adjacent text
+        blocks = page.get_text("blocks")
+        prev_y1 = 0.0
+        next_y0 = page.rect.height
+
+        for b in blocks:
+            ibx0, iby0, ibx1, iby1, itxt = b[:5]
+            if not (ibx1 < col_x0 or ibx0 > col_x1):
+                clean_txt = itxt.strip()
+                is_tag = bool(re.search(r"^[\(\x03]\s*\d+[\.\da-z]*\s*[\)\x04]$", clean_txt))
+                is_math = any(sym in clean_txt for sym in ["=", "∂", "∫", "∑", "√", "∕"])
+                is_prose = (len(clean_txt) >= 80 or (len(clean_txt) >= 40 and not is_math and " " in clean_txt))
+                if is_prose and not is_tag:
+                    if iby1 <= y0 - 10.0 and iby1 > prev_y1:
+                        prev_y1 = iby1
+                    elif iby0 >= y1 + 5.0 and iby0 < next_y0:
+                        next_y0 = iby0
+
+        band_y0 = max(prev_y1 + 1.5, y0 - 45.0)
+        band_y1 = min(next_y0 - 1.5, y1 + 15.0)
 
         words = page.get_text("words")
-        band_words = [w for w in words if col_x0 <= w[0] <= col_x1 and band_y0 <= w[1] <= band_y1]
+        band_words = [w for w in words if col_x0 <= w[0] <= col_x1 and band_y0 <= w[1] and w[3] <= next_y0 - 0.5]
 
         if not band_words:
             return "", bbox
@@ -191,7 +209,19 @@ class LayoutAwareParser:
         band_words_sorted = sorted(band_words, key=lambda w: (round(w[1] / 7.0), w[0]))
         raw_assembled = " ".join(w[4] for w in band_words_sorted).strip()
         assembled = normalize_scientific_text(raw_assembled)
-        expanded_bbox = [col_x0, band_y0, col_x1, band_y1]
+
+        # Compute tight envelope encompassing words and drawings in this band
+        drawings = page.get_drawings()
+        eq_drawings = [d["rect"] for d in drawings if col_x0 - 5 <= d["rect"][0] and d["rect"][2] <= col_x1 + 5 and band_y0 - 2 <= d["rect"][1] and d["rect"][3] <= band_y1 + 2]
+        all_rects = [fitz.Rect(w[:4]) for w in band_words] + [fitz.Rect(r) for r in eq_drawings]
+        if all_rects:
+            u = all_rects[0]
+            for r in all_rects[1:]:
+                u |= r
+            expanded_bbox = [max(0.0, u.x0 - 2.0), max(0.0, u.y0 - 2.0), min(page.rect.width, u.x1 + 2.0), min(page.rect.height, u.y1 + 2.0)]
+        else:
+            expanded_bbox = [col_x0, band_y0, col_x1, band_y1]
+
         return assembled, expanded_bbox
 
     def rasterize_page(self, pdf_path: str | Path, page_num: int, output_path: str | Path | None = None) -> Path:
@@ -357,6 +387,20 @@ class LayoutAwareParser:
                             if band_text and len(band_text) > len(eq_text):
                                 eq_text = band_text
                                 target_bbox = band_bbox
+
+                                # Remove previously added orphan math fragments on this page subsumed by this full equation band
+                                elements[:] = [
+                                    el for el in elements
+                                    if not (
+                                        el.element_type == ElementType.EQUATION.value
+                                        and el.page == page_num
+                                        and el.equation_ref is None
+                                        and target_bbox[0] - 2.0 <= el.bbox[0]
+                                        and el.bbox[2] <= target_bbox[2] + 2.0
+                                        and target_bbox[1] - 2.0 <= el.bbox[1]
+                                        and el.bbox[3] <= target_bbox[3] + 2.0
+                                    )
+                                ]
 
                         # Trigger condition check for garbled or malformed math patterns
                         is_garbled, reason = is_garbled_or_math_dense(eq_text)

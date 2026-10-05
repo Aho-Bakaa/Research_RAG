@@ -764,5 +764,87 @@
       "source": "agl",
       "confidence": "high"
     }
+  },
+  "MathematicalPi-Three": {
+    "1": {
+      "latex": "[",
+      "char": "[",
+      "source": "verified",
+      "confidence": "high"
+    },
+    "2": {
+      "latex": "]",
+      "char": "]",
+      "source": "verified",
+      "confidence": "high"
+    },
+    "3": {
+      "latex": "(",
+      "char": "(",
+      "source": "verified",
+      "confidence": "high"
+    },
+    "4": {
+      "latex": ")",
+      "char": ")",
+      "source": "verified",
+      "confidence": "high"
+    },
+    "5": {
+      "latex": "\\left[",
+      "char": "[",
+      "source": "verified",
+      "confidence": "high"
+    },
+    "6": {
+      "latex": "\\left(",
+      "char": "(",
+      "source": "verified",
+      "confidence": "high"
+    },
+    "7": {
+      "latex": "\\right)",
+      "char": ")",
+      "source": "verified",
+      "confidence": "high"
+    },
+    "8": {
+      "latex": "\\right]",
+      "char": "]",
+      "source": "verified",
+      "confidence": "high"
+    },
+    "9": {
+      "latex": "\\sqrt",
+      "char": "√",
+      "source": "verified",
+      "confidence": "high"
+    },
+    "10": {
+      "latex": "\\min",
+      "char": "min",
+      "source": "verified",
+      "confidence": "high"
+    },
+    "11": {
+      "latex": "\\dots",
+      "char": "...",
+      "source": "verified",
+      "confidence": "high"
+    },
+    "12": {
+      "latex": "\\max",
+      "char": "max",
+      "source": "verified",
+      "confidence": "high"
+    }
+  },
+  "MathematicalPi-One": {
+    "8": {
+      "latex": "\\nu",
+      "char": "ν",
+      "source": "verified",
+      "confidence": "high"
+    }
   }
 }
