@@ -8,12 +8,15 @@ Implements section 3 of RAG_ARCHITECTURE.md:
 """
 from __future__ import annotations
 
+import io
+import os
 import re
 from pathlib import Path
-from typing import Any
+from typing import Any, Tuple
 
 import fitz  # PyMuPDF
 
+from bl_pipeline.rag.parsers.scientific_normalizer import normalize_scientific_text
 from bl_pipeline.rag.schema import DocumentElement, ElementType
 
 
@@ -42,12 +45,154 @@ _TABLE_CAPTION_RX = re.compile(
 )
 
 
+def is_garbled_or_math_dense(text: str) -> Tuple[bool, str]:
+    """Evaluates whether a text block contains garbled math patterns or dense formulas.
+    
+    Checks:
+    1. Repeated = or corrupted operator sequences
+    2. Broken fraction-like sequences or slash artifacts
+    3. Isolated stray symbols (~, ^, &, \\, |, *, ·, ', _)
+    4. Truncated equations or bare equation numbers e.g. '(16)'
+    5. Low ratio of dictionary/alphabetic words to total tokens in math-dense context
+    """
+    if not text or not text.strip():
+        return False, "empty"
+    stripped = text.strip()
+
+    # 1. Repeated = or corrupted operator sequences
+    if re.search(r'={2,}|=\s*=|_\s*_|—\s*—|-{3,}|[0-9]=[0-9]', stripped):
+        return True, "repeated_equals_or_operators"
+
+    # 2. Broken fraction-like sequences
+    if re.search(r'(?:^|\n)\s*[a-zA-Z0-9\'-]{1,10}\s*\n\s*[_–—=]{2,}\s*\n\s*[a-zA-Z0-9\'-]{1,10}', stripped):
+        return True, "broken_fraction_sequence"
+    if re.search(r'[a-zA-Z0-9]\s*\/\s*[\/\'~]{1,}', stripped):
+        return True, "broken_slash_sequence"
+
+    # 3. Isolated stray symbols & corrupted glyphs
+    stray_matches = re.findall(r'(?:^|\s)[~^&\\|*·\'_]{1,3}(?:\s|$)', stripped)
+    corrupted_glyphs = re.findall(r'[~^\\|·§©®ðÞ∂∫∑√]', stripped)
+    if len(stray_matches) >= 2 or len(corrupted_glyphs) >= 1:
+        return True, "isolated_stray_symbols_or_glyphs"
+
+    # 4. Incomplete / truncated equation or bare equation tag
+    if re.match(r'^\s*(?:\(\s*\d+\s*\)|Eq\.\s*\(?\s*\d+\s*\)?)\s*$', stripped):
+        return True, "bare_equation_number"
+    if re.search(r'^[∂∫∑√]\s*[a-zA-Z0-9~_\s]{1,12}$', stripped):
+        return True, "dangling_derivative_or_integral"
+    if re.search(r'^[a-zA-Z0-9\s_]{0,5}[=−-]\s*[0-9−-]{1,5}$', stripped) and len(stripped) < 15:
+        return True, "truncated_short_equation"
+
+    # 5. Low ratio of dictionary words in math-dense context
+    tokens = stripped.split()
+    if len(tokens) >= 2:
+        words = [t for t in tokens if t.isalpha() and len(t) >= 2]
+        has_math_cues = any(c in stripped for c in ['=', '+', '-', '/', '∫', '∑', '∂', '√', 'Re_', 'Tu', '^', '(', ')', '%', '*', 'ε'])
+        word_ratio = len(words) / len(tokens)
+        if has_math_cues and word_ratio < 0.50:
+            return True, f"low_word_ratio_{word_ratio:.2f}"
+
+    return False, "clean"
+
+
 class LayoutAwareParser:
     """Parser that processes PDF documents into a structured stream of DocumentElements."""
 
-    def __init__(self, rasterize_dpi: int = 300, output_crops_dir: Path | None = None):
+    def __init__(self, rasterize_dpi: int = 300, output_crops_dir: Path | None = None, enable_equation_ocr: bool = True):
         self.rasterize_dpi = rasterize_dpi
         self.output_crops_dir = output_crops_dir
+        self.enable_equation_ocr = enable_equation_ocr
+        self._ocr_engine = None
+
+    def _init_ocr_engine(self):
+        """Lazy-load equation-aware OCR engine (PaddleOCR-VL)."""
+        if not self.enable_equation_ocr:
+            return None
+        if self._ocr_engine is None:
+            try:
+                os.environ["PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION"] = "python"
+                from paddleocr import PaddleOCRVL
+                self._ocr_engine = PaddleOCRVL(pipeline_version="v1", use_chart_recognition=False, use_seal_recognition=False)
+            except Exception:
+                try:
+                    from paddleocr import PaddleOCRVL
+                    self._ocr_engine = PaddleOCRVL
+                except Exception:
+                    self._ocr_engine = None
+        return self._ocr_engine
+
+    def _ocr_equation_crop(self, page: fitz.Page, bbox: list[float]) -> str | None:
+        """Rasterize equation crop and extract formula representation via PaddleOCR-VL or EasyOCR fallback."""
+        if not self.enable_equation_ocr:
+            return None
+        rect = fitz.Rect(bbox)
+        padded = fitz.Rect(max(0, rect.x0 - 4), max(0, rect.y0 - 4), min(page.rect.width, rect.x1 + 4), min(page.rect.height, rect.y1 + 4))
+        pix = page.get_pixmap(clip=padded, dpi=200)
+        img_bytes = pix.tobytes("png")
+
+        # 1. Primary: PaddleOCR-VL
+        engine = self._init_ocr_engine()
+        if engine:
+            try:
+                from PIL import Image
+                img = Image.open(io.BytesIO(img_bytes)).convert("RGB")
+                if hasattr(engine, "predict"):
+                    ocr_res = engine.predict(img)
+                    if ocr_res:
+                        text_parts = []
+                        for item in ocr_res:
+                            if hasattr(item, "markdown"):
+                                text_parts.append(str(item.markdown))
+                            elif hasattr(item, "formula"):
+                                text_parts.append(str(item.formula))
+                            elif hasattr(item, "text"):
+                                text_parts.append(str(item.text))
+                        if text_parts:
+                            return "\n".join(text_parts).strip()
+            except Exception:
+                pass
+
+        # 2. Robust Local Fallback: EasyOCR
+        try:
+            import easyocr
+            if not hasattr(self, "_easyocr_reader"):
+                self._easyocr_reader = easyocr.Reader(["en"], gpu=False)
+            res = self._easyocr_reader.readtext(img_bytes, detail=0)
+            if res:
+                return " ".join(res).strip()
+        except Exception:
+            pass
+
+        return None
+
+    @staticmethod
+    def extract_equation_band(page: fitz.Page, bbox: list[float]) -> tuple[str, list[float]]:
+        """Expands an isolated equation tag/fragment across its column band to assemble the full formula."""
+        x0, y0, x1, y1 = bbox
+        p_width = page.rect.width
+        mid = p_width / 2.0
+
+        if x1 < mid:
+            col_x0, col_x1 = max(0.0, page.rect.x0 + 30.0), mid - 5.0
+        elif x0 > mid:
+            col_x0, col_x1 = mid + 5.0, page.rect.x1 - 30.0
+        else:
+            col_x0, col_x1 = max(0.0, page.rect.x0 + 30.0), page.rect.x1 - 30.0
+
+        band_y0 = max(0.0, y0 - 35.0)
+        band_y1 = min(page.rect.height, y1 + 10.0)
+
+        words = page.get_text("words")
+        band_words = [w for w in words if col_x0 <= w[0] <= col_x1 and band_y0 <= w[1] <= band_y1]
+
+        if not band_words:
+            return "", bbox
+
+        band_words_sorted = sorted(band_words, key=lambda w: (round(w[1] / 7.0), w[0]))
+        raw_assembled = " ".join(w[4] for w in band_words_sorted).strip()
+        assembled = normalize_scientific_text(raw_assembled)
+        expanded_bbox = [col_x0, band_y0, col_x1, band_y1]
+        return assembled, expanded_bbox
 
     def rasterize_page(self, pdf_path: str | Path, page_num: int, output_path: str | Path | None = None) -> Path:
         """Rasterize a single PDF page at target DPI (default 300)."""
@@ -122,7 +267,7 @@ class LayoutAwareParser:
                 # blocks: (x0, y0, x1, y1, text, block_no, block_type)
                 for b in blocks:
                     x0, y0, x1, y1, text, b_no, b_type = b
-                    text = text.strip()
+                    text = normalize_scientific_text(text)
                     if not text:
                         continue
 
@@ -203,16 +348,42 @@ class LayoutAwareParser:
                         if eq_match:
                             eq_id = eq_match.group(1) or eq_match.group(2)
                         
+                        eq_text = text
+                        target_bbox = bbox
+
+                        # Recover complete formula if equation tag is isolated or truncated
+                        if eq_match and (len(text.strip()) < 40 or is_garbled_or_math_dense(text)[0]):
+                            band_text, band_bbox = self.extract_equation_band(page, bbox)
+                            if band_text and len(band_text) > len(eq_text):
+                                eq_text = band_text
+                                target_bbox = band_bbox
+
+                        # Trigger condition check for garbled or malformed math patterns
+                        is_garbled, reason = is_garbled_or_math_dense(eq_text)
+                        meta: dict[str, Any] = {}
+
+                        if is_garbled:
+                            ocr_result = self._ocr_equation_crop(page, target_bbox)
+                            if ocr_result and len(ocr_result.strip()) > 3:
+                                eq_text = ocr_result.strip()
+                                meta = {
+                                    "equation_ocr": True,
+                                    "ocr_engine": "PaddleOCR-VL",
+                                    "trigger_reason": reason,
+                                    "original_raw_text": text,
+                                }
+
                         el = DocumentElement(
                             element_type=ElementType.EQUATION.value,
                             paper_id=paper_id,
                             page=page_num,
                             section_path=current_section,
                             heading_level=current_heading_level,
-                            bbox=bbox,
+                            bbox=target_bbox,
                             reading_order=reading_order,
-                            text=text,
+                            text=eq_text,
                             equation_ref=f"Eq. ({eq_id})" if eq_id else None,
+                            metadata=meta if meta else None,
                         )
                         elements.append(el)
                         reading_order += 1
@@ -259,12 +430,12 @@ class LayoutAwareParser:
             return ""
         lines = []
         if header:
-            clean_hdr = [str(c or "").replace("\n", " ").strip() for c in header]
+            clean_hdr = [normalize_scientific_text(str(c or "")).replace("\n", " ").strip() for c in header]
             lines.append("| " + " | ".join(clean_hdr) + " |")
             lines.append("| " + " | ".join(["---"] * len(clean_hdr)) + " |")
         
         for r in rows:
-            clean_r = [str(c or "").replace("\n", " ").strip() for c in r]
+            clean_r = [normalize_scientific_text(str(c or "")).replace("\n", " ").strip() for c in r]
             if not header and not lines:
                 lines.append("| " + " | ".join(clean_r) + " |")
                 lines.append("| " + " | ".join(["---"] * len(clean_r)) + " |")
