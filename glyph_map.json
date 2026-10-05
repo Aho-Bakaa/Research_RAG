@@ -1,0 +1,768 @@
+{
+  "AdvP49C2A1": {
+    "1": {
+      "latex": "(",
+      "char": "(",
+      "source": "manual",
+      "confidence": "high"
+    },
+    "2": {
+      "latex": ")",
+      "char": ")",
+      "source": "manual",
+      "confidence": "high"
+    },
+    "3": {
+      "latex": "+",
+      "char": "+",
+      "source": "manual",
+      "confidence": "high"
+    },
+    "4": {
+      "latex": "-",
+      "char": "-",
+      "source": "manual",
+      "confidence": "high"
+    },
+    "5": {
+      "latex": "=",
+      "char": "=",
+      "source": "manual",
+      "confidence": "high"
+    },
+    "6": {
+      "latex": "[",
+      "char": "[",
+      "source": "manual",
+      "confidence": "high"
+    },
+    "7": {
+      "latex": "]",
+      "char": "]",
+      "source": "manual",
+      "confidence": "high"
+    },
+    "8": {
+      "latex": "\\cdot",
+      "char": "·",
+      "source": "manual",
+      "confidence": "high"
+    },
+    "9": {
+      "latex": "\\le",
+      "char": "≤",
+      "source": "manual",
+      "confidence": "high"
+    },
+    "10": {
+      "latex": "\\ge",
+      "char": "≥",
+      "source": "manual",
+      "confidence": "high"
+    },
+    "11": {
+      "latex": "\\equiv",
+      "char": "≡",
+      "source": "manual",
+      "confidence": "medium"
+    },
+    "48": {
+      "latex": "0",
+      "char": "0",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "112": {
+      "latex": "p",
+      "char": "p",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "32": {
+      "latex": " ",
+      "char": " ",
+      "source": "agl",
+      "confidence": "high"
+    }
+  },
+  "AdvP3E483E": {
+    "2": {
+      "latex": "\\rho",
+      "char": "ρ",
+      "source": "manual",
+      "confidence": "high"
+    },
+    "3": {
+      "latex": "\\mu",
+      "char": "μ",
+      "source": "manual",
+      "confidence": "high"
+    },
+    "4": {
+      "latex": "\\theta",
+      "char": "θ",
+      "source": "manual",
+      "confidence": "high"
+    },
+    "5": {
+      "latex": "\\delta",
+      "char": "δ",
+      "source": "manual",
+      "confidence": "high"
+    },
+    "6": {
+      "latex": "\\lambda",
+      "char": "λ",
+      "source": "manual",
+      "confidence": "high"
+    },
+    "7": {
+      "latex": "\\nu",
+      "char": "ν",
+      "source": "manual",
+      "confidence": "high"
+    },
+    "8": {
+      "latex": "\\gamma",
+      "char": "γ",
+      "source": "manual",
+      "confidence": "high"
+    },
+    "9": {
+      "latex": "\\sigma",
+      "char": "σ",
+      "source": "manual",
+      "confidence": "high"
+    },
+    "33": {
+      "latex": "\\omega",
+      "char": "ω",
+      "source": "hijacked",
+      "confidence": "high"
+    },
+    "58": {
+      "latex": ":",
+      "char": ":",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "59": {
+      "latex": ";",
+      "char": ";",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "60": {
+      "latex": "<",
+      "char": "<",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "61": {
+      "latex": "=",
+      "char": "=",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "62": {
+      "latex": ">",
+      "char": ">",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "64": {
+      "latex": "\\partial",
+      "char": "∂",
+      "source": "hijacked",
+      "confidence": "high"
+    },
+    "67": {
+      "latex": "C",
+      "char": "C",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "68": {
+      "latex": "D",
+      "char": "D",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "69": {
+      "latex": "E",
+      "char": "E",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "70": {
+      "latex": "F",
+      "char": "F",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "72": {
+      "latex": "H",
+      "char": "H",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "76": {
+      "latex": "L",
+      "char": "L",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "77": {
+      "latex": "M",
+      "char": "M",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "78": {
+      "latex": "N",
+      "char": "N",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "80": {
+      "latex": "P",
+      "char": "P",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "82": {
+      "latex": "R",
+      "char": "R",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "83": {
+      "latex": "S",
+      "char": "S",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "84": {
+      "latex": "T",
+      "char": "T",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "85": {
+      "latex": "U",
+      "char": "U",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "86": {
+      "latex": "V",
+      "char": "V",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "97": {
+      "latex": "a",
+      "char": "a",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "99": {
+      "latex": "c",
+      "char": "c",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "100": {
+      "latex": "d",
+      "char": "d",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "101": {
+      "latex": "e",
+      "char": "e",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "102": {
+      "latex": "f",
+      "char": "f",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "105": {
+      "latex": "i",
+      "char": "i",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "106": {
+      "latex": "j",
+      "char": "j",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "107": {
+      "latex": "k",
+      "char": "k",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "108": {
+      "latex": "l",
+      "char": "l",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "110": {
+      "latex": "n",
+      "char": "n",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "111": {
+      "latex": "o",
+      "char": "o",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "113": {
+      "latex": "q",
+      "char": "q",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "115": {
+      "latex": "s",
+      "char": "s",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "116": {
+      "latex": "t",
+      "char": "t",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "117": {
+      "latex": "u",
+      "char": "u",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "118": {
+      "latex": "v",
+      "char": "v",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "119": {
+      "latex": "w",
+      "char": "w",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "120": {
+      "latex": "x",
+      "char": "x",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "121": {
+      "latex": "y",
+      "char": "y",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "122": {
+      "latex": "z",
+      "char": "z",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "32": {
+      "latex": " ",
+      "char": " ",
+      "source": "agl",
+      "confidence": "high"
+    }
+  },
+  "AdvP4A4712": {
+    "1": {
+      "latex": "\\Omega",
+      "char": "Ω",
+      "source": "manual",
+      "confidence": "high"
+    },
+    "37": {
+      "latex": "%",
+      "char": "%",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "48": {
+      "latex": "0",
+      "char": "0",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "49": {
+      "latex": "1",
+      "char": "1",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "50": {
+      "latex": "2",
+      "char": "2",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "51": {
+      "latex": "3",
+      "char": "3",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "52": {
+      "latex": "4",
+      "char": "4",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "53": {
+      "latex": "5",
+      "char": "5",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "54": {
+      "latex": "6",
+      "char": "6",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "55": {
+      "latex": "7",
+      "char": "7",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "56": {
+      "latex": "8",
+      "char": "8",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "57": {
+      "latex": "9",
+      "char": "9",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "59": {
+      "latex": ";",
+      "char": ";",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "65": {
+      "latex": "A",
+      "char": "A",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "66": {
+      "latex": "B",
+      "char": "B",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "70": {
+      "latex": "F",
+      "char": "F",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "73": {
+      "latex": "I",
+      "char": "I",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "76": {
+      "latex": "L",
+      "char": "L",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "79": {
+      "latex": "O",
+      "char": "O",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "82": {
+      "latex": "R",
+      "char": "R",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "83": {
+      "latex": "S",
+      "char": "S",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "84": {
+      "latex": "T",
+      "char": "T",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "97": {
+      "latex": "a",
+      "char": "a",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "98": {
+      "latex": "b",
+      "char": "b",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "99": {
+      "latex": "c",
+      "char": "c",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "100": {
+      "latex": "d",
+      "char": "d",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "101": {
+      "latex": "e",
+      "char": "e",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "102": {
+      "latex": "f",
+      "char": "f",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "103": {
+      "latex": "g",
+      "char": "g",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "104": {
+      "latex": "h",
+      "char": "h",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "105": {
+      "latex": "i",
+      "char": "i",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "107": {
+      "latex": "k",
+      "char": "k",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "108": {
+      "latex": "l",
+      "char": "l",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "109": {
+      "latex": "m",
+      "char": "m",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "110": {
+      "latex": "n",
+      "char": "n",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "111": {
+      "latex": "o",
+      "char": "o",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "112": {
+      "latex": "p",
+      "char": "p",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "114": {
+      "latex": "r",
+      "char": "r",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "115": {
+      "latex": "s",
+      "char": "s",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "116": {
+      "latex": "t",
+      "char": "t",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "117": {
+      "latex": "u",
+      "char": "u",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "119": {
+      "latex": "w",
+      "char": "w",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "120": {
+      "latex": "x",
+      "char": "x",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "121": {
+      "latex": "y",
+      "char": "y",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "126": {
+      "latex": "~",
+      "char": "~",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "32": {
+      "latex": " ",
+      "char": " ",
+      "source": "agl",
+      "confidence": "high"
+    }
+  },
+  "AdvP415979": {
+    "1": {
+      "latex": "|",
+      "char": "|",
+      "source": "manual",
+      "confidence": "high"
+    },
+    "2": {
+      "latex": "[",
+      "char": "[",
+      "source": "manual",
+      "confidence": "high"
+    },
+    "3": {
+      "latex": "(",
+      "char": "(",
+      "source": "manual",
+      "confidence": "high"
+    },
+    "4": {
+      "latex": ")",
+      "char": ")",
+      "source": "manual",
+      "confidence": "high"
+    },
+    "5": {
+      "latex": "]",
+      "char": "]",
+      "source": "manual",
+      "confidence": "high"
+    },
+    "6": {
+      "latex": "\\overline",
+      "char": "¯",
+      "source": "manual",
+      "confidence": "high"
+    },
+    "56": {
+      "latex": "\\lceil",
+      "char": "⌈",
+      "source": "multi-piece",
+      "confidence": "high"
+    },
+    "58": {
+      "latex": "\\lfloor",
+      "char": "⌊",
+      "source": "multi-piece",
+      "confidence": "high"
+    },
+    "60": {
+      "latex": "\\prec",
+      "char": "≺",
+      "source": "multi-piece",
+      "confidence": "high"
+    },
+    "62": {
+      "latex": "|",
+      "char": "|",
+      "source": "multi-piece",
+      "confidence": "high"
+    },
+    "112": {
+      "latex": "\\surd",
+      "char": "√",
+      "source": "multi-piece",
+      "confidence": "high"
+    },
+    "32": {
+      "latex": " ",
+      "char": " ",
+      "source": "agl",
+      "confidence": "high"
+    }
+  },
+  "AdvP3DD108": {
+    "1": {
+      "latex": "\\boldsymbol{\\theta}",
+      "char": "𝜽",
+      "source": "manual",
+      "confidence": "high"
+    },
+    "58": {
+      "latex": ":",
+      "char": ":",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "61": {
+      "latex": "=",
+      "char": "=",
+      "source": "agl",
+      "confidence": "high"
+    },
+    "32": {
+      "latex": " ",
+      "char": " ",
+      "source": "agl",
+      "confidence": "high"
+    }
+  }
+}
