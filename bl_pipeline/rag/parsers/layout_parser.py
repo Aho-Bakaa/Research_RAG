@@ -98,11 +98,33 @@ def is_garbled_or_math_dense(text: str) -> Tuple[bool, str]:
 class LayoutAwareParser:
     """Parser that processes PDF documents into a structured stream of DocumentElements."""
 
-    def __init__(self, rasterize_dpi: int = 300, output_crops_dir: Path | None = None, enable_equation_ocr: bool = True):
+    def __init__(
+        self,
+        rasterize_dpi: int = 300,
+        output_crops_dir: Path | None = None,
+        enable_equation_ocr: bool = False,
+        enable_math_reconstruct: bool = True,
+        enable_vision_math: bool = False,
+    ):
         self.rasterize_dpi = rasterize_dpi
         self.output_crops_dir = output_crops_dir
         self.enable_equation_ocr = enable_equation_ocr
+        self.enable_math_reconstruct = enable_math_reconstruct
+        self.enable_vision_math = enable_vision_math
         self._ocr_engine = None
+        self._latex_ocr = None
+
+    def _init_latex_ocr(self):
+        """Lazy-load pix2tex LatexOCR engine for hard equations."""
+        if not self.enable_vision_math:
+            return None
+        if self._latex_ocr is None:
+            try:
+                from pix2tex.cli import LatexOCR
+                self._latex_ocr = LatexOCR()
+            except Exception:
+                self._latex_ocr = None
+        return self._latex_ocr
 
     def _init_ocr_engine(self):
         """Lazy-load equation-aware OCR engine (PaddleOCR-VL)."""
@@ -402,18 +424,54 @@ class LayoutAwareParser:
                                     )
                                 ]
 
-                        # Trigger condition check for garbled or malformed math patterns
-                        is_garbled, reason = is_garbled_or_math_dense(eq_text)
                         meta: dict[str, Any] = {}
+                        final_bbox = target_bbox
 
-                        if is_garbled:
+                        # Math Reconstruction & Complexity Routing
+                        if getattr(self, "enable_math_reconstruct", True):
+                            try:
+                                from math_reconstruct import (
+                                    classify_equation,
+                                    get_tight_formula_rect,
+                                    reconstruct_simple_equation,
+                                )
+
+                                tight_rect = get_tight_formula_rect(page, target_bbox, tag_id=eq_id)
+                                final_bbox = [round(c, 1) for c in list(tight_rect)]
+
+                                cls_info = classify_equation(doc, page_num - 1, tuple(tight_rect))
+                                is_simple = cls_info["classification"] == "simple"
+                                meta["classification"] = cls_info["classification"]
+                                meta["classification_reasons"] = cls_info["reasons"]
+                                meta["tight_bbox"] = final_bbox
+
+                                if is_simple:
+                                    rec_latex = reconstruct_simple_equation(doc, page_num - 1, tuple(tight_rect))
+                                    if rec_latex and len(rec_latex.strip()) > 1:
+                                        meta["raw_text"] = eq_text
+                                        meta["latex_source"] = "rule_based_reconstructor"
+                                        eq_text = rec_latex.strip()
+                                elif getattr(self, "enable_vision_math", False):
+                                    ocr_model = self._init_latex_ocr()
+                                    if ocr_model:
+                                        from PIL import Image
+                                        padded = fitz.Rect(final_bbox)
+                                        pix = page.get_pixmap(clip=padded, dpi=250)
+                                        img_bytes = pix.tobytes("png")
+                                        pred_latex = ocr_model(Image.open(io.BytesIO(img_bytes)))
+                                        if pred_latex and len(pred_latex.strip()) > 3:
+                                            meta["raw_text"] = eq_text
+                                            meta["latex_source"] = "pix2tex_vision"
+                                            eq_text = pred_latex.strip()
+                            except Exception as e:
+                                meta["math_reconstruct_error"] = str(e)
+                        elif is_garbled_or_math_dense(eq_text)[0]:
                             ocr_result = self._ocr_equation_crop(page, target_bbox)
                             if ocr_result and len(ocr_result.strip()) > 3:
                                 eq_text = ocr_result.strip()
                                 meta = {
                                     "equation_ocr": True,
                                     "ocr_engine": "PaddleOCR-VL",
-                                    "trigger_reason": reason,
                                     "original_raw_text": text,
                                 }
 
@@ -423,7 +481,7 @@ class LayoutAwareParser:
                             page=page_num,
                             section_path=current_section,
                             heading_level=current_heading_level,
-                            bbox=target_bbox,
+                            bbox=final_bbox,
                             reading_order=reading_order,
                             text=eq_text,
                             equation_ref=f"Eq. ({eq_id})" if eq_id else None,

@@ -68,7 +68,65 @@ def test_structure_graph_cross_references_and_citations():
     print("PASS  test_structure_graph_cross_references_and_citations")
 
 
+def test_structure_graph_hierarchical_tree_and_siblings():
+    from bl_pipeline.rag.schema import DocumentElement, ElementType
+    from bl_pipeline.rag.hierarchical_chunker import HierarchicalTreeChunker
+
+    chunker = HierarchicalTreeChunker()
+    elements = [
+        DocumentElement(
+            element_type=ElementType.HEADING.value,
+            text="3. Transition Modeling",
+            page=1,
+            heading_level=1,
+        ),
+        DocumentElement(
+            element_type=ElementType.PARAGRAPH.value,
+            text="We begin with the transport equation for intermittency given in Eq. (3.1).",
+            page=1,
+        ),
+        DocumentElement(
+            element_type=ElementType.EQUATION.value,
+            text=r"\frac{\partial \gamma}{\partial t} = P_\gamma - E_\gamma",
+            equation_ref="3.1",
+            page=1,
+        ),
+        DocumentElement(
+            element_type=ElementType.PARAGRAPH.value,
+            text="The experimental data in Table 2 supports this correlation.",
+            page=1,
+        ),
+    ]
+
+    tree = chunker.build_tree(elements, paper_id="test_paper_tree")
+    graph = DocumentStructureGraph()
+    graph.add_hierarchical_tree(tree)
+
+    leaves = tree.leaf_nodes
+    # Note: Paragraph 1 is absorbed into the equation chunk by boundary stitching (preventing orphan stubs)
+    assert len(leaves) == 2
+    eq_leaf = leaves[0]
+    tab_leaf = leaves[1]
+
+    # Check sibling reading-order traversal in graph
+    siblings = graph.get_sibling_nodes(eq_leaf.node_id, before=0, after=1)
+    assert len(siblings) == 2
+    assert siblings[0] == eq_leaf.node_id
+    assert siblings[1] == tab_leaf.node_id
+
+    # Check intra-paper cross-reference traversal for Eq. (3.1)
+    eq_refs = graph.get_chunks_referencing_equation("test_paper_tree", "3.1")
+    assert len(eq_refs) >= 1
+    assert eq_leaf.node_id in eq_refs
+
+    # Check intra-paper cross-reference traversal for Table 2
+    tab_refs = graph.get_chunks_referencing_table("test_paper_tree", "2")
+    assert len(tab_refs) >= 1
+    assert tab_leaf.node_id in tab_refs
+
+
 if __name__ == "__main__":
     test_structure_graph_cross_references_and_citations()
+    test_structure_graph_hierarchical_tree_and_siblings()
     print("------------------------------------------------------------")
-    print("Phase 4 document structure graph tests passed!")
+    print("All document structure graph tests passed!")
