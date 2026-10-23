@@ -10,7 +10,7 @@ What makes it different from a plain chunk-and-embed RAG:
 - **Deterministic structure graph.** Section containment, equation/figure/table cross-references and paper-to-paper citations, built without any LLM at index time.
 - **Hybrid retrieval.** Full-corpus BM25 plus dense search, fused with RRF, reranked by a cross-encoder with a score threshold that doubles as an out-of-domain refusal gate, then expanded from child hits to their parent sections (small-to-big).
 
-> **Status in one line:** the parse → chunk → index → retrieve → rerank → expand path is implemented and benchmarked. Several designed components (MMR, query router, CRAG gate, episodic memory, the 6-stage Docling router) are implemented and unit-tested but **not yet part of the benchmarked path**. Neo4j and bibliography parsing are **not implemented**. See [Status](#status).
+> **Status in one line:** the parse → chunk → index → retrieve → rerank → expand path is implemented and benchmarked. Several designed components (MMR, query router, CRAG gate, episodic memory, the 6-stage Docling router) are implemented and unit-tested but **not yet part of the benchmarked path**. Neo4j and bibliography parsing are **not implemented**. 
 
 ---
 
@@ -37,32 +37,6 @@ flowchart LR
 ```
 
 Solid arrows are the benchmarked path. Dotted arrows are data lookups.
-
----
-
-## Status
-
-| Component | Module(s) | State |
-|---|---|---|
-| Element schema | `bl_pipeline/rag/schema.py` | Used, tested |
-| Layout-aware parser | `rag/parsers/layout_parser.py`, `math_reconstruct.py`, `glyph_map.json` | Implemented, tested. The indexing driver that calls it is not committed (see [Known limitations](#known-limitations)) |
-| 6-stage Docling router (triage, table dissector, formula reconciler, figure analyzer, quality gates) | `rag/parsers/{triage,router,cell_dissector,formula_reconciler,figure_analyzer,quality_gates,docling_parser}.py` | Implemented, **no tests**, not on the benchmarked path. Needs `docling` |
-| Structure-preserving chunker | `rag/structured_chunker.py` | Used, tested |
-| Hierarchical (4-tier) tree chunker | `rag/hierarchical_chunker.py` | Implemented, tested, not on the benchmarked path |
-| Exact + near-duplicate dedup | `rag/dedup.py` | Implemented, tested, not on the benchmarked path |
-| Multi-track Qdrant store | `rag/qdrant_store.py` | Used, tested |
-| Scientific tokenizer + RRF | `rag/hybrid_search.py` | `rrf_fusion` used. Candidate-level `SimpleBM25` / `apply_hybrid_search` tested but not used |
-| Full-corpus BM25 | `ScientificCorpusBM25` in `rag/eval_benchmark.py` | Used |
-| Cross-encoder reranker | `rag/reranker.py` | Used, tested |
-| Parent expansion + token budgeter | `rag/parent_child.py`, `rag/token_budgeter.py` | Used |
-| Structure graph | `rag/graph/structure_graph.py` | Used for citation queries. `contains` / `refers_to` edges implemented and tested |
-| Query router | `rag/router.py` | Implemented, tested. Instantiated by the benchmark but not used |
-| CRAG quality gate | `rag/crag_gate.py` | Implemented, tested. The benchmark uses a plain cross-encoder score cutoff instead |
-| MMR diversity selection | `rag/mmr.py` | Implemented, tested, not on the benchmarked path |
-| Episodic memory | `rag/episodic_memory.py` | Implemented, tested, not on the benchmarked path |
-| Figure / table tracks | Qdrant collections exist | The benchmark queries only `text` and `equation` |
-| **Bibliography → citation edges** | — | **Not implemented.** Citation edges in the benchmark are added by hand |
-| **Neo4j graph store** | — | **Not implemented.** The graph is NetworkX with JSON save/load |
 
 ---
 
