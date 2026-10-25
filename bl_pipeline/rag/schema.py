@@ -16,6 +16,15 @@ from enum import Enum
 from typing import Any, Sequence
 
 
+def _schema_dict(value, model):
+    """Serialize supported typed or JSON inputs through the same schema path."""
+    if isinstance(value, dict):
+        value = model.from_dict(value)
+    if not isinstance(value, model):
+        raise TypeError(f"Expected {model.__name__} or dict, got {type(value).__name__}")
+    return value.to_dict()
+
+
 class ElementType(str, Enum):
     HEADING = "heading"
     PARAGRAPH = "paragraph"
@@ -78,6 +87,10 @@ class ConfidenceVector:
     def to_dict(self) -> dict[str, float]:
         return asdict(self)
 
+    @classmethod
+    def from_dict(cls, d: dict[str, Any]) -> ConfidenceVector:
+        return cls(**d)
+
 
 @dataclass
 class PageTriageResult:
@@ -117,6 +130,21 @@ class CanonicalTableCell:
             return self.math_latex
         return self.normalized_text or self.raw_text
 
+    def to_dict(self) -> dict[str, Any]:
+        d = asdict(self)
+        d["content_type"] = self.content_type.value if isinstance(self.content_type, CellContentType) else str(self.content_type)
+        return d
+
+    @classmethod
+    def from_dict(cls, d: dict[str, Any]) -> CanonicalTableCell:
+        cd = dict(d)
+        if "content_type" in cd and isinstance(cd["content_type"], str):
+            try:
+                cd["content_type"] = CellContentType(cd["content_type"])
+            except ValueError:
+                cd["content_type"] = CellContentType.TEXT
+        return cls(**cd)
+
 
 @dataclass
 class CanonicalTable:
@@ -127,6 +155,10 @@ class CanonicalTable:
     cells: list[CanonicalTableCell] = field(default_factory=list)
     caption: str | None = None
     source_image_path: str | None = None
+
+    def __post_init__(self):
+        self.cells = [CanonicalTableCell.from_dict(cell) if isinstance(cell, dict) else cell
+                      for cell in self.cells]
 
     def get_grid(self) -> list[list[str]]:
         grid: list[list[str]] = [["" for _ in range(self.num_cols)] for _ in range(self.num_rows)]
@@ -181,6 +213,26 @@ class CanonicalTable:
             summary = f"{self.caption}. {summary}"
         return summary
 
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "bbox": list(self.bbox),
+            "num_rows": self.num_rows,
+            "num_cols": self.num_cols,
+            "cells": [_schema_dict(c, CanonicalTableCell) for c in self.cells],
+            "caption": self.caption,
+            "source_image_path": self.source_image_path,
+        }
+
+    @classmethod
+    def from_dict(cls, d: dict[str, Any]) -> CanonicalTable:
+        cd = dict(d)
+        if "cells" in cd and isinstance(cd["cells"], list):
+            cd["cells"] = [
+                CanonicalTableCell.from_dict(c) if isinstance(c, dict) else c
+                for c in cd["cells"]
+            ]
+        return cls(**cd)
+
 
 @dataclass
 class PlotMetadata:
@@ -194,6 +246,13 @@ class PlotMetadata:
     annotations: list[str] = field(default_factory=list)
     approximate_trends: list[str] = field(default_factory=list)
 
+    def to_dict(self) -> dict[str, Any]:
+        return asdict(self)
+
+    @classmethod
+    def from_dict(cls, d: dict[str, Any]) -> PlotMetadata:
+        return cls(**d)
+
 
 @dataclass
 class CanonicalFigure:
@@ -204,6 +263,29 @@ class CanonicalFigure:
     image_crop_path: str | None = None
     plot_metadata: PlotMetadata | None = None
     vlm_description: str | None = None
+
+    def __post_init__(self):
+        if isinstance(self.plot_metadata, dict):
+            self.plot_metadata = PlotMetadata.from_dict(self.plot_metadata)
+
+    def to_dict(self) -> dict[str, Any]:
+        d = asdict(self)
+        d["figure_type"] = self.figure_type.value if isinstance(self.figure_type, FigureType) else str(self.figure_type)
+        if self.plot_metadata:
+            d["plot_metadata"] = _schema_dict(self.plot_metadata, PlotMetadata)
+        return d
+
+    @classmethod
+    def from_dict(cls, d: dict[str, Any]) -> CanonicalFigure:
+        cd = dict(d)
+        if "figure_type" in cd and isinstance(cd["figure_type"], str):
+            try:
+                cd["figure_type"] = FigureType(cd["figure_type"])
+            except ValueError:
+                cd["figure_type"] = FigureType.OTHER
+        if "plot_metadata" in cd and isinstance(cd["plot_metadata"], dict):
+            cd["plot_metadata"] = PlotMetadata.from_dict(cd["plot_metadata"])
+        return cls(**cd)
 
 
 @dataclass
@@ -263,9 +345,21 @@ class DocumentElement:
     units: dict[str, str] | None = None
     metadata: dict[str, Any] = field(default_factory=dict)
 
+    def __post_init__(self):
+        if isinstance(self.confidence, dict):
+            self.confidence = ConfidenceVector.from_dict(self.confidence)
+        if isinstance(self.canonical_table, dict):
+            self.canonical_table = CanonicalTable.from_dict(self.canonical_table)
+        if isinstance(self.canonical_figure, dict):
+            self.canonical_figure = CanonicalFigure.from_dict(self.canonical_figure)
+
     def to_dict(self) -> dict[str, Any]:
         d = asdict(self)
-        d["confidence"] = self.confidence.to_dict()
+        d["confidence"] = _schema_dict(self.confidence, ConfidenceVector)
+        if self.canonical_table:
+            d["canonical_table"] = _schema_dict(self.canonical_table, CanonicalTable)
+        if self.canonical_figure:
+            d["canonical_figure"] = _schema_dict(self.canonical_figure, CanonicalFigure)
         return d
 
     @classmethod
@@ -274,4 +368,8 @@ class DocumentElement:
         filtered = {k: v for k, v in d.items() if k in known_keys}
         if "confidence" in filtered and isinstance(filtered["confidence"], dict):
             filtered["confidence"] = ConfidenceVector(**filtered["confidence"])
+        if "canonical_table" in filtered and isinstance(filtered["canonical_table"], dict):
+            filtered["canonical_table"] = CanonicalTable.from_dict(filtered["canonical_table"])
+        if "canonical_figure" in filtered and isinstance(filtered["canonical_figure"], dict):
+            filtered["canonical_figure"] = CanonicalFigure.from_dict(filtered["canonical_figure"])
         return cls(**filtered)

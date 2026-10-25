@@ -13,7 +13,7 @@ import uuid
 from dataclasses import asdict, dataclass, field
 from typing import Any, Sequence
 
-from bl_pipeline.rag.schema import DocumentElement, ElementType
+from bl_pipeline.rag.schema import CanonicalFigure, CanonicalTable, DocumentElement, ElementType
 
 
 @dataclass
@@ -148,7 +148,7 @@ class StructurePreservingChunker:
                 section_path=section_path,
                 heading_level=heading_level,
                 element_type="parent",
-                content=f"# {section_path}\n\n" + "\n\n".join(parent_text_parts[:10]),
+                content=f"# {section_path}\n\n" + "\n\n".join(parent_text_parts),
                 metadata={
                     "total_elements": len(sec_elements),
                     "element_types": list({e.element_type for e in sec_elements}),
@@ -197,6 +197,10 @@ class StructurePreservingChunker:
                         "start_page": first.page,
                         "end_page": last.page,
                         "element_count": len(acc_elements),
+                        "source_evidence": list(dict.fromkeys(
+                            key for e in acc_elements
+                            for key in e.metadata.get("source_evidence", [e.text])
+                        )),
                         "confidence": first.confidence.to_dict() if first.confidence else {},
                     },
                 )
@@ -268,7 +272,7 @@ class StructurePreservingChunker:
                     chunks.append(code_chunk)
 
                 elif el.element_type == ElementType.PARAGRAPH.value:
-                    if is_noise_fragment(el.text, el.bbox):
+                    if not el.metadata.get("source_evidence") and is_noise_fragment(el.text, el.bbox):
                         continue
 
                     acc_len = sum(len(e.text) for e in acc_elements)
@@ -291,14 +295,16 @@ class StructurePreservingChunker:
         """Atomic table chunking: repeat headers if table rows exceed threshold."""
         tbl_content = el.text
         tbl_meta = {
+            "source_evidence": el.metadata.get("source_evidence", [el.text]),
             "table_structure": el.table_structure,
             "bbox": el.bbox,
             "reading_order": el.reading_order,
             "confidence": el.confidence.to_dict() if el.confidence else {},
         }
         if el.canonical_table:
-            tbl_meta["canonical_table"] = el.canonical_table.to_dict()
-            summary = el.canonical_table.to_natural_language_summary()
+            tbl_obj = CanonicalTable.from_dict(el.canonical_table) if isinstance(el.canonical_table, dict) else el.canonical_table
+            tbl_meta["canonical_table"] = tbl_obj.to_dict() if hasattr(tbl_obj, "to_dict") else tbl_obj
+            summary = tbl_obj.to_natural_language_summary() if hasattr(tbl_obj, "to_natural_language_summary") else ""
             if summary:
                 tbl_meta["summary"] = summary
                 tbl_content += f"\n\nTable Summary: {summary}"
@@ -373,6 +379,7 @@ class StructurePreservingChunker:
             content=content,
             metadata={
                 "equation_ref": el.equation_ref,
+                "source_evidence": el.metadata.get("source_evidence", [el.text]),
                 "raw_formula": el.text,
                 "bbox": el.bbox,
                 "reading_order": el.reading_order,
@@ -402,6 +409,7 @@ class StructurePreservingChunker:
 
         content = "\n\n".join(parts)
         fig_meta = {
+            "source_evidence": el.metadata.get("source_evidence", [el.text]),
             "figure_ref": el.figure_ref,
             "caption": el.caption or el.text,
             "bbox": el.bbox,
@@ -409,10 +417,12 @@ class StructurePreservingChunker:
             "confidence": el.confidence.to_dict() if el.confidence else {},
         }
         if el.canonical_figure:
-            fig_meta["canonical_figure"] = el.canonical_figure.to_dict()
-            fig_meta["figure_type"] = el.canonical_figure.figure_type.value
-            if el.canonical_figure.plot_metadata:
-                fig_meta["plot_metadata"] = el.canonical_figure.plot_metadata.__dict__
+            fig_obj = CanonicalFigure.from_dict(el.canonical_figure) if isinstance(el.canonical_figure, dict) else el.canonical_figure
+            fig_meta["canonical_figure"] = fig_obj.to_dict() if hasattr(fig_obj, "to_dict") else fig_obj
+            fig_type_val = fig_obj.figure_type.value if hasattr(fig_obj.figure_type, "value") else str(fig_obj.figure_type)
+            fig_meta["figure_type"] = fig_type_val
+            if fig_obj.plot_metadata:
+                fig_meta["plot_metadata"] = fig_obj.plot_metadata.to_dict() if hasattr(fig_obj.plot_metadata, "to_dict") else (fig_obj.plot_metadata if isinstance(fig_obj.plot_metadata, dict) else getattr(fig_obj.plot_metadata, "__dict__", {}))
 
         return StructuredChunk(
             parent_id=parent_id,

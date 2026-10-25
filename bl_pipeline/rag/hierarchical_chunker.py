@@ -19,7 +19,7 @@ from dataclasses import asdict, dataclass, field
 from typing import Any, Sequence
 
 from bl_pipeline.rag.parsers.scientific_normalizer import normalize_scientific_text
-from bl_pipeline.rag.schema import DocumentElement, ElementType
+from bl_pipeline.rag.schema import CanonicalFigure, CanonicalTable, DocumentElement, ElementType
 
 
 @dataclass
@@ -322,8 +322,9 @@ class HierarchicalTreeChunker:
                     "confidence": conf_dict,
                 }
                 if el.canonical_table:
-                    tbl_meta["canonical_table"] = el.canonical_table.to_dict()
-                    summary = el.canonical_table.to_natural_language_summary()
+                    tbl_obj = CanonicalTable.from_dict(el.canonical_table) if isinstance(el.canonical_table, dict) else el.canonical_table
+                    tbl_meta["canonical_table"] = tbl_obj.to_dict() if hasattr(tbl_obj, "to_dict") else tbl_obj
+                    summary = tbl_obj.to_natural_language_summary() if hasattr(tbl_obj, "to_natural_language_summary") else ""
                     if summary:
                         tbl_meta["summary"] = summary
                         tbl_content += f"\n\nTable Summary: {summary}"
@@ -356,10 +357,12 @@ class HierarchicalTreeChunker:
                     "confidence": conf_dict,
                 }
                 if el.canonical_figure:
-                    fig_meta["canonical_figure"] = el.canonical_figure.to_dict()
-                    fig_meta["figure_type"] = el.canonical_figure.figure_type.value
-                    if el.canonical_figure.plot_metadata:
-                        fig_meta["plot_metadata"] = el.canonical_figure.plot_metadata.__dict__
+                    fig_obj = CanonicalFigure.from_dict(el.canonical_figure) if isinstance(el.canonical_figure, dict) else el.canonical_figure
+                    fig_meta["canonical_figure"] = fig_obj.to_dict() if hasattr(fig_obj, "to_dict") else fig_obj
+                    fig_type_val = fig_obj.figure_type.value if hasattr(fig_obj.figure_type, "value") else str(fig_obj.figure_type)
+                    fig_meta["figure_type"] = fig_type_val
+                    if fig_obj.plot_metadata:
+                        fig_meta["plot_metadata"] = fig_obj.plot_metadata.to_dict() if hasattr(fig_obj.plot_metadata, "to_dict") else (fig_obj.plot_metadata if isinstance(fig_obj.plot_metadata, dict) else getattr(fig_obj.plot_metadata, "__dict__", {}))
 
                 leaf = HierarchicalNode(
                     paper_id=paper_id,
