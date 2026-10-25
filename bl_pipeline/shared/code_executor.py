@@ -7,10 +7,13 @@ in a restricted namespace with only safe scientific libraries.
 
 from __future__ import annotations
 
-import signal
-import threading
+import json
+import math
+import subprocess
+import sys
+import tempfile
 import traceback
-from io import StringIO
+from pathlib import Path
 from typing import Any
 
 
@@ -118,118 +121,90 @@ def _make_sandbox_globals() -> dict[str, Any]:
     return namespace
 
 
-def _exec_with_timeout(
-    code: str, sandbox_globals: dict[str, Any], timeout_seconds: int,
-) -> None:
-    """Run exec(code, sandbox_globals), aborting after timeout_seconds.
+def _json_result_value(value):
+    """Convert scientific values for the JSON-only worker result channel."""
+    import numpy as np
+    import sympy
+    from dataclasses import asdict, is_dataclass
 
-    Uses SIGALRM on platforms that support it (Unix).  CPython cannot
-    forcibly kill a running thread, so on platforms without SIGALRM
-    (Windows) this runs exec() on a daemon thread and raises
-    TimeoutError if it hasn't finished by the deadline; the runaway
-    thread is abandoned (not killed) but, being a daemon, it will not
-    block process exit.
-    """
-    if hasattr(signal, "SIGALRM"):
-        def _on_alarm(signum, frame):
-            raise TimeoutError(f"code execution exceeded {timeout_seconds}s")
-
-        previous_handler = signal.signal(signal.SIGALRM, _on_alarm)
-        signal.alarm(timeout_seconds)
-        try:
-            exec(code, sandbox_globals)  # noqa: S102
-        finally:
-            signal.alarm(0)
-            signal.signal(signal.SIGALRM, previous_handler)
-        return
-
-    caught: list[BaseException] = []
-
-    def _run() -> None:
-        try:
-            exec(code, sandbox_globals)  # noqa: S102
-        except BaseException as exc:  # re-raised on the caller's thread below
-            caught.append(exc)
-
-    worker = threading.Thread(target=_run, daemon=True)
-    worker.start()
-    worker.join(timeout_seconds)
-    if worker.is_alive():
-        raise TimeoutError(f"code execution exceeded {timeout_seconds}s")
-    if caught:
-        raise caught[0]
+    if isinstance(value, np.ndarray): return value.tolist()
+    if isinstance(value, np.generic): return value.item()
+    if isinstance(value, sympy.Basic): return str(value)
+    if is_dataclass(value) and not isinstance(value, type): return asdict(value)
+    if isinstance(value, (set, frozenset)): return list(value)
+    raise TypeError(f'Unsupported result type: {type(value).__name__}')
 
 
-def execute_code(code: str, timeout_seconds: int = 30) -> dict[str, Any]:
-    """Execute LLM-generated scientific code in a sandbox.
-
-    Args:
-        code: Python source code to execute.
-        timeout_seconds: Max wall-clock execution time in seconds, enforced
-            via SIGALRM on Unix or a daemon-thread join timeout elsewhere.
-
-    Returns:
-        dict with keys:
-        - "success": bool
-        - "result": the value of the `result` variable if set
-        - "stdout": captured print output
-        - "error": error message if failed
-        - "locals": dict of all local variables after execution
-    """
-    sandbox_globals = _make_sandbox_globals()
-
-    # Capture stdout
-    import sys
-    old_stdout = sys.stdout
-    sys.stdout = captured = StringIO()
-
+def _execute_worker(code: str, result_path: Path) -> None:
+    """Run only in a child process; stdout/stderr belong to that process."""
     try:
-        # Use a SINGLE namespace for both globals and locals.  With two
-        # separate dicts, functions/list-comprehensions defined inside
-        # the executed code only see `sandbox_globals`, so module-level
-        # assignments (x_t = ..., U_inf = ...) become invisible inside
-        # helper functions and crash with NameError. Passing one dict
-        # makes it behave like a real Python module, which is what the
-        # LLM-generated code expects.
-        _exec_with_timeout(code, sandbox_globals, timeout_seconds)
-
-        sandbox_locals = sandbox_globals
-        result = sandbox_locals.get("result", None)
-        stdout_text = captured.getvalue()
-
-        # Filter out non-serialisable objects from locals, and drop the
-        # sandbox-provided globals (math, numpy, builtins) so we only
-        # report user-bound names.
-        _sandbox_seed_keys = set(_make_sandbox_globals().keys())
+        namespace = _make_sandbox_globals()
+        seed_keys = set(namespace)
+        exec(code, namespace)  # noqa: S102
         safe_locals = {}
-        for k, v in sandbox_locals.items():
-            if k.startswith("_") or k in _sandbox_seed_keys:
+        for key, value in namespace.items():
+            if key.startswith('_') or key in seed_keys:
                 continue
             try:
-                repr(v)  # test if representable
-                safe_locals[k] = v
-            except Exception:
-                safe_locals[k] = str(type(v))
+                json.dumps(value, default=_json_result_value, allow_nan=False)
+                safe_locals[key] = value
+            except (TypeError, ValueError, OverflowError):
+                safe_locals[key] = f'<{type(value).__name__}>'
+        payload = {'success': True, 'result': namespace.get('result'),
+                   'error': None, 'locals': safe_locals}
+        serialized = json.dumps(payload, default=_json_result_value, allow_nan=False)
+    except BaseException as exc:
+        serialized = json.dumps({'success': False, 'result': None, 'locals': {},
+                                 'error': f'{type(exc).__name__}: {exc}\n{traceback.format_exc()}'})
+    result_path.write_text(serialized, encoding='utf-8')
 
-        return {
-            "success": True,
-            "result": result,
-            "stdout": stdout_text,
-            "error": None,
-            "locals": safe_locals,
-        }
 
-    except Exception as exc:
-        return {
-            "success": False,
-            "result": None,
-            "stdout": captured.getvalue(),
-            "error": f"{type(exc).__name__}: {exc}\n{traceback.format_exc()}",
-            "locals": {},
-        }
+def execute_code(code: str, timeout_seconds: float = 30) -> dict[str, Any]:
+    """Execute in a disposable process, capturing output without changing sys.stdout.
 
-    finally:
-        sys.stdout = old_stdout
+    The deadline includes interpreter/library startup. Timed-out workers are
+    killed and reaped before returning. Results/locals cross a JSON boundary:
+    NumPy arrays/scalars become lists/scalars, SymPy expressions become strings;
+    unsupported result types return an explicit execution failure. This process
+    isolation is not a security sandbox or a memory limit.
+    """
+    if not math.isfinite(timeout_seconds) or timeout_seconds <= 0:
+        raise ValueError('Execution timeout must be positive and finite')
+    with tempfile.TemporaryDirectory(prefix='scientific-exec-') as directory:
+        result_path = Path(directory) / 'result.json'
+        command = [sys.executable, '-B', '-u', str(Path(__file__).resolve()),
+                   '--worker', str(result_path)]
+        options = {'creationflags': subprocess.CREATE_NO_WINDOW} if sys.platform == 'win32' else {}
+        with subprocess.Popen(command, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+                              stderr=subprocess.PIPE, text=True, encoding='utf-8',
+                              errors='replace', **options) as worker:
+            try:
+                try:
+                    stdout, stderr = worker.communicate(code, timeout=timeout_seconds)
+                except subprocess.TimeoutExpired:
+                    worker.kill()
+                    stdout, stderr = worker.communicate()
+                    return {'success': False, 'result': None, 'stdout': stdout,
+                            'error': f'TimeoutError: code execution exceeded {timeout_seconds}s',
+                            'locals': {}}
+                if worker.returncode != 0 or not result_path.exists():
+                    return {'success': False, 'result': None, 'stdout': stdout,
+                            'error': f'WorkerError: process exited with code {worker.returncode}\n{stderr}',
+                            'locals': {}}
+                try:
+                    payload = json.loads(result_path.read_text(encoding='utf-8'))
+                    if not isinstance(payload, dict) or not {'success', 'result', 'error', 'locals'} <= payload.keys():
+                        raise ValueError('Invalid worker result schema')
+                except (OSError, ValueError) as exc:
+                    return {'success': False, 'result': None, 'stdout': stdout,
+                            'error': f'WorkerError: invalid result ({type(exc).__name__})', 'locals': {}}
+                payload['stdout'] = stdout
+                return payload
+            finally:
+                # Also reap on interruption or a parent-side exception.
+                if worker.poll() is None:
+                    worker.kill()
+                    worker.communicate()
 
 
 def validate_code_safety(code: str) -> tuple[bool, str]:
@@ -271,3 +246,10 @@ def validate_code_safety(code: str) -> tuple[bool, str]:
             return False, f"Forbidden pattern detected: {pattern}"
 
     return True, "OK"
+
+
+if __name__ == '__main__':
+    if len(sys.argv) != 3 or sys.argv[1] != '--worker':
+        raise SystemExit('This module is launched by execute_code().')
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+    _execute_worker(sys.stdin.buffer.read().decode('utf-8'), Path(sys.argv[2]))
